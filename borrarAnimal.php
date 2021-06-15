@@ -1,6 +1,6 @@
 <?php
-
-$databaseHost = 'localhost';
+include_once ('database.php');
+/*$databaseHost = 'localhost';
 $databaseName = 'censo';
 $databaseUsername = 'root';
 $databasePassword = '';
@@ -8,7 +8,7 @@ $databasePassword = '';
 $conexion = new mysqli();
 $conexion->connect($databaseHost, $databaseUsername, $databasePassword, $databaseName);
 
-/*
+
     if(!$conexion){
         echo "<h3>No se ha podido conectar PHP - MySQL, verifique sus datos.</h3><hr><br>";
     }

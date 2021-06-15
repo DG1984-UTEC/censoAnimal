@@ -1,12 +1,5 @@
 <?php
-
-$databaseHost = 'localhost';
-$databaseName = 'censo';
-$databaseUsername = 'root';
-$databasePassword = '';
-
-$conexion = new mysqli();
-$conexion->connect($databaseHost, $databaseUsername, $databasePassword, $databaseName);
+include_once ('database.php');
 
 
     $consulta = $conexion->query("SELECT * FROM animal");
@@ -46,6 +39,8 @@ $conexion->connect($databaseHost, $databaseUsername, $databasePassword, $databas
                 <th>Sexo</th>
                 <th>Castrado</th>
                 <th>Requiere castración</th>
+                <th>Creado</th>
+                <th>Actualización</th>
                 <th>Acciones</th>
 
             </tr>
@@ -79,12 +74,18 @@ $conexion->connect($databaseHost, $databaseUsername, $databasePassword, $databas
                         $sexo=$fila1["sexo"];
                         $castrado=$fila1["castrado"];
                         $reqcastracion=$fila1["reqcastracion"];
+                        $created_at=$fila1["CREATED_AT"];
+                        $updated_at=$fila1["UPDATED_AT"];
+
                         ?>
             <tr>
+            
                 <td><?php echo $cidueno;?></td>
                 <td><?php echo $nombre;?></td>
                 <td><?php echo $sexo;?></td>
                 <td><?php echo $castrado;?></td>
+                <td><?php echo $reqcastracion;?></td>
+                <td><?php echo $reqcastracion;?></td>
                 <td><?php echo $reqcastracion;?></td>
 
                 <td>
@@ -127,6 +128,8 @@ $nombre=$fila["nombre"];
 $sexo=$fila["sexo"];
 $castrado=$fila["castrado"];
 $reqcastracion=$fila["reqcastracion"];
+$created_at =$fila["CREATED_AT"];
+$updated_at =$fila["UPDATED_AT"];
 
 ?>
 <tr>
@@ -135,6 +138,8 @@ $reqcastracion=$fila["reqcastracion"];
     <td><?php echo $sexo;?></td>
     <td><?php echo $castrado;?></td>
     <td><?php echo $reqcastracion;?></td>
+    <td><?php echo $created_at;?></td>
+    <td><?php echo $updated_at;?></td>
 
     <td>
         <a href="update.php?id=<?php echo $id;?>" class="edit" title="Editar" >Editar</a>

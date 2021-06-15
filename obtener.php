@@ -147,7 +147,7 @@ $cantanimales=$fila["cantanimales"];
     <td>
         <a href="update.php?id=<?php echo $id;?>" class="edit" title="Editar" data-toggle="tooltip"><i
                 class="material-icons">&#xE254;</i></a>
-        <a href="borrarpersona.php?id=<?php echo $id;?>" class="delete" title="Eliminar" >Borrar</a>
+        <a href="borrarpersona.php?id=<?php echo $id;?>" class="delete" title="Eliminar">Borrar</a>
     </td>
 </tr>
 

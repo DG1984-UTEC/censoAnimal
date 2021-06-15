@@ -1,5 +1,6 @@
 <?php
-
+include_once ('database.php');
+/*
 $databaseHost = 'localhost';
 $databaseName = 'censo';
 $databaseUsername = 'root';
@@ -19,7 +20,7 @@ $conexion->connect($databaseHost, $databaseUsername, $databasePassword, $databas
 
 //include ("database.php");
 //$db= new Database();
-
+*/
 //valido haber recibido los campos desde el html y que no esten vacios
 if (isset($_POST["ci"],$_POST["nombre"],$_POST["apellido"],$_POST["telefono"],$_POST["direccion"],$_POST["cantanimales"]) and 
      $_POST["ci"] !="" and $_POST["nombre"]!="" and $_POST["apellido"]!=""and $_POST["telefono"]!=""and $_POST["direccion"]!=""and $_POST["cantanimales"]!="" ){
