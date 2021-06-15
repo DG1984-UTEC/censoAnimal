@@ -51,9 +51,9 @@ $conexion->connect($databaseHost, $databaseUsername, $databasePassword, $databas
             </tr>
             <p><a href="obtener.php">Lista de Personas</a></p>
             <form method="post" action="obteneranimales.php">
-            <input type="buscarci" class="form-control" placeholder ="Ingrese CI" name="buscarci">
-            <button type="submit" class="btn btn-default">Buscar</button>
-            <button type="submit" class="btn btn-default" name="listar">Listar</button>
+                <input type="buscarci" class="form-control" placeholder="Ingrese CI" name="buscarci">
+                <button type="submit" class="btn btn-default">Buscar</button>
+                <button type="submit" class="btn btn-default" name="listar">Listar</button>
             </form>
 
             <?php 
@@ -63,6 +63,7 @@ $conexion->connect($databaseHost, $databaseUsername, $databasePassword, $databas
                     $buscarci = $_POST['buscarci'];
                     $consultaci = $conexion->query("SELECT * FROM animal WHERE cidueno = '$buscarci'");
                     while ($fila1 =mysqli_fetch_array($consultaci)){
+                        /*
                         echo "<tr>";
                         echo "<td>".$fila1 ["cidueno"]."</td>";
                         echo "<td>".$fila1 ["nombre"]."</td>";
@@ -71,19 +72,33 @@ $conexion->connect($databaseHost, $databaseUsername, $databasePassword, $databas
                         echo "<td>".$fila1 ["reqcastracion"]."</td>";
                         echo "<td>"."Acciones"."</td>";
                         echo "</tr>";
+*/
+                        $id=$fila1 ["id"];
+                        $cidueno=$fila1["cidueno"];
+                        $nombre=$fila1["nombre"];
+                        $sexo=$fila1["sexo"];
+                        $castrado=$fila1["castrado"];
+                        $reqcastracion=$fila1["reqcastracion"];
+                        ?>
+            <tr>
+                <td><?php echo $cidueno;?></td>
+                <td><?php echo $nombre;?></td>
+                <td><?php echo $sexo;?></td>
+                <td><?php echo $castrado;?></td>
+                <td><?php echo $reqcastracion;?></td>
 
-                       
-                    
-                    }
-                }    
-             
-            
-           
-            
-           
-?>
+                <td>
+                    <a href="update.php?id=<?php echo $id;?>" class="edit" title="Editar" >Editar</a>
+                    <a href="borraranimal.php?id=<?php echo $id;?>" class="delete" title="Eliminar">Borrar</a>
+                </td>
+                <?php  
+                
 
-    </div>
+            }
+            
+            
+            }
+            ?> </div>
 </body>
 
 </html>
@@ -120,11 +135,10 @@ $reqcastracion=$fila["reqcastracion"];
     <td><?php echo $sexo;?></td>
     <td><?php echo $castrado;?></td>
     <td><?php echo $reqcastracion;?></td>
-    
+
     <td>
-        <a href="update.php?id=<?php echo $id;?>" class="edit" title="Editar" data-toggle="tooltip"><i
-                class="material-icons">&#xE254;</i></a>
-        <a href="borraranimal.php?id=<?php echo $id;?>" class="delete" title="Eliminar" >Borrar</a>
+        <a href="update.php?id=<?php echo $id;?>" class="edit" title="Editar" >Editar</a>
+        <a href="borraranimal.php?id=<?php echo $id;?>" class="delete" title="Eliminar">Borrar</a>
     </td>
 </tr>
 
