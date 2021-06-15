@@ -1,33 +1,5 @@
 <?php
-
-$databaseHost = 'localhost';
-$databaseName = 'censo';
-$databaseUsername = 'root';
-$databasePassword = '';
-
-$conexion = new mysqli();
-$conexion->connect($databaseHost, $databaseUsername, $databasePassword, $databaseName);
-
-/*
-    if(!$conexion){
-        echo "<h3>No se ha podido conectar PHP - MySQL, verifique sus datos.</h3><hr><br>";
-    }
-    else
-    {
-        echo "<h3>Conexion Exitosa PHP - MySQL</h3><hr><br>";
-    }
-*/
-
-    
-    //$consulta= "SELECT * FROM users";
-
-    $consulta = $conexion->query("SELECT * FROM persona");
-    
-
-    //$fila = mysql_fetch_array ($consulta);
-
-    //$fila = $conexion->fetch_array(MYSQLI_ASSOC);
-
+include_once ('database.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +14,7 @@ $conexion->connect($databaseHost, $databaseUsername, $databasePassword, $databas
 </head>
 
 <body>
-    <div class="w3-sidebar w3-card" style="width:12%">
+    <div class="w3-sidebar w3-card" style="width:12%;margin-top:0.01%">
         <h3 class="w3-bar-item">Menu</h3>
         <a href="formularioPersona.php" class="w3-bar-item w3-button">Ingresar Persona</a>
         <a href="formularioAnimal.php" class="w3-bar-item w3-button">Ingresar Animal</a>
@@ -63,6 +35,8 @@ $conexion->connect($databaseHost, $databaseUsername, $databasePassword, $databas
                 <th>Telefono</th>
                 <th>Direccion</th>
                 <th>Cantidad Animales</th>
+                <th>Creado</th>
+                <th>Actualizado</th>
                 <th>Acciones</th>
             </tr>
             <p><a href="obtenerAnimales.php">Lista de Animales</a></p>
@@ -78,25 +52,37 @@ $conexion->connect($databaseHost, $databaseUsername, $databasePassword, $databas
                     $buscarci = $_POST['buscarci'];
                     $consultaci = $conexion->query("SELECT * FROM persona WHERE ci = '$buscarci'");
                     while ($fila1 =mysqli_fetch_array($consultaci)){
-                        $id = $fila1 ["id"];
-                        echo "<tr>";
-                        echo "<td>".$fila1 ["ci"]."</td>";
-                        echo "<td>".$fila1 ["nombre"]."</td>";
-                        echo "<td>".$fila1 ["apellido"]."</td>";
-                        echo "<td>".$fila1 ["telefono"]."</td>";
-                        echo "<td>".$fila1 ["direccion"]."</td>";
-                        echo "<td>".$fila1 ["cantanimales"]."</td>";
-                        echo "<td>".'<a href="editar.php">Editar </a>','<a href="borrarpersona.php?id=<?php echo $id;?>">
-            Borrar</a>'."</td>";
-            echo "</tr>";
+
+                        $id=$fila1 ["id"];
+                        $ci=$fila1["ci"];
+                        $nombre=$fila1["nombre"];
+                        $apellido=$fila1["apellido"];
+                        $telefono=$fila1["telefono"];
+                        $direccion=$fila1["direccion"];
+                        $cantanimales=$fila1["cantanimales"];
+                        $created_at=$fila1["CREATED_AT"];
+                        $updated_at=$fila1["UPDATED_AT"];
+                        ?>
+            <tr>
+                <td><?php echo $ci;?></td>
+                <td><?php echo $nombre;?></td>
+                <td><?php echo $apellido;?></td>
+                <td><?php echo $telefono;?></td>
+                <td><?php echo $direccion;?></td>
+                <td><?php echo $cantanimales;?></td>
+                <td><?php echo $created_at;?></td>
+                <td><?php echo $updated_at;?></td>
+                <td>
+                    <a href="update.php?id=<?php echo $id;?>" class="edit">Editar</a>
+                    <a href="borrarpersona.php?id=<?php echo $id;?>" class="delete" title="Eliminar">Borrar</a>
+                </td>
+            </tr>
+            <?php  
+           
 
             }
+     
             }
-
-
-
-
-
             ?>
     </div>
 </body>
@@ -108,27 +94,9 @@ $conexion->connect($databaseHost, $databaseUsername, $databasePassword, $databas
 <?php
 
 if (isset($_POST["listar"])){
+    $consulta = $conexion->query("SELECT * FROM persona");
     while ($fila = mysqli_fetch_array($consulta)){
-/*
-      
-        echo "<tr>";
-        
-        echo "<td>".$fila ["ci"]."</td>";
-        echo "<td>".$fila ["nombre"]."</td>";
-        echo "<td>".$fila ["apellido"]."</td>";
-        echo "<td>".$fila ["telefono"]."</td>";
-        echo "<td>".$fila ["direccion"]."</td>";
-        echo "<td>".$fila ["cantanimales"]."</td>";
-        echo "<td>".'<a href="editar.php">Editar </a>','<a href="borrarpersona.php?id=<?php echo $id;?>" name="borrar">
-Borrar</a>'."</td>";
-// echo "<td>".'<a href="$link_borrar">Borrar</a>'."</td>";
-echo "</tr>";
 
-}
-
-} */
-
-//while ($fila=mysqli_fetch_object($consulta)){
 $id=$fila ["id"];
 $ci=$fila["ci"];
 $nombre=$fila["nombre"];
@@ -136,6 +104,8 @@ $apellido=$fila["apellido"];
 $telefono=$fila["telefono"];
 $direccion=$fila["direccion"];
 $cantanimales=$fila["cantanimales"];
+$created_at=$fila["CREATED_AT"];
+$updated_at=$fila["UPDATED_AT"];
 ?>
 <tr>
     <td><?php echo $ci;?></td>
@@ -144,9 +114,10 @@ $cantanimales=$fila["cantanimales"];
     <td><?php echo $telefono;?></td>
     <td><?php echo $direccion;?></td>
     <td><?php echo $cantanimales;?></td>
+    <td><?php echo $created_at;?></td>
+    <td><?php echo $updated_at;?></td>
     <td>
-        <a href="update.php?id=<?php echo $id;?>" class="edit" title="Editar" data-toggle="tooltip"><i
-                class="material-icons">&#xE254;</i></a>
+        <a href="update.php?id=<?php echo $id;?>" class="edit">Editar</a>
         <a href="borrarpersona.php?id=<?php echo $id;?>" class="delete" title="Eliminar">Borrar</a>
     </td>
 </tr>

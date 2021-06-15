@@ -1,10 +1,5 @@
 <?php
 include_once ('database.php');
-
-
-    $consulta = $conexion->query("SELECT * FROM animal");
-
-   
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -40,7 +35,7 @@ include_once ('database.php');
                 <th>Castrado</th>
                 <th>Requiere castración</th>
                 <th>Creado</th>
-                <th>Actualización</th>
+                <th>Actualizado</th>
                 <th>Acciones</th>
 
             </tr>
@@ -58,16 +53,7 @@ include_once ('database.php');
                     $buscarci = $_POST['buscarci'];
                     $consultaci = $conexion->query("SELECT * FROM animal WHERE cidueno = '$buscarci'");
                     while ($fila1 =mysqli_fetch_array($consultaci)){
-                        /*
-                        echo "<tr>";
-                        echo "<td>".$fila1 ["cidueno"]."</td>";
-                        echo "<td>".$fila1 ["nombre"]."</td>";
-                        echo "<td>".$fila1 ["sexo"]."</td>";
-                        echo "<td>".$fila1 ["castrado"]."</td>";
-                        echo "<td>".$fila1 ["reqcastracion"]."</td>";
-                        echo "<td>"."Acciones"."</td>";
-                        echo "</tr>";
-*/
+                       
                         $id=$fila1 ["id"];
                         $cidueno=$fila1["cidueno"];
                         $nombre=$fila1["nombre"];
@@ -79,17 +65,17 @@ include_once ('database.php');
 
                         ?>
             <tr>
-            
+
                 <td><?php echo $cidueno;?></td>
                 <td><?php echo $nombre;?></td>
                 <td><?php echo $sexo;?></td>
                 <td><?php echo $castrado;?></td>
                 <td><?php echo $reqcastracion;?></td>
-                <td><?php echo $reqcastracion;?></td>
-                <td><?php echo $reqcastracion;?></td>
+                <td><?php echo $created_at;?></td>
+                <td><?php echo $updated_at;?></td>
 
                 <td>
-                    <a href="update.php?id=<?php echo $id;?>" class="edit" title="Editar" >Editar</a>
+                    <a href="update.php?id=<?php echo $id;?>" class="edit" title="Editar">Editar</a>
                     <a href="borraranimal.php?id=<?php echo $id;?>" class="delete" title="Eliminar">Borrar</a>
                 </td>
                 <?php  
@@ -99,7 +85,8 @@ include_once ('database.php');
             
             
             }
-            ?> </div>
+            ?>
+    </div>
 </body>
 
 </html>
@@ -108,19 +95,9 @@ include_once ('database.php');
 
 <?php
 if (isset($_POST["listar"])){
+    $consulta = $conexion->query("SELECT * FROM animal");
     while ($fila = mysqli_fetch_array($consulta)){
-     
-
-/*echo "<tr>";
-
-    echo "<td>".$fila ["cidueno"]."</td>";
-    echo "<td>".$fila ["nombre"]."</td>";
-    echo "<td>".$fila ["sexo"]."</td>";
-    echo "<td>".$fila ["castrado"]."</td>";
-    echo "<td>".$fila ["reqcastracion"]."</td>";
-    echo "<td>".'<a href="editarAnimal.php?id=$fila[id]" name="editar">Editar </a>','<a href="borrar.php"> Borrar</a>'."</td>";
-    echo "<td>".'<a href="editaranimal.php?id=<?php echo $id ?>">Edit</a>'."</td>";
-*/
+  
 
 $id=$fila ["id"];
 $cidueno=$fila["cidueno"];
@@ -142,7 +119,7 @@ $updated_at =$fila["UPDATED_AT"];
     <td><?php echo $updated_at;?></td>
 
     <td>
-        <a href="update.php?id=<?php echo $id;?>" class="edit" title="Editar" >Editar</a>
+        <a href="update.php?id=<?php echo $id;?>" class="edit" title="Editar">Editar</a>
         <a href="borraranimal.php?id=<?php echo $id;?>" class="delete" title="Eliminar">Borrar</a>
     </td>
 </tr>
