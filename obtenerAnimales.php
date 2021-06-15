@@ -82,7 +82,7 @@ $conexion->connect($databaseHost, $databaseUsername, $databasePassword, $databas
             
            
 ?>
-<a href="editarAnimal.php?id=$fila['id']" name="editar">Editar </a>','<a href="borrar.php"> Borrar</a>"
+
     </div>
 </body>
 
@@ -95,7 +95,7 @@ if (isset($_POST["listar"])){
     while ($fila = mysqli_fetch_array($consulta)){
      
 
-echo "<tr>";
+/*echo "<tr>";
 
     echo "<td>".$fila ["cidueno"]."</td>";
     echo "<td>".$fila ["nombre"]."</td>";
@@ -104,7 +104,37 @@ echo "<tr>";
     echo "<td>".$fila ["reqcastracion"]."</td>";
     echo "<td>".'<a href="editarAnimal.php?id=$fila[id]" name="editar">Editar </a>','<a href="borrar.php"> Borrar</a>'."</td>";
     echo "<td>".'<a href="editaranimal.php?id=<?php echo $id ?>">Edit</a>'."</td>";
+*/
 
-    }
+$id=$fila ["id"];
+$cidueno=$fila["cidueno"];
+$nombre=$fila["nombre"];
+$sexo=$fila["sexo"];
+$castrado=$fila["castrado"];
+$reqcastracion=$fila["reqcastracion"];
+
+?>
+<tr>
+    <td><?php echo $cidueno;?></td>
+    <td><?php echo $nombre;?></td>
+    <td><?php echo $sexo;?></td>
+    <td><?php echo $castrado;?></td>
+    <td><?php echo $reqcastracion;?></td>
+    
+    <td>
+        <a href="update.php?id=<?php echo $id;?>" class="edit" title="Editar" data-toggle="tooltip"><i
+                class="material-icons">&#xE254;</i></a>
+        <a href="borraranimal.php?id=<?php echo $id;?>" class="delete" title="Eliminar" >Borrar</a>
+    </td>
+</tr>
+
+
+
+<?php  
+                
+
+}
+
+
 }
 ?>
