@@ -25,7 +25,7 @@ include_once ('database.php');
 
         <a href="login.php" class="w3-bar-item w3-button">Salir</a>
     </div>
-    <div style="width:820px;margin:auto;margin-top: 12px;">
+    <div style="width:980px;margin:auto;margin-top: 12px;">
         <table class="table table-striped" width='80%' border=0>
 
             <tr bgcolor='#CCCCCC'>
