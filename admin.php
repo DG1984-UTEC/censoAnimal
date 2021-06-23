@@ -1,28 +1,13 @@
 <?php
+include_once ('database.php');
 
-$databaseHost = 'localhost';
-$databaseName = 'censo';
-$databaseUsername = 'root';
-$databasePassword = '';
-
-$conexion = new mysqli();
-$conexion->connect($databaseHost, $databaseUsername, $databasePassword, $databaseName);
-
-
-    if(!$conexion){
-        echo "<h3>No se ha podido conectar PHP - MySQL, verifique sus datos.</h3><hr><br>";
-    }
-    else
-    {
-        echo "<h3>Conexion Exitosa PHP - MySQL</h3><hr><br>";
-    }
-
-//include ("database.php");
-//$db= new Database();
 
 //valido haber recibido los campos desde el html y que no esten vacios
-if (isset($_POST["usuario"],$_POST["password"],$_POST['tipo'])){
+if (isset($_POST['ci'],$_POST['nombre'],$_POST['apellido'],$_POST["usuario"],$_POST["password"],$_POST['tipo'])){
      //asigno el contenido de cada campo recogido en el html a variables locales
+     $ci = $_POST['ci'];
+     $nombre = $_POST['nombre'];
+     $apellido = $_POST['apellido'];
      $usuario = $_POST['usuario'];
      $password = $_POST['password'];
      $tipo =$_POST['tipo'];
@@ -31,7 +16,7 @@ if (isset($_POST["usuario"],$_POST["password"],$_POST['tipo'])){
 
 
 
-     $insercion = $conexion->query("INSERT INTO usuarios (usuario, password, tipo) VALUES ('$usuario','$password','$tipo')");
+     $insercion = $conexion->query("INSERT INTO usuarios (ci, nombre, apellido, usuario, password, tipo) VALUES ('$ci','$nombre','$apellido','$usuario','$password','$tipo')");
 
 
 
@@ -42,8 +27,7 @@ if (isset($_POST["usuario"],$_POST["password"],$_POST['tipo'])){
           echo "<p>No se agregó...</p>";
           }
 
-}else{
-     echo '<p>Por favor, complete el <a href="formularioanimal.php">formulario</a></p>';
+
 }
 
 ?>
@@ -60,25 +44,46 @@ if (isset($_POST["usuario"],$_POST["password"],$_POST['tipo'])){
 </head>
 <body>
 <form method="post" action="admin.php">
+<div class="w3-sidebar w3-card" style="width:12%;margin-top:-2%">
+    <h3 class="w3-bar-item">Menu</h3>
+    <a href="admin.php" class="w3-bar-item w3-button">Nuevo Usuario</a>
+    <a href="obtenerusuarios.php" class="w3-bar-item w3-button">Listar Usuarios</a>
+    <br>
+    <a href="admin.html" class="w3-bar-item w3-button">Volver</a>
+    <br>
+    <a href="login.html" class="w3-bar-item w3-button">Salir</a>
+</div>
 
 <div class="row" style="width: 900px;margin-left:300px;margin-right:300px;margin-top:3%">
     <div class="w3-sidebar w3-card" style="width:50%;height:50%">
         <div class="col-sm-4" style="margin-left:100px;margin-top:20px">
-            <label for="email">Usuario:</label>
+            <label for="ci">CI:</label>
+            <input type="text" class="form-control" name="ci">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" name="nombre">
+            <label for="apellido">Apellido:</label>
+            <input type="text" class="form-control" name="apellido">
+            </div>
+
+        <div class="col-sm-4" style="margin-right:80px;margin-top:20px">
+            <label for="usuario">Usuario:</label>
             <input type="text" class="form-control" name="usuario">
             <label for="pwd">Contraseña:</label>
             <input type="text" class="form-control" name="password">
+          
             <br>
-            <label for="pwd">Tipo:</label>
+            <label for="tipo">Tipo:</label>
             <br>
-            <label><input type="radio" class="optradio" name="tipo" value="administrador"> Administrador </label>
-            <label><input type="radio" class="optradio" name="tipo" value="usuario"> Usuario</label>
-            
+            <label><input type="radio" class="optradio" name="tipo" value="ad"> Administrador </label>
+            <label><input type="radio" class="optradio" name="tipo" value="us"> Usuario</label>
+            <button type="submit" class="btn btn-default">Enviar</button>
+
+        </div>  
         </div>
        
             <br>
             <br>
-            <button type="submit" class="btn btn-default">Enviar</button>
+            
         </div>
 
     </div>

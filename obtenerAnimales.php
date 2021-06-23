@@ -10,7 +10,7 @@ include_once ('database.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/w3.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>Document</title>
+    <title>Obtener animales</title>
 </head>
 
 <body>
@@ -75,7 +75,7 @@ include_once ('database.php');
                 <td><?php echo $updated_at;?></td>
 
                 <td>
-                    <a href="update.php?id=<?php echo $id;?>" class="edit" title="Editar">Editar</a>
+                    <a href="editaranimal.php?id=<?php echo $id;?>" class="edit" title="Editar">Editar</a>
                     <a href="borraranimal.php?id=<?php echo $id;?>" class="delete" title="Eliminar">Borrar</a>
                 </td>
                 <?php  
@@ -119,7 +119,7 @@ $updated_at =$fila["UPDATED_AT"];
     <td><?php echo $updated_at;?></td>
 
     <td>
-        <a href="update.php?id=<?php echo $id;?>" class="edit" title="Editar">Editar</a>
+        <a href="editaranimal.php?id=<?php echo $id;?>" class="edit" title="Editar">Editar</a>
         <a href="borraranimal.php?id=<?php echo $id;?>" class="delete" title="Eliminar">Borrar</a>
     </td>
 </tr>
