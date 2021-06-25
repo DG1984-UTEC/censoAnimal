@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+// Detects if there is someone logged in.
+
+//if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true){
+if (isset($_SESSION['usuario'])){
+
 
 $cidueno =$_POST['cidueno'];
 $nombre =$_POST['nombre'];
@@ -21,7 +28,10 @@ if($cidueno&&$nombre&&$sexo&&$castrado&&$reqcastracion){
 
 header('Location: obteneranimales.php');
 
-
+}else{
+  echo header("location: login.php");
+  
+}
 
 
 ?>

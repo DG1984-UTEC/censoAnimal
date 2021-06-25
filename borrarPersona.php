@@ -1,5 +1,14 @@
 <?php
+
+session_start();
 include_once ('database.php');
+
+
+// Detects if there is someone logged in.
+
+//if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true){
+if (isset($_SESSION['usuario'])){
+
 
 if (isset($_GET['id'])){
     $id = intval($_GET['id']);
@@ -13,5 +22,8 @@ if ($consulta){
     echo "registro no borrado";
 }
 }
-   
+}else{
+    echo header("location: login.php");
+    
+}
 ?>

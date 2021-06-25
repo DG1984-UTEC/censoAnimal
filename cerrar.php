@@ -1,3 +1,13 @@
+
+<?php
+session_start();
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -18,15 +28,23 @@
             <div style="width:180px;margin:auto;margin-top: 12px;">
                 <img src="\elem\imagenes\logo grande.jpg" alt="logo" style="width:180px;margin-left:auto;margin-right:auto;margin-top: 12px;">
             </div>
-            <label for="usuario">Usuario:</label>
-            <input type="usuario" class="form-control" name="usuario" required = "True">
-            <label for="password">Contraseña:</label>
-            <input type="password" class="form-control" name="password" required = "True">
-
-            <button type="submit" class="btn btn-default">Ingresar</button>
+            <br>
+            <br>
+            <label style="margin-left:120px"><?php echo$_SESSION["usuario"];?></label>
+            <br>
+    <label style="margin-left:55px">UD A SALIDO EXITOSAMENTE</label>
+    <br>
+    <br>
+    <br>
+    <button style="margin-left:100px" href="login.php" class="btn btn-default">Regresar</button>
+    
         </div>
     </form>
 </body>
 
 </html>
+<?php
 
+
+session_destroy();
+?>

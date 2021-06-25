@@ -1,4 +1,6 @@
 <?php
+
+
 $databaseHost = 'localhost';
 $databaseName = 'censo';
 $databaseUsername = 'root';
@@ -36,4 +38,5 @@ class Database{
 	}
 	
 }*/
+
 ?>

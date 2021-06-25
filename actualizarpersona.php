@@ -1,4 +1,13 @@
 <?php
+session_start();
+
+// Detects if there is someone logged in.
+
+//if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true){
+if (isset($_SESSION['usuario'])){
+
+
+
 
 $ci =$_POST['c1'];
 $nombre =$_POST['c2'];
@@ -22,7 +31,10 @@ if($ci&&$nombre&&$apellido&&$telefono&&$direccion&&$cantanimales){
 
 header('Location: obtener.php');
 
-
+}else{
+  echo header("location: login.php");
+  
+}
 
 
 ?>

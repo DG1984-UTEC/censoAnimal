@@ -1,5 +1,10 @@
 <?php
 include_once ('database.php');
+session_start();
+
+
+if (isset($_SESSION['usuario'])){
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -14,7 +19,7 @@ include_once ('database.php');
 </head>
 
 <body>
-    <div class="w3-sidebar w3-card" style="width:12%">
+    <div class="w3-sidebar w3-card" style="width:12%;margin-top:1%">
         <h3 class="w3-bar-item">Menu</h3>
         <a href="formularioPersona.php" class="w3-bar-item w3-button">Ingresar Persona</a>
         <a href="formularioAnimal.php" class="w3-bar-item w3-button">Ingresar Animal</a>
@@ -23,8 +28,9 @@ include_once ('database.php');
         <a href="index.php" class="w3-bar-item w3-button">Volver</a>
         <br>
 
-        <a href="login.php" class="w3-bar-item w3-button">Salir</a>
+        <a href="Cerrar.php" class="w3-bar-item w3-button">Cerrar Sesión</a>
     </div>
+    <div style="margin-left:1200px"><?php echo 'Bienvenido, ' . $_SESSION["usuario"];?></div>
     <div style="width:980px;margin:auto;margin-top: 12px;">
         <table class="table table-striped" width='80%' border=0>
 
@@ -132,5 +138,9 @@ $updated_at =$fila["UPDATED_AT"];
 }
 
 
+}
+}else{
+    echo header("location: login.php");
+    
 }
 ?>

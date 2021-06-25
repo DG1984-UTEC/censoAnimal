@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+// Detects if there is someone logged in.
+
+//if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true){
+if (isset($_SESSION['usuario'])){
+
 $id = !empty($_GET['id']) ? $_GET['id'] : 0;
 $linea='';
 //Si hay una linea que modificar "$nlinea", entonces.
@@ -8,6 +15,11 @@ if($id){
 	$resultado = mysqli_query($conexion,$registro);
 	$linea = mysqli_fetch_array($resultado);
 }
+}else{
+    echo header("location: login.php");
+    
+}
+
 ?>
 
 <!DOCTYPE html>

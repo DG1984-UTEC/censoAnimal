@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Detects if there is someone logged in.
+
+//if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true){
+if (isset($_SESSION['usuario'])){
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -12,7 +22,7 @@
 </head>
 
 <body>
-    <div class="w3-sidebar w3-card" style="width:12%;margin-top:-2.1%">
+    <div class="w3-sidebar w3-card" style="width:12%;margin-top:1%">
         <h3> Menu</h3>
         <a href="formularioPersona.php" class="w3-bar-item w3-button">Ingresar Persona</a>
         <a href="formularioAnimal.php" class="w3-bar-item w3-button">Ingresar Animal</a>
@@ -21,11 +31,11 @@
         <a href="index.php" class="w3-bar-item w3-button">Volver</a>
         <br>
        
-        <a href="login.php" class="w3-bar-item w3-button">Salir</a>
+        <a href="Cerrar.php" class="w3-bar-item w3-button">Cerrar Sesión</a>
     </div>
 
     <form method="post" action="agregarPersona.php">
-
+    <div style="margin-left:1200px"><?php echo 'Bienvenido, ' . $_SESSION["usuario"];?></div>
         <div class="row" style="width: 900px;margin-left:300px;margin-right:300px;margin-top:3%">
             <div class="w3-sidebar w3-card" style="width:50%;height:50%">
                 <div class="col-sm-4" style="margin-left:100px;margin-top:20px">
@@ -58,3 +68,10 @@
 </body>
 
 </html>
+<?php
+}else{
+    echo header("location: login.php");
+    
+}
+
+?>

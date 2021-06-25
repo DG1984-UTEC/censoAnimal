@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +17,7 @@
     <a href="admin.php" class="w3-bar-item w3-button">Nuevo Usuario</a>
     <a href="obtenerusuarios.php" class="w3-bar-item w3-button">Listar Usuarios</a>
     <br>
-    <a href="admin.html.php" class="w3-bar-item w3-button">Volver</a>
+    <a href="admin.html" class="w3-bar-item w3-button">Volver</a>
     <br>
     <a href="login.html" class="w3-bar-item w3-button">Salir</a>
 </div>

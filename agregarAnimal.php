@@ -1,4 +1,16 @@
 <?php
+session_start();
+
+// Detects if there is someone logged in.
+
+//if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true){
+if (isset($_SESSION['usuario'])){
+
+
+// Detects if there is someone logged in.
+
+//if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true){
+
 
 $databaseHost = 'localhost';
 $databaseName = 'censo';
@@ -43,8 +55,13 @@ $_POST["reqcastracion"]) and
 
 
      if ($insercion){
-          echo "<p>Registro agregado.</p>";
-          echo "<a href=index.php>Volver</a>";
+        echo "<script>
+        alert('Registro Agregado')
+        window.location.href='obteneranimales.php';
+        </script>";
+        
+        //echo "<p>Registro agregado.</p>";
+        //echo "<a href=obteneranimales.php>Volver</a>";
           } else {
           echo "<p>No se agregó...</p>";
           }
@@ -53,5 +70,8 @@ $_POST["reqcastracion"]) and
 }else{
      echo '<p>Por favor, complete el <a href="formularioanimal.php">formulario</a></p>';
 }
-
+}else{
+    echo header("location: login.php");
+    
+}
 ?>

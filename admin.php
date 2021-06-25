@@ -1,5 +1,12 @@
 <?php
-include_once ('database.php');
+
+session_start();
+
+// Detects if there is someone logged in.
+
+//if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true){
+if (isset($_SESSION['usuario'])){
+
 
 
 //valido haber recibido los campos desde el html y que no esten vacios
@@ -21,15 +28,20 @@ if (isset($_POST['ci'],$_POST['nombre'],$_POST['apellido'],$_POST["usuario"],$_P
 
 
      if ($insercion){
-          echo "<p>Registro agregado.</p>";
-          echo "<a href=admin.html>Volver</a>";
+        echo "<script>
+        alert('Registro Agregado')
+        window.location.href='obtenerusuarios.php';
+        </script>";
           } else {
           echo "<p>No se agregó...</p>";
           }
 
 
 }
-
+}else{
+    echo header("location: login.php");
+    
+}
 ?>
 
 <!DOCTYPE html>
