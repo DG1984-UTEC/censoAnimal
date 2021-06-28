@@ -31,12 +31,13 @@ if (isset($_SESSION['usuario'])){
         <a href="Cerrar.php" class="w3-bar-item w3-button">Cerrar Sesión</a>
     </div>
     <div style="margin-left:1200px"><?php echo 'Bienvenido, ' . $_SESSION["usuario"];?></div>
-    <div style="width:980px;margin:auto;margin-top: 12px;">
-        <table class="table table-striped" width='80%' border=0>
+    <div style="width:1050px;margin:auto;margin-top: 12px;">
+        <table class="table table-striped" width='80%' style="text-align:center;">
 
-            <tr bgcolor='#CCCCCC'>
+            <tr>
                 <th>CI Dueño</th>
                 <th>Nombre</th>
+                <th>Especie</th>
                 <th>Sexo</th>
                 <th>Castrado</th>
                 <th>Requiere castración</th>
@@ -63,6 +64,7 @@ if (isset($_SESSION['usuario'])){
                         $id=$fila1 ["id"];
                         $cidueno=$fila1["cidueno"];
                         $nombre=$fila1["nombre"];
+                        $especie=$fila1["especie"];
                         $sexo=$fila1["sexo"];
                         $castrado=$fila1["castrado"];
                         $reqcastracion=$fila1["reqcastracion"];
@@ -74,6 +76,7 @@ if (isset($_SESSION['usuario'])){
 
                 <td><?php echo $cidueno;?></td>
                 <td><?php echo $nombre;?></td>
+                <td><?php echo $especie;?></td>
                 <td><?php echo $sexo;?></td>
                 <td><?php echo $castrado;?></td>
                 <td><?php echo $reqcastracion;?></td>
@@ -108,6 +111,7 @@ if (isset($_POST["listar"])){
 $id=$fila ["id"];
 $cidueno=$fila["cidueno"];
 $nombre=$fila["nombre"];
+$especie=$fila["especie"];
 $sexo=$fila["sexo"];
 $castrado=$fila["castrado"];
 $reqcastracion=$fila["reqcastracion"];
@@ -118,6 +122,7 @@ $updated_at =$fila["UPDATED_AT"];
 <tr>
     <td><?php echo $cidueno;?></td>
     <td><?php echo $nombre;?></td>
+    <td><?php echo $especie;?></td>
     <td><?php echo $sexo;?></td>
     <td><?php echo $castrado;?></td>
     <td><?php echo $reqcastracion;?></td>

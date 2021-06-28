@@ -20,10 +20,17 @@ if (isset($_GET['id'])){
     $consulta = $conexion->query("DELETE FROM animal WHERE id='$id'");
     
 if ($consulta){
-    echo "registro borrado con exito";
+    echo "<script>
+    alert('registro borrado con exito')
+    window.location.href='obteneranimales.php';
+    </script>";
+    
     
 }else{
-    echo "registro no borrado";
+    echo "<script>
+    alert('registro no borrado')
+    window.location.href='obteneranimales.php';
+    </script>";
 }
 }
     //$fila = mysql_fetch_array ($consulta);

@@ -31,7 +31,7 @@ if (isset($_SESSION['usuario'])){
         <a href="Cerrar.php" class="w3-bar-item w3-button">Cerrar Sesión</a>
     </div>
     <div style="margin-left:1200px"><?php echo 'Bienvenido, ' . $_SESSION["usuario"];?></div>
-    <div style="width:980px;margin:auto;margin-top: 12px;">
+    <div style="width:1050px;margin:auto;margin-top: 12px;">
         <table class="table table-striped" width='80%' style="text-align:center;">
 
             <tr>
@@ -43,6 +43,7 @@ if (isset($_SESSION['usuario'])){
                 <th>Cantidad Animales</th>
                 <th>Creado</th>
                 <th>Actualizado</th>
+                <th>Por</th>
                 <th>Acciones</th>
             </tr>
             <p><a href="obtenerAnimales.php">Lista de Animales</a></p>
@@ -68,6 +69,7 @@ if (isset($_SESSION['usuario'])){
                         $cantanimales=$fila1["cantanimales"];
                         $created_at=$fila1["CREATED_AT"];
                         $updated_at=$fila1["UPDATED_AT"];
+                        $sesion=$fila1['sesion'];
                         ?>
             <tr>
                 <td><?php echo $ci;?></td>
@@ -78,6 +80,8 @@ if (isset($_SESSION['usuario'])){
                 <td><?php echo $cantanimales;?></td>
                 <td><?php echo $created_at;?></td>
                 <td><?php echo $updated_at;?></td>
+                <td><?php echo $sesion;?></td>
+                
                 <td>
                     <a href="update.php?id=<?php echo $id;?>" class="edit">Editar</a>
                     <a href="borrarpersona.php?id=<?php echo $id;?>" class="delete" title="Eliminar">Borrar</a>
@@ -112,6 +116,7 @@ $direccion=$fila["direccion"];
 $cantanimales=$fila["cantanimales"];
 $created_at=$fila["CREATED_AT"];
 $updated_at=$fila["UPDATED_AT"];
+$sesion=$fila['sesion'];
 ?>
 <tr>
     <td><?php echo $ci;?></td>
@@ -122,6 +127,7 @@ $updated_at=$fila["UPDATED_AT"];
     <td><?php echo $cantanimales;?></td>
     <td><?php echo $created_at;?></td>
     <td><?php echo $updated_at;?></td>
+    <td><?php echo $sesion;?></td>
     <td>
         <a href="editarpersona.php?id=<?php echo $id;?>" class="edit">Editar</a>
         <a href="borrarpersona.php?id=<?php echo $id;?>" class="delete" title="Eliminar">Borrar</a>

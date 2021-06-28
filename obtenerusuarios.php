@@ -1,5 +1,12 @@
 <?php
 include_once ('database.php');
+session_start();
+
+// Detects if there is someone logged in.
+
+//if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true){
+if (isset($_SESSION['usuario'])){
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,19 +17,21 @@ include_once ('database.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/w3.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>Obtener Personas</title>
+    <title>Obtener Usuarios</title>
 </head>
 
 <body>
-<div class="w3-sidebar w3-card" style="width:12%">
+<div class="w3-sidebar w3-card" style="width:12%;margin-top:1%">
     <h3 class="w3-bar-item">Menu</h3>
-    <a href="admin.php" class="w3-bar-item w3-button">Nuevo Usuario</a>
+    <a href="agregarusuario.php" class="w3-bar-item w3-button">Nuevo Usuario</a>
     <a href="obtenerusuarios.php" class="w3-bar-item w3-button">Listar Usuarios</a>
     <br>
-    <a href="admin.html.php" class="w3-bar-item w3-button">Volver</a>
+    <a href="admin.php" class="w3-bar-item w3-button">Volver</a>
     <br>
-    <a href="login.html" class="w3-bar-item w3-button">Salir</a>
+    <a href="cerrar.php" class="w3-bar-item w3-button">Cerrar Sesión</a>
+    <div style="margin-left:1200px"><?php echo 'Bienvenido, ' . $_SESSION["usuario"];?></div>
 </div>
+<div style="margin-left:1200px"><?php echo 'Bienvenido, ' . $_SESSION["usuario"];?></div>
     <div style="width:980px;margin:auto;margin-top: 12px;">
         <table class="table table-striped" width='80%' style="text-align:center;">
 
@@ -37,7 +46,7 @@ include_once ('database.php');
                 <th>Acciones</th>
                 
             </tr>
-            <p><a href="obtenerAnimales.php">Lista de Usuarios</a></p>
+            
             <form method="post" action="obtenerusuarios.php">
                 <input type="buscarci" class="form-control" placeholder="Ingrese CI" name="buscarci">
                 <button type="submit" class="btn btn-default">Buscar</button>
@@ -124,5 +133,9 @@ $updated_at=$fila["UPDATED_AT"];
 }
 
 
+}
+}else{
+    echo header("location: login.php");
+    
 }
 ?>

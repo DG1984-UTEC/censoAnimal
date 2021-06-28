@@ -39,7 +39,7 @@ if (isset($_SESSION['usuario'])){
     </div>
     <div style="margin-left:1200px"><?php echo 'Bienvenido, ' . $_SESSION["usuario"];?></div>
     <div style="width:480px;margin:auto;margin-top: 12px;">
-        <img src="\elem\imagenes\logo grande.jpg" alt="logo" style="width:480px;margin:auto;margin-top: 12px;">
+        <img src="\censoanimal\imagenes\logo grande.jpg" alt="logo" style="width:480px;margin:auto;margin-top: 12px;">
     </div>
     <div style="width:620px;margin:auto;margin-top: 12px;">
         <h1 class="w3-bar-item" style="text-align:center"><b>Censo Animal</b></h1>

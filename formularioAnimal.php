@@ -52,30 +52,38 @@ if (isset($_SESSION['usuario'])){
             <div class="w3-sidebar w3-card" style="width:50%;height:50%">
                 <div class="col-sm-4" style="margin-left:100px;margin-top:20px">
                     <label for="email">CI Dueño:</label>
-                    <input type="text" class="form-control" name="cidueno">
+                    <input type="text" class="form-control" name="cidueno" required = "true">
                     <label for="pwd">Nombre:</label>
-                    <input type="text" class="form-control" name="nombre">
+                    <input type="text" class="form-control" name="nombre" required = "true">
                     <br>
-                    <label for="pwd">Sexo:</label>
+                    <label for="especie">Especie:</label>
                     <br>
-                    <label><input type="radio" class="optradio" name="sexo" value="Macho"> Macho </label>
-                    <label><input type="radio" class="optradio" name="sexo" value="Hembra"> Hembra</label>
+                    <label><input type="radio" class="optradio" name="especie" value="Perro" required = "true"> Perro </label>
+                    <label><input type="radio" class="optradio" name="especie" value="Gato" required = "true"> Gato</label>
+                    <br>
+                    <br>
+                    <label for="sexo">Sexo:</label>
+                    <br>
+                    <label><input type="radio" class="optradio" name="sexo" value="Macho" required = "true"> Macho </label>
+                    <label><input type="radio" class="optradio" name="sexo" value="Hembra" required = "true"> Hembra</label>
                     
                 </div>
 
                 <div class="col-sm-4" style="margin-right:80px;margin-top:20px">
                 <label for="pwd">Castrado:</label>
                     <br>
-                    <label><input type="radio" class="optradio" name="castrado" id="siCas" value="SI" onClick="valueChanged()"> Si </label>
-                    <label><input type="radio" class="optradio" name="castrado" id="noCas" value="NO" onClick="valueChanged()"> No</label>
+                    <label><input type="radio" class="optradio" name="castrado" id="siCas" value="SI" onClick="valueChanged()" required = "true"> Si </label>
+                    <label><input type="radio" class="optradio" name="castrado" id="noCas" value="NO" onClick="valueChanged()" required = "true"> No</label>
                     <br>
                     <br>
                     <br>
                     
                     <label for="pwd">¿Requiere castración?</label>
                     <br>
-                    <label><input type="radio" class="optradio" name="reqcastracion" id="neCas" value="SI"> Si </label>
-                    <label><input type="radio" class="optradio" name="reqcastracion" value="NO"> No</label>
+                    <label><input type="radio" class="optradio" name="reqcastracion" id="neCas" value="SI" required = "true"> Si </label>
+                    <label><input type="radio" class="optradio" name="reqcastracion" value="NO" required = "true"> No</label>
+                    <br>
+                    <br>
                     <br>
                     <br>
                     <br>

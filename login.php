@@ -33,7 +33,7 @@ if ($users){
         //$_SESSION['password'] = $password;
 
         if ($tipo['tipo'] == "ad"){
-            header("location: admin.html");
+            header("location: admin.php");
 
         }else if ($tipo['tipo'] == "us"){
             header("location: index.php");
@@ -70,7 +70,7 @@ if ($users){
     <div style="background-color:lightgrey;width:430px;height:350px;margin-left:auto;margin-right:auto">
         <div style="width:300px;margin-left:auto;margin-right:auto;margin-top:80px">
             <div style="width:180px;margin:auto;margin-top: 12px;">
-                <img src="\elem\imagenes\logo grande.jpg" alt="logo" style="width:180px;margin-left:auto;margin-right:auto;margin-top: 12px;">
+                <img src="\censoanimal\imagenes\logo grande.jpg" alt="logo" style="width:180px;margin-left:auto;margin-right:auto;margin-top: 12px;">
             </div>
             <label for="usuario">Usuario:</label>
             <input type="usuario" class="form-control" name="usuario" required = "True">

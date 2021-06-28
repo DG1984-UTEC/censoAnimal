@@ -40,21 +40,21 @@ if (isset($_SESSION['usuario'])){
             <div class="w3-sidebar w3-card" style="width:50%;height:50%">
                 <div class="col-sm-4" style="margin-left:100px;margin-top:20px">
                     <label for="email">CI:</label>
-                    <input type="text" class="form-control" name="ci">
+                    <input type="text"  class="form-control" name="ci" required = "true">
                     <label for="pwd">Nombre:</label>
-                    <input type="text" class="form-control" name="nombre">
+                    <input type="text"  class="form-control" name="nombre" required = "true">
                     <label for="pwd">Apellido:</label>
-                    <input type="text" class="form-control" name="apellido">
+                    <input type="text"  class="form-control" name="apellido" required = "true">
                     
                 </div>
 
                 <div class="col-sm-4" style="margin-right:80px;margin-top:20px">
                     <label for="pwd">Telefono:</label>
-                    <input type="text" class="form-control" name="telefono">
+                    <input type="text"  class="form-control" name="telefono" required = "true">
                     <label for="pwd">Dirección:</label>
-                    <input type="text" class="form-control" name="direccion">
+                    <input type="text"  class="form-control" name="direccion" required = "true">
                     <label for="pwd">Cantidad Animales:</label>
-                    <input type="text" class="form-control" name="cantanimales">
+                    <input type="text"  class="form-control" name="cantanimales" required = "true">
                     <br>
                     <button type="submit" class="btn btn-default">Enviar</button>
                 </div>

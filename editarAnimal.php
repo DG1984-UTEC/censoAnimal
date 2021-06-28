@@ -55,6 +55,9 @@ if($id){
                     <label for="pwd">Nombre:</label>
                     <input type="text" class="form-control" name="nombre" value="<?php echo $linea['nombre'];?>">
                     <br>
+                    <label><input type="radio" class="optradio" name="especie" value="Perro" <?php if($linea['especie']=='Perro') print "checked=true"?>/> Perro </label>
+                    <label><input type="radio" class="optradio" name="especie" value="Gato" <?php if($linea['especie']=='Gato') print "checked=true"?>/> Gato</label>
+                    <br>
                     <label for="pwd">Sexo:</label>
                     <br>
                    
