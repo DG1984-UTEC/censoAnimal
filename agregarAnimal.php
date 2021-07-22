@@ -6,10 +6,9 @@ session_start();
 if (isset($_SESSION['usuario'])){
 
 
-//valido haber recibido los campos desde el html y que no esten vacios
-if (isset($_POST["cidueno"], $_POST["nombre"], $_POST["especie"], $_POST["sexo"], $_POST["castrado"], $_POST["reqcastracion"]) and 
-     $_POST["cidueno"] !="" and $_POST["nombre"]!="" and $_POST["especie"]!="" and $_POST["sexo"]!="" and $_POST["castrado"]!=""and $_POST["reqcastracion"]!=""){
-     //asigno el contenido de cada campo recogido en el html a variables locales
+
+if (isset($_POST["cidueno"], $_POST["nombre"], $_POST["especie"], $_POST["sexo"], $_POST["castrado"], $_POST["reqcastracion"])){
+   
      $cidueno = mysqli_real_escape_string ($conexion, $_POST['cidueno']);
      $nombre = mysqli_real_escape_string ($conexion,$_POST['nombre']);
      $especie = mysqli_real_escape_string ($conexion,$_POST['especie']);
@@ -17,6 +16,20 @@ if (isset($_POST["cidueno"], $_POST["nombre"], $_POST["especie"], $_POST["sexo"]
      $castrado = mysqli_real_escape_string ($conexion,$_POST['castrado']);
      $reqcastracion = mysqli_real_escape_string ($conexion,$_POST['reqcastracion']);
      
+if($cidueno ==""){
+     $cidueno = Null;
+}else if($nombre ==""){
+     $nombre =Null;
+}else if($especie ==""){
+     $especie = Null;
+}else if($sexo==""){
+     $sexo = Null;
+}else if($castrado ==""){
+     $castrado =Null;
+}else if($reqcastracion ==""){
+     $reqcastracion = Null;
+}
+
 
 
 
@@ -31,8 +44,7 @@ if (isset($_POST["cidueno"], $_POST["nombre"], $_POST["especie"], $_POST["sexo"]
         window.location.href='obteneranimales.php';
         </script>";
         
-        //echo "<p>Registro agregado.</p>";
-        //echo "<a href=obteneranimales.php>Volver</a>";
+        
           } else {
           echo "<p>No se agregó...</p>";
           }

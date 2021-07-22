@@ -47,8 +47,120 @@ if (isset($_SESSION['usuario'])){
 
             </tr>
             <p><a href="obtener.php">Lista de Personas</a></p>
+
+            <form method="post" action="obtener.php">
+                <div class="row">
+                <p>Buscar por Fecha:</p>
+                    <div class="col-xs-6" style="width:35%">
+                    <input type="date"  class="form-control" name="buscarxfecha1">
+                    </div>
+                    
+                    <div class="col-xs-6" style="width:35%">
+                    <input type="date"  class="form-control" name="buscarxfecha2">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-default" name="buscarxfecha">Buscar</button>
+               
+            </form>
+            <?php 
+    
+    
+    if (isset($_POST["buscarxfecha"])){
+        $fechaA = $_POST['buscarxfecha1'];
+        $fechaB = $_POST['buscarxfecha2'];
+       
+       
+        
+        if($fechaA == $fechaB){    
+       
+            $busquedaFecha = $conexion->query("SELECT * FROM animal WHERE CREATED_AT = '$fechaA'"); // BETWEEN '$fechaA' AND '$fechaB'");
+            while ($fila2 =mysqli_fetch_array($busquedaFecha)){
+                
+                $id=$fila2 ["id"];
+                $ci=$fila2["ci"];
+                $nombre=$fila2["nombre"];
+                $apellido=$fila2["apellido"];
+                $telefono=$fila2["telefono"];
+                $direccion=$fila2["direccion"];
+                $cantanimales=$fila2["cantanimales"];
+                $created_at=$fila2["CREATED_AT"];
+                $updated_at=$fila2["UPDATED_AT"];
+                $sesion=$fila2['sesion']; 
+
+                
+                ?>
+
+            <tr>
+                <td><?php echo $ci;?></td>
+                <td><?php echo $nombre;?></td>
+                <td><?php echo $apellido;?></td>
+                <td><?php echo $telefono;?></td>
+                <td><?php echo $direccion;?></td>
+                <td><?php echo $cantanimales;?></td>
+                <td><?php echo $created_at;?></td>
+                <td><?php echo $updated_at;?></td>
+                <td><?php echo $sesion;?></td>
+
+                <td>
+                    <a href="update.php?id=<?php echo $id;?>" class="edit">Editar</a>
+                    <a href="borrarpersona.php?id=<?php echo $id;?>" class="delete" title="Eliminar">Borrar</a>
+                </td>
+            </tr>
+
+            <?php
+
+            } 
+        
+        }else{
+
+            $busquedaFechaT = $conexion->query("SELECT * FROM animal WHERE CREATED_AT BETWEEN '$fechaA' AND '$fechaB'");
+            while ($fila2 =mysqli_fetch_array($busquedaFechaT)){
+                
+                $id=$fila2 ["id"];
+                $ci=$fila2["ci"];
+                $nombre=$fila2["nombre"];
+                $apellido=$fila2["apellido"];
+                $telefono=$fila2["telefono"];
+                $direccion=$fila2["direccion"];
+                $cantanimales=$fila2["cantanimales"];
+                $created_at=$fila2["CREATED_AT"];
+                $updated_at=$fila2["UPDATED_AT"];
+                $sesion=$fila2['sesion']; 
+
+                ?>
+
+            <tr>
+                <td><?php echo $ci;?></td>
+                <td><?php echo $nombre;?></td>
+                <td><?php echo $apellido;?></td>
+                <td><?php echo $telefono;?></td>
+                <td><?php echo $direccion;?></td>
+                <td><?php echo $cantanimales;?></td>
+                <td><?php echo $created_at;?></td>
+                <td><?php echo $updated_at;?></td>
+                <td><?php echo $sesion;?></td>
+
+                <td>
+                    <a href="update.php?id=<?php echo $id;?>" class="edit">Editar</a>
+                    <a href="borrarpersona.php?id=<?php echo $id;?>" class="delete" title="Eliminar">Borrar</a>
+                </td>
+            </tr>
+            <?php
+            }
+        }
+        
+    }
+?>
+
+
+
+
+
+
+
+
             <form method="post" action="obteneranimales.php">
-                <input type="buscarci" class="form-control" placeholder="Ingrese CI" name="buscarci">
+                <input type="buscarci" style="width:33%" class="form-control" placeholder="Ingrese CI" name="buscarci">
                 <button type="submit" class="btn btn-default">Buscar</button>
                 <button type="submit" class="btn btn-default" name="listar">Listar</button>
             </form>
@@ -59,17 +171,17 @@ if (isset($_SESSION['usuario'])){
 
                     $buscarci = $_POST['buscarci'];
                     $consultaci = $conexion->query("SELECT * FROM animal WHERE cidueno = '$buscarci'");
-                    while ($fila1 =mysqli_fetch_array($consultaci)){
+                    while ($fila =mysqli_fetch_array($consultaci)){
                        
-                        $id=$fila1 ["id"];
-                        $cidueno=$fila1["cidueno"];
-                        $nombre=$fila1["nombre"];
-                        $especie=$fila1["especie"];
-                        $sexo=$fila1["sexo"];
-                        $castrado=$fila1["castrado"];
-                        $reqcastracion=$fila1["reqcastracion"];
-                        $created_at=$fila1["CREATED_AT"];
-                        $updated_at=$fila1["UPDATED_AT"];
+                        $id=$fila ["id"];
+                        $cidueno=$fila["cidueno"];
+                        $nombre=$fila["nombre"];
+                        $especie=$fila["especie"];
+                        $sexo=$fila["sexo"];
+                        $castrado=$fila["castrado"];
+                        $reqcastracion=$fila["reqcastracion"];
+                        $created_at=$fila["CREATED_AT"];
+                        $updated_at=$fila["UPDATED_AT"];
 
                         ?>
             <tr>
@@ -95,16 +207,24 @@ if (isset($_SESSION['usuario'])){
             
             }
             ?>
-    </div>
-</body>
+            <?php
+//if (isset($_POST["listar"])){
 
-</html>
+    if (isset($_GET['pageno'])) {
+        $pageno = $_GET['pageno'];
+    } else {
+        $pageno = 1;
+    }
+    $no_of_records_per_page = 10;
+    $offset = ($pageno-1) * $no_of_records_per_page;
+
+    $result = $conexion->query("SELECT COUNT(*) FROM animal"); 
+                        
+                $total_rows = mysqli_fetch_array($result)[0];
+                $total_pages = ceil($total_rows / $no_of_records_per_page);
 
 
-
-<?php
-if (isset($_POST["listar"])){
-    $consulta = $conexion->query("SELECT * FROM animal");
+    $consulta = $conexion->query("SELECT * FROM animal LIMIT $offset, $no_of_records_per_page");
     while ($fila = mysqli_fetch_array($consulta)){
   
 
@@ -141,11 +261,34 @@ $updated_at =$fila["UPDATED_AT"];
                 
 
 }
+?>
+<br>
+ <ul class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link" href="?pageno=1">Primero</a></li>
+                <li class="page-item" <?php if($pageno <= 1){ echo 'disabled'; } ?>>
+                    <a class="page-link" href="<?php if($pageno <= 1){ echo '#'; } else { echo "?pageno=".($pageno - 1); } ?>">Anterior</a>
+                </li>
+                <li class="page-item" <?php if($pageno >= $total_pages){ echo 'disabled'; } ?>>
+                    <a class="page-link"
+                        href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "?pageno=".($pageno + 1); } ?>">Siguiente</a>
+                </li>
+                <li><a class="page-link" href="?pageno=<?php echo $total_pages; ?>">Ultimo</a></li>
+            </ul>
 
+<?php
 
-}
+//}
 }else{
     echo header("location: login.php");
     
 }
 ?>
+
+    </div>
+    
+</body>
+
+</html>
+
+
+

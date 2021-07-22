@@ -21,17 +21,17 @@ if (isset($_SESSION['usuario'])){
 </head>
 
 <body>
-<div class="w3-sidebar w3-card" style="width:12%;margin-top:1%">
-    <h3 class="w3-bar-item">Menu</h3>
-    <a href="agregarusuario.php" class="w3-bar-item w3-button">Nuevo Usuario</a>
-    <a href="obtenerusuarios.php" class="w3-bar-item w3-button">Listar Usuarios</a>
-    <br>
-    <a href="admin.php" class="w3-bar-item w3-button">Volver</a>
-    <br>
-    <a href="cerrar.php" class="w3-bar-item w3-button">Cerrar Sesión</a>
+    <div class="w3-sidebar w3-card" style="width:12%;margin-top:1%">
+        <h3 class="w3-bar-item">Menu</h3>
+        <a href="agregarusuario.php" class="w3-bar-item w3-button">Nuevo Usuario</a>
+        <a href="obtenerusuarios.php" class="w3-bar-item w3-button">Listar Usuarios</a>
+        <br>
+        <a href="admin.php" class="w3-bar-item w3-button">Volver</a>
+        <br>
+        <a href="cerrar.php" class="w3-bar-item w3-button">Cerrar Sesión</a>
+        <div style="margin-left:1200px"><?php echo 'Bienvenido, ' . $_SESSION["usuario"];?></div>
+    </div>
     <div style="margin-left:1200px"><?php echo 'Bienvenido, ' . $_SESSION["usuario"];?></div>
-</div>
-<div style="margin-left:1200px"><?php echo 'Bienvenido, ' . $_SESSION["usuario"];?></div>
     <div style="width:980px;margin:auto;margin-top: 12px;">
         <table class="table table-striped" width='80%' style="text-align:center;">
 
@@ -44,9 +44,15 @@ if (isset($_SESSION['usuario'])){
                 <th>Creado</th>
                 <th>Actualizado</th>
                 <th>Acciones</th>
-                
+
             </tr>
-            
+            <form method="post" action ="obtenerusuarios.php">
+            <input type="date" class="form-control" name="buscarxfecha1">
+            <input type="date" clasee="form-control" name="buscarxfecha2">
+            <button type="submit" class="btn btn-default" name="buscarxfecha">Listar</button>
+
+            </form>
+
             <form method="post" action="obtenerusuarios.php">
                 <input type="buscarci" class="form-control" placeholder="Ingrese CI" name="buscarci">
                 <button type="submit" class="btn btn-default">Buscar</button>

@@ -1,14 +1,12 @@
 <?php
 session_start();
 
-// Detects if there is someone logged in.
 
-//if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true){
 if (isset($_SESSION['usuario'])){
 
 $id = !empty($_GET['id']) ? $_GET['id'] : 0;
 $linea='';
-//Si hay una linea que modificar "$nlinea", entonces.
+
 if($id){
     include('database.php');
 	$registro = "SELECT * FROM persona WHERE id = $id;";
@@ -68,58 +66,19 @@ if($id){
                     <label for="direccion">Dirección:</label>
                     <input type="text" id="i5" class="form-control" name="c5" value="<?php echo $linea['direccion'];?>">
                     <label for="cantanimales">Cantidad Animales:</label>
-                    <input type="text" id="i6" class="form-control" name="c6" value="<?php echo $linea['cantanimales'];?>">
+                    <input type="text" id="i6" class="form-control" name="c6"
+                        value="<?php echo $linea['cantanimales'];?>">
                     <br>
                     <input type="hidden" class="form-control" name="id" value="<?php echo $id;?>">
-                   
-                    <button type="submit" value = "actualizar" name= "actualizar" class="btn btn-default">Actualizar</button>
+
+                    <button type="submit" value="actualizar" name="actualizar"
+                        class="btn btn-default">Actualizar</button>
                 </div>
             </div>
         </div>
     </form>
 </body>
+
 </html>
 
 
-
-<!--
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ingreso de datos</title>
-    <link rel="stylesheet" href="css/estilos.css">
-</head>
-<body>
-    <div class="contenedor">
-    <div class="cabecera">Actualización de datos</div>
-    <div class="contenido">
-    <form class="contact" action="actualizarpersona.php" method='post'>
-            <input type="hidden" name="id" value="<?php echo $id;?>">
-            <label for="i1">CI</label>
-            <input type="text" id="i1" name="c1" value="<?php echo $linea['ci'];?>">
-            <br>
-            <label for="i2">Nombre</label>
-            <input type="text" id="i2" name="c2" value="<?php echo $linea['nombre'];?>">
-            <br>
-            <label for="i3">Apellido</label>
-            <input type="text" id="i3" name="c3" value="<?php echo $linea['apellido'];?>">
-            <br>
-            <label for="i4">Telefono|</label>
-            <input type="text" id="i4" name="c4" value="<?php echo $linea['telefono'];?>">
-            <br>
-            <label for="i4">Direccion</label>
-            <input type="text" id="i5" name="c5" value="<?php echo $linea['direccion'];?>">
-            <br>
-            <label for="i4">Cantidad de animales</label>
-            <input type="text" id="i6" name="c6" value="<?php echo $linea['cantanimales'];?>">
-            <br>
-            <input class="boton" type="submit" value="actualizar">
-    </form>
-    </div>
-    </div>
-</body>
-</html>
--->

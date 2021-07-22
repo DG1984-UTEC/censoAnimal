@@ -55,32 +55,48 @@ if($id){
                     <label for="pwd">Nombre:</label>
                     <input type="text" class="form-control" name="nombre" value="<?php echo $linea['nombre'];?>">
                     <br>
-                    <label><input type="radio" class="optradio" name="especie" value="Perro" <?php if($linea['especie']=='Perro') print "checked=true"?>/> Perro </label>
-                    <label><input type="radio" class="optradio" name="especie" value="Gato" <?php if($linea['especie']=='Gato') print "checked=true"?>/> Gato</label>
+                    <label><input type="radio" class="optradio" name="especie" value="Perro"
+                            <?php if($linea['especie']=='Perro') print "checked=true"?> /> Perro </label>
+                    <label><input type="radio" class="optradio" name="especie" value="Gato"
+                            <?php if($linea['especie']=='Gato') print "checked=true"?> /> Gato</label>
                     <br>
                     <label for="pwd">Sexo:</label>
                     <br>
-                   
-                    <label><input type="radio" class="optradio" name="sexo" value="Macho" <?php if($linea['sexo']=='Macho') print "checked=true"?> />Macho</label>
-                    <label><input type="radio" class="optradio" name="sexo" value="Hembra" <?php if($linea['sexo']=='Hembra') print "checked=true"?> />Hembra</label>               
+
+                    <label><input type="radio" class="optradio" name="sexo" value="Macho"
+                            <?php if($linea['sexo']=='Macho') print "checked=true"?> />Macho</label>
+                    <label><input type="radio" class="optradio" name="sexo" value="Hembra"
+                            <?php if($linea['sexo']=='Hembra') print "checked=true"?> />Hembra</label>
+                    <label><input type="radio" class="optradio" name="sexo" value="NULL"
+                            <?php if($linea['sexo']=='NULL') print "checked=true"?> />
+                        Ns/Nc</label>
+
                 </div>
 
                 <div class="col-sm-4" style="margin-right:80px;margin-top:20px">
                     <label for="pwd">Castrado:</label>
                     <br>
-                   
 
-                    <label><input type="radio" class="optradio" name="castrado" value="Si" <?php if($linea['castrado']=='SI') print "checked=true"?> />Si</label>
-                    <label><input type="radio" class="optradio" name="castrado" value="No" <?php if($linea['castrado']=='NO') print "checked=true"?> />No</label>   
-                    
+
+                    <label><input type="radio" class="optradio" name="castrado" value="Si"
+                            <?php if($linea['castrado']=='SI') print "checked=true"?> />Si</label>
+                    <label><input type="radio" class="optradio" name="castrado" value="No"
+                            <?php if($linea['castrado']=='NO') print "checked=true"?> />No</label>
+                    <label><input type="radio" class="optradio" name="castrado" value="NULL"
+                            <?php if($linea['castrado']=='NULL') print "checked=true"?> />Ns/Nc</label>
+
                     <br>
                     <br>
                     <br>
                     <label for="pwd">¿Requiere castración?</label>
                     <br>
-                    <label><input type="radio" class="optradio" name="reqcastracion" value="SI" <?php if($linea['reqcastracion']=='SI') print "checked=true"?> />Si</label>
-                    <label><input type="radio" class="optradio" name="reqcastracion" value="NO" <?php if($linea['reqcastracion']=='NO') print "checked=true"?> />No</label>   
-                    
+                    <label><input type="radio" class="optradio" name="reqcastracion" value="SI"
+                            <?php if($linea['reqcastracion']=='SI') print "checked=true"?> />Si</label>
+                    <label><input type="radio" class="optradio" name="reqcastracion" value="NO"
+                            <?php if($linea['reqcastracion']=='NO') print "checked=true"?> />No</label>
+                    <label><input type="radio" class="optradio" name="reqcastracion" value="NULL"
+                            <?php if($linea['reqcastracion']=='NULL') print "checked=true"?> />Ns/Nc</label>
+
                     <br>
                     <br>
                     <br>
