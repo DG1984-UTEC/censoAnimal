@@ -12,6 +12,12 @@ $totalesA=mysqli_num_rows($totalA);
 $si = "SI";
 $totalCastrados = $conexion->query("SELECT COUNT(*) FROM animal WHERE castrado ='$si'");
 $totalesC=mysqli_fetch_array($totalCastrados);
+$no ="NO";
+$totalCas = $conexion->query("SELECT COUNT(*) FROM animal WHERE castrado ='$no'");
+$totalesE=mysqli_fetch_array($totalCas);
+
+
+
 
 $reqsi ="SI";
 $totalSinCastrar = $conexion->query("SELECT COUNT(*) FROM animal WHERE reqcastracion ='$reqsi'");
@@ -61,7 +67,8 @@ $totalesD =mysqli_fetch_array($totalSinCastrar);
         <h1 class="w3-bar-item" style="text-align:center"><b>Registros de Personas: <?php echo $totalesP?></b></h1>
         <h1 class="w3-bar-item" style="text-align:center"><b>Registro de Animales: <?php echo $totalesA?></b></h1>
         <h1 class="w3-bar-item" style="text-align:center"><b>Total Castrados: <?php echo $totalesC[0]?></b></h1>
-        <h1 class="w3-bar-item" style="text-align:center"><b>Total Sin Castrar: <?php echo $totalesD[0]?></b></h1>
+        <h1 class="w3-bar-item" style="text-align:center"><b>No Castrados: <?php echo $totalesE[0]?></b></h1>
+        <h1 class="w3-bar-item" style="text-align:center"><b>Total Requieren Castración: <?php echo $totalesD[0]?></b></h1>
 
 
     </div>

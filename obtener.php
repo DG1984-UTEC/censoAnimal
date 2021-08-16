@@ -60,13 +60,13 @@ if (isset($_SESSION['usuario'])){
                     <input type="date"  class="form-control" name="buscarxfecha2">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-default" name="buscarxfecha">Buscar</button>
+                <button type="submit" class="btn btn-default" name="buscarxfechaP">Buscar</button>
                
             </form>
             <?php 
     
     
-    if (isset($_POST["buscarxfecha"])){
+    if (isset($_POST["buscarxfechaP"])){
         $fechaA = $_POST['buscarxfecha1'];
         $fechaB = $_POST['buscarxfecha2'];
        

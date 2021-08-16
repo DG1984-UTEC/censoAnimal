@@ -48,7 +48,7 @@ if (isset($_SESSION['usuario'])){
             </tr>
             <p><a href="obtener.php">Lista de Personas</a></p>
 
-            <form method="post" action="obtener.php">
+            <form method="post" action="obtenerAnimales.php">
                 <div class="row">
                 <p>Buscar por Fecha:</p>
                     <div class="col-xs-6" style="width:35%">
@@ -59,13 +59,13 @@ if (isset($_SESSION['usuario'])){
                     <input type="date"  class="form-control" name="buscarxfecha2">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-default" name="buscarxfecha">Buscar</button>
+                <button type="submit" class="btn btn-default" name="buscarxfechaA">Buscar</button>
                
             </form>
             <?php 
     
     
-    if (isset($_POST["buscarxfecha"])){
+    if (isset($_POST["buscarxfechaA"])){
         $fechaA = $_POST['buscarxfecha1'];
         $fechaB = $_POST['buscarxfecha2'];
        
@@ -76,30 +76,28 @@ if (isset($_SESSION['usuario'])){
             $busquedaFecha = $conexion->query("SELECT * FROM animal WHERE CREATED_AT = '$fechaA'"); // BETWEEN '$fechaA' AND '$fechaB'");
             while ($fila2 =mysqli_fetch_array($busquedaFecha)){
                 
-                $id=$fila2 ["id"];
-                $ci=$fila2["ci"];
-                $nombre=$fila2["nombre"];
-                $apellido=$fila2["apellido"];
-                $telefono=$fila2["telefono"];
-                $direccion=$fila2["direccion"];
-                $cantanimales=$fila2["cantanimales"];
-                $created_at=$fila2["CREATED_AT"];
-                $updated_at=$fila2["UPDATED_AT"];
-                $sesion=$fila2['sesion']; 
+                $id=$fila ["id"];
+                $cidueno=$fila["cidueno"];
+                $nombre=$fila["nombre"];
+                $especie=$fila["especie"];
+                $sexo=$fila["sexo"];
+                $castrado=$fila["castrado"];
+                $reqcastracion=$fila["reqcastracion"];
+                $created_at=$fila["CREATED_AT"];
+                $updated_at=$fila["UPDATED_AT"];
 
                 
                 ?>
 
             <tr>
-                <td><?php echo $ci;?></td>
+            <td><?php echo $cidueno;?></td>
                 <td><?php echo $nombre;?></td>
-                <td><?php echo $apellido;?></td>
-                <td><?php echo $telefono;?></td>
-                <td><?php echo $direccion;?></td>
-                <td><?php echo $cantanimales;?></td>
+                <td><?php echo $especie;?></td>
+                <td><?php echo $sexo;?></td>
+                <td><?php echo $castrado;?></td>
+                <td><?php echo $reqcastracion;?></td>
                 <td><?php echo $created_at;?></td>
                 <td><?php echo $updated_at;?></td>
-                <td><?php echo $sesion;?></td>
 
                 <td>
                     <a href="update.php?id=<?php echo $id;?>" class="edit">Editar</a>
@@ -114,31 +112,29 @@ if (isset($_SESSION['usuario'])){
         }else{
 
             $busquedaFechaT = $conexion->query("SELECT * FROM animal WHERE CREATED_AT BETWEEN '$fechaA' AND '$fechaB'");
-            while ($fila2 =mysqli_fetch_array($busquedaFechaT)){
+            while ($fila =mysqli_fetch_array($busquedaFechaT)){
                 
-                $id=$fila2 ["id"];
-                $ci=$fila2["ci"];
-                $nombre=$fila2["nombre"];
-                $apellido=$fila2["apellido"];
-                $telefono=$fila2["telefono"];
-                $direccion=$fila2["direccion"];
-                $cantanimales=$fila2["cantanimales"];
-                $created_at=$fila2["CREATED_AT"];
-                $updated_at=$fila2["UPDATED_AT"];
-                $sesion=$fila2['sesion']; 
+                        $id=$fila ["id"];
+                        $cidueno=$fila["cidueno"];
+                        $nombre=$fila["nombre"];
+                        $especie=$fila["especie"];
+                        $sexo=$fila["sexo"];
+                        $castrado=$fila["castrado"];
+                        $reqcastracion=$fila["reqcastracion"];
+                        $created_at=$fila["CREATED_AT"];
+                        $updated_at=$fila["UPDATED_AT"];
 
                 ?>
 
             <tr>
-                <td><?php echo $ci;?></td>
+            <td><?php echo $cidueno;?></td>
                 <td><?php echo $nombre;?></td>
-                <td><?php echo $apellido;?></td>
-                <td><?php echo $telefono;?></td>
-                <td><?php echo $direccion;?></td>
-                <td><?php echo $cantanimales;?></td>
+                <td><?php echo $especie;?></td>
+                <td><?php echo $sexo;?></td>
+                <td><?php echo $castrado;?></td>
+                <td><?php echo $reqcastracion;?></td>
                 <td><?php echo $created_at;?></td>
                 <td><?php echo $updated_at;?></td>
-                <td><?php echo $sesion;?></td>
 
                 <td>
                     <a href="update.php?id=<?php echo $id;?>" class="edit">Editar</a>
