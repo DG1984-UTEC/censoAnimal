@@ -1,4 +1,9 @@
 <?php
+/*App de censo Animal
+
+Versión 1.0
+Autor: Técnico en TI Darío Gonzalez
+*/
 session_start();
 include_once('database.php');
 
@@ -16,7 +21,8 @@ $no ="NO";
 $totalCas = $conexion->query("SELECT COUNT(*) FROM animal WHERE castrado ='$no'");
 $totalesE=mysqli_fetch_array($totalCas);
 
-
+$totalChip = $conexion->query("SELECT COUNT(*) FROM castracion WHERE idchip != ''");
+$totalChipA=mysqli_fetch_array($totalChip);
 
 
 $reqsi ="SI";
@@ -69,6 +75,7 @@ $totalesD =mysqli_fetch_array($totalSinCastrar);
         <h1 class="w3-bar-item" style="text-align:center"><b>Total Castrados: <?php echo $totalesC[0]?></b></h1>
         <h1 class="w3-bar-item" style="text-align:center"><b>No Castrados: <?php echo $totalesE[0]?></b></h1>
         <h1 class="w3-bar-item" style="text-align:center"><b>Total Requieren Castración: <?php echo $totalesD[0]?></b></h1>
+        <h1 class="w3-bar-item" style="text-align:center"><b>Con Chip: <?php echo $totalChipA[0]?></b></h1>
 
 
     </div>

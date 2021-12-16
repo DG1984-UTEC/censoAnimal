@@ -2,9 +2,15 @@
 include_once ('database.php');
 session_start();
 
-// Detects if there is someone logged in.
+/*App de censo Animal
 
-//if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true){
+Versión 1.0
+Autor: Técnico en TI Darío Gonzalez
+*/
+
+
+
+
 if (isset($_SESSION['usuario'])){
     
 ?>
@@ -46,12 +52,12 @@ if (isset($_SESSION['usuario'])){
                 <th>Acciones</th>
 
             </tr>
-            <form method="post" action ="obtenerusuarios.php">
+          <!--  <form method="post" action ="obtenerusuarios.php">
             <input type="date" class="form-control" name="buscarxfecha1">
-            <input type="date" clasee="form-control" name="buscarxfecha2">
+            <input type="date" class="form-control" name="buscarxfecha2">
             <button type="submit" class="btn btn-default" name="buscarxfecha">Listar</button>
 
-            </form>
+            </form> -->
 
             <form method="post" action="obtenerusuarios.php">
                 <input type="buscarci" class="form-control" placeholder="Ingrese CI" name="buscarci">
@@ -84,7 +90,7 @@ if (isset($_SESSION['usuario'])){
                 <td><?php echo $created_at;?></td>
                 <td><?php echo $updated_at;?></td>
                 <td>
-                    <a href="update.php?id=<?php echo $id;?>" class="edit">Editar</a>
+                    <a href="editarUsuario.php?id=<?php echo $id;?>" class="edit">Editar</a>
                     <a href="borrarusuario.php?id=<?php echo $id;?>" class="delete" title="Eliminar">Borrar</a>
                 </td>
             </tr>
