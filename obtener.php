@@ -20,14 +20,14 @@ if (isset($_SESSION['usuario'])) {
         <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
         <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 
-        <script>
+        <!-- <script>
             $(document).ready(function() {
                 $('#tUsers').DataTable({
                     "processing": true,
                     "serverSide": true,
                     "ajax": 'scripts/server_processing.php',
                 });
-            });
+            }); -->
         </script>
         <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script> -->
@@ -106,7 +106,7 @@ if (isset($_SESSION['usuario'])) {
             </nav>
             <!-- NavBar -->
 
-            <table id="tUsers">
+            <table class="table table-striped">
 
                 <thead>
                     <tr>
@@ -119,42 +119,42 @@ if (isset($_SESSION['usuario'])) {
                         <th>Creado</th>
                         <th>Actualizado</th>
                         <th>Por</th>
-                        <th></th>
-                        <th></th>
-
+                        <th>Acciones</th>
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th>CI</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Telefono</th>
-                        <th>Direccion</th>
-                        <th>Cantidad Animales</th>
-                        <th>Creado</th>
-                        <th>Actualizado</th>
-                        <th>Por</th>
-                        <th></th>
-                        <th></th>
-
-                    </tr>
+                <tbody>
                     <?php
-                    // $consulta = $conexion->query("SELECT * FROM persona");
-                    // while ($fila = mysqli_fetch_array($consulta)) {
 
-                    //     $id = $fila["id"];
-                    //     $ci = $fila["ci"];
-                    //     $nombre = $fila["nombre"];
-                    //     $apellido = $fila["apellido"];
-                    //     $telefono = $fila["telefono"];
-                    //     $direccion = $fila["direccion"];
-                    //     $cantanimales = $fila["cantanimales"];
-                    //     $created_at = $fila["CREATED_AT"];
-                    //     $updated_at = $fila["UPDATED_AT"];
-                    //     $sesion = $fila['sesion'];
+                    if (isset($_GET['pageno'])) {
+                        $pageno = $_GET['pageno'];
+                    } else {
+                        $pageno = 1;
+                    }
+                    $no_of_records_per_page = 15;
+                    $offset = ($pageno - 1) * $no_of_records_per_page;
+
+                    $result = $conexion->query("SELECT COUNT(*) FROM persona");
+
+                    $total_rows = mysqli_fetch_array($result)[0];
+                    $total_pages = ceil($total_rows / $no_of_records_per_page);
+
+                    $consulta = $conexion->query("SELECT * FROM persona LIMIT $offset, $no_of_records_per_page");
+
+                    // $consulta = $conexion->query("SELECT * FROM persona");
+                    while ($fila = mysqli_fetch_array($consulta)) {
+
+                        $id = $fila["id"];
+                        $ci = $fila["ci"];
+                        $nombre = $fila["nombre"];
+                        $apellido = $fila["apellido"];
+                        $telefono = $fila["telefono"];
+                        $direccion = $fila["direccion"];
+                        $cantanimales = $fila["cantanimales"];
+                        $created_at = $fila["CREATED_AT"];
+                        $updated_at = $fila["UPDATED_AT"];
+                        $sesion = $fila['sesion'];
                     ?>
-                    <!-- <tr>
+                        <tr>
                             <td><?php echo $ci; ?></td>
                             <td><?php echo $nombre; ?></td>
                             <td><?php echo $apellido; ?></td>
@@ -168,15 +168,54 @@ if (isset($_SESSION['usuario'])) {
                                 <a href="editarpersona.php?id=<?php echo $id; ?>" class="edit">Editar</a>
                                 <a href="borrarpersona.php?id=<?php echo $id; ?>" class="delete" title="Eliminar">Borrar</a>
                             </td>
-                        </tr> -->
-                    <?php
-                    // } 
-                    ?>;
-                </tfoot>
-            </table>
+                        </tr>
+                        <?php
+                    }
+                        ?>;
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>CI</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Telefono</th>
+                        <th>Direccion</th>
+                        <th>Cantidad Animales</th>
+                        <th>Creado</th>
+                        <th>Actualizado</th>
+                        <th>Por</th>
+                        <th>Acciones</th>
+                    </tr>
+        </div>
+        </tfoot>
+        </table>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="?pageno=1">Primero</a></li>
+                            <li class="page-item" <?php if ($pageno <= 1) {
+                                                        echo 'disabled';
+                                                    } ?>>
+                                <a class="page-link" href="<?php if ($pageno <= 1) {
+                                                                echo '#';
+                                                            } else {
+                                                                echo "?pageno=" . ($pageno - 1);
+                                                            } ?>">Anterior</a>
+                            </li>
+                            <li class="page-item" <?php if ($pageno >= $total_pages) {
+                                                        echo 'disabled';
+                                                    } ?>>
+                                <a class="page-link" href="<?php if ($pageno >= $total_pages) {
+                                                                echo '#';
+                                                            } else {
+                                                                echo "?pageno=" . ($pageno + 1);
+                                                            } ?>">Siguiente</a>
+                            </li>
+                            <li><a class="page-link" href="?pageno=<?php echo $total_pages; ?>">Ultimo</a></li>
+                        </ul>
+        </nav>
 
 
-            <!-- <div style="width:1050px;margin:auto;margin-top: 12px;">
+        <!-- <div style="width:1050px;margin:auto;margin-top: 12px;">
 
                 <table id="tUsers" class="table table-striped" width='80%' style="text-align:center;">
 
@@ -201,35 +240,35 @@ if (isset($_SESSION['usuario'])) {
                         <input type="buscarci" style="width:33%" class="form-control" placeholder="Ingrese CI" name="buscarci">
                         <button type="submit" class="btn btn-default">Buscar</button>
                         <button type="submit" class="btn btn-default" name="listar">Listar</button> -->
-            <?php
-            // if (isset($_GET['pageno'])) {
-            //     $pageno = $_GET['pageno'];
-            // } else {
-            //     $pageno = 1;
-            // }
-            // $no_of_records_per_page = 10;
-            // $offset = ($pageno - 1) * $no_of_records_per_page;
+        <?php
+        // if (isset($_GET['pageno'])) {
+        //     $pageno = $_GET['pageno'];
+        // } else {
+        //     $pageno = 1;
+        // }
+        // $no_of_records_per_page = 10;
+        // $offset = ($pageno - 1) * $no_of_records_per_page;
 
-            // $result = $conexion->query("SELECT COUNT(*) FROM persona");
+        // $result = $conexion->query("SELECT COUNT(*) FROM persona");
 
-            // $total_rows = mysqli_fetch_array($result)[0];
-            // $total_pages = ceil($total_rows / $no_of_records_per_page);
+        // $total_rows = mysqli_fetch_array($result)[0];
+        // $total_pages = ceil($total_rows / $no_of_records_per_page);
 
-            // $consulta = $conexion->query("SELECT * FROM persona LIMIT $offset, $no_of_records_per_page");
-            // while ($fila = mysqli_fetch_array($consulta)) {
-            //     $id = $fila["id"];
-            //     $ci = $fila["ci"];
-            //     $nombre = $fila["nombre"];
-            //     $apellido = $fila["apellido"];
-            //     $telefono = $fila["telefono"];
-            //     $direccion = $fila["direccion"];
-            //     $cantanimales = $fila["cantanimales"];
-            //     $created_at = $fila["CREATED_AT"];
-            //     $updated_at = $fila["UPDATED_AT"];
-            //     $sesion = $fila['sesion'];
+        // $consulta = $conexion->query("SELECT * FROM persona LIMIT $offset, $no_of_records_per_page");
+        // while ($fila = mysqli_fetch_array($consulta)) {
+        //     $id = $fila["id"];
+        //     $ci = $fila["ci"];
+        //     $nombre = $fila["nombre"];
+        //     $apellido = $fila["apellido"];
+        //     $telefono = $fila["telefono"];
+        //     $direccion = $fila["direccion"];
+        //     $cantanimales = $fila["cantanimales"];
+        //     $created_at = $fila["CREATED_AT"];
+        //     $updated_at = $fila["UPDATED_AT"];
+        //     $sesion = $fila['sesion'];
 
-            ?>
-            <!-- <tr>
+        ?>
+        <!-- <tr>
                                 <td><?php echo $ci; ?></td>
                                 <td><?php echo $nombre; ?></td>
                                 <td><?php echo $apellido; ?></td>
@@ -245,29 +284,29 @@ if (isset($_SESSION['usuario'])) {
                                 </td>
                             </tr>
                     </form> -->
-            <?php
-            // }
-            ?>
-            <?php
+        <?php
+        // }
+        ?>
+        <?php
 
-            // if (isset($_POST["buscarci"])) {
+        // if (isset($_POST["buscarci"])) {
 
-            //     $buscarci = $_POST['buscarci'];
-            //     $consultaci = $conexion->query("SELECT * FROM persona WHERE ci = '$buscarci'");
-            //     if ($fila1 = mysqli_fetch_array($consultaci)) {
-            //         $id = $fila1["id"];
-            //         $ci = $fila1["ci"];
-            //         $nombre = $fila1["nombre"];
-            //         $apellido = $fila1["apellido"];
-            //         $telefono = $fila1["telefono"];
-            //         $direccion = $fila1["direccion"];
-            //         $cantanimales = $fila1["cantanimales"];
-            //         $created_at = $fila1["CREATED_AT"];
-            //         $updated_at = $fila1["UPDATED_AT"];
-            //         $sesion = $fila1['sesion'];
-            // 
-            ?>
-            <!-- <tr>
+        //     $buscarci = $_POST['buscarci'];
+        //     $consultaci = $conexion->query("SELECT * FROM persona WHERE ci = '$buscarci'");
+        //     if ($fila1 = mysqli_fetch_array($consultaci)) {
+        //         $id = $fila1["id"];
+        //         $ci = $fila1["ci"];
+        //         $nombre = $fila1["nombre"];
+        //         $apellido = $fila1["apellido"];
+        //         $telefono = $fila1["telefono"];
+        //         $direccion = $fila1["direccion"];
+        //         $cantanimales = $fila1["cantanimales"];
+        //         $created_at = $fila1["CREATED_AT"];
+        //         $updated_at = $fila1["UPDATED_AT"];
+        //         $sesion = $fila1['sesion'];
+        // 
+        ?>
+        <!-- <tr>
                             <td><?php echo $ci; ?></td>
                             <td><?php echo $nombre; ?></td>
                             <td><?php echo $apellido; ?></td>
@@ -282,14 +321,14 @@ if (isset($_SESSION['usuario'])) {
                                 <a href="borrarpersona.php?id=<?php echo $id; ?>" class="delete" title="Eliminar">Borrar</a>
                             </td>
                         </tr> -->
-            <?php
-            //     } else {
-            //         echo "<td>No existen registros</td>";
-            //     }
-            // }
-            ?>
+        <?php
+        //     } else {
+        //         echo "<td>No existen registros</td>";
+        //     }
+        // }
+        ?>
 
-            <!-- <br>
+        <!-- <br>
                 <div class="container" id="pag">
                     <ul class="pagination">
                         <li class="page-item"><a class="page-link" href="?pageno=1">Primero</a></li>
