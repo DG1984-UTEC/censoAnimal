@@ -1,3 +1,9 @@
 .FormContainer{
     padding-left: 15%;
 }
+#pag {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-left: 850px;
+  }

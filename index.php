@@ -80,7 +80,7 @@ if (isset($_SESSION['usuario'])) {
                                 <ul class="dropdown-menu dropdown-menu-dark">
                                     <li><a class="dropdown-item" href="formularioPersona.php">Nuevo Propietario</a></li>
                                     <li><a class="dropdown-item" href="obtener.php">Listar propietarios</a></li>
-                                    <li><a class="dropdown-item" href="obtener.php">Buscar propietarios</a></li>
+                                    <li><a class="dropdown-item" href="buscarPersona.php">Buscar propietarios</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
