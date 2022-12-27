@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="css/sweetalert2.min.css">
+  <script type="text/javascript" src="js/sweetalert2@10.js"></script>
+     <title>Document</title>
+</head>
+<body>
+     
+</body>
+</html>
 <?php
 include_once('database.php');
 session_start();
@@ -39,14 +53,21 @@ if($cidueno ==""){
 
 
      if ($insercion){
-        echo "<script>
-        alert('Registro Agregado')
-        window.location.href='obteneranimales.php';
-        </script>";
+          echo "<script>
+          Swal.fire({
+               title: 'Animal registrado con éxito'
+             })
+             setTimeout(() => {  window.location.href= 'obtenerAnimales.php'; }, 2000);
+  </script>"; 
         
         
           } else {
-          echo "<p>No se agregó...</p>";
+               echo "<script>
+               Swal.fire({
+                    title: 'Error, el animal no se registró'
+                  })
+                  setTimeout(() => {  window.location.href= 'index.php'; }, 2000);
+       </script>"; 
           }
 
 

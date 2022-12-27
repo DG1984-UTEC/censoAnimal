@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="css/sweetalert2.min.css">
+  <script type="text/javascript" src="js/sweetalert2@10.js"></script>
+     <title>Document</title>
+</head>
+<body>
+     
+</body>
+</html>
 <?php
 include_once('database.php');
 session_start();
@@ -29,14 +43,21 @@ $_POST["fecastracion"] !="" and $_POST["cidueno"] !="" and $_POST["nombre"] !=""
 
 
      if ($insercion){
-        echo "<script>
-        alert('Registro Agregado')
-        window.location.href='obtenercastraciones.php';
-        </script>";
+          echo "<script>
+          Swal.fire({
+               title: 'Castración registrada con éxito'
+             })
+             setTimeout(() => {  window.location.href= 'obtenerCastraciones.php'; }, 2000);
+  </script>"; 
         
         
           } else {
-          echo "<p>No se agregó...</p>";
+               echo "<script>
+               Swal.fire({
+                    title: 'Error, la castración no se registró'
+                  })
+                  setTimeout(() => {  window.location.href= 'index.php'; }, 2000);
+       </script>"; 
           }
 
 

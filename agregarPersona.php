@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="css/sweetalert2.min.css">
+  <script type="text/javascript" src="js/sweetalert2@10.js"></script>
+     <title>Document</title>
+</head>
+<body>
+     
+</body>
+</html>
 <?php
 session_start();
 include_once ('database.php');
@@ -38,13 +52,30 @@ if (isset($_SESSION['usuario'])){
          // }    
                if ($insercion){
                     echo "<script>
-                    alert('Registro Agregado')
-                    window.location.href='obtener.php';
-                    </script>";
+                    Swal.fire({
+                         title: 'Propietario dado de alta con éxito'
+                       })
+                       setTimeout(() => {  window.location.href= 'obtener.php'; }, 2000);
+            </script>"; 
+          //   echo "<script>
+          //   setTimeout(() => {  window.location.href= 'obtener.php'; }, 2000);
+           
+          //   </script>"; 
+
+
+                    // echo "<script>
+                    // alert('Alta con éxito')
+                    // window.location.href='obtener.php';
+                    // </script>";
                     // echo "<p>Registro agregado.</p>";
                     //echo "<a href=formulariopersona.php>Volver</a>";
                } else{
-                    echo "<p>No se agregó...</p>";
+                    echo "<script>
+                    Swal.fire({
+                         title: 'Error, El Propietario no fue dado de alta'
+                       })
+                       setTimeout(() => {  window.location.href= 'formularioPersona.php'; }, 2000);
+            </script>"; 
                }
          
 

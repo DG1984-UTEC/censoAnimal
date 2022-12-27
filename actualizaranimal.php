@@ -23,7 +23,7 @@ if($cidueno&&$nombre&&$especie&&$sexo&&$castrado&&$reqcastracion){
 
    $update = $conexion->query("UPDATE animal SET cidueno ='$cidueno', nombre='$nombre', especie='$especie', sexo='$sexo', castrado='$castrado', reqcastracion='$reqcastracion' WHERE id='$id'");
 	
-   $resultado = mysqli_query($conexion,$update);
+  //  $resultado = mysqli_query($conexion,$update);
 
 }
 

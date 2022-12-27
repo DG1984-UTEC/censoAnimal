@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="css/sweetalert2.min.css">
+  <script type="text/javascript" src="js/sweetalert2@10.js"></script>
+     <title>Document</title>
+</head>
+<body>
+     
+</body>
+</html>
 <?php
 session_start();
 include_once ('database.php');
@@ -21,16 +35,21 @@ if (isset($_GET['id'])){
     
 if ($consulta){
     echo "<script>
-    alert('registro borrado con exito')
-    window.location.href='obteneranimales.php';
-    </script>";
+    Swal.fire({
+         title: 'Animal borrado con éxito'
+       })
+       setTimeout(() => {  window.location.href= 'obtenerAnimales.php'; }, 2000);
+</script>"; 
     
     
 }else{
     echo "<script>
-    alert('registro no borrado')
-    window.location.href='obteneranimales.php';
-    </script>";
+               Swal.fire({
+                    title: 'Error, el animal no se borró'
+                  })
+                  setTimeout(() => {  window.location.href= 'obtenerAnimales.php'; }, 2000);
+       </script>"; 
+          
 }
 }
     //$fila = mysql_fetch_array ($consulta);

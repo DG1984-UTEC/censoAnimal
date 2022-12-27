@@ -92,15 +92,17 @@ if (isset($_SESSION['usuario'])) {
                 </div>
             </nav>
             <!-- NavBar -->
-
-           
-                <form method="post" action="buscarPersona.php">
-                    <div class="container-fluid">
-                    <input type="buscarci" style="width:33%" class="form-control" placeholder="Ingrese CI" name="buscarci">
-                    <button type="submit" class="btn btn-default">Buscar</button>
-                    </div>
-                    <!-- <button type="submit" class="btn btn-default" name="listar">Listar</button> -->
-                </form>
+            <div class="container-fluid">
+                <div class="d-flex flex-row">
+                    <form class="d-flex" method="post" action="buscarPersona.php">
+                        <input type="buscarci" class="form-control" placeholder="Ingrese CI" name="buscarci">
+                        <div class="container-fluid">
+                        <button type="submit" class="btn btn-primary btn-block mb-4" style="width:60%">Buscar</button>
+                        <!-- <button type="submit" class="btn btn-default" name="listar">Listar</button> -->
+                        </div>
+                    </form>
+                </div>
+            </div>
             <div class="d-flex p-2 bd-highlight">
                 <div class="container">
                     <table class="table table-striped">

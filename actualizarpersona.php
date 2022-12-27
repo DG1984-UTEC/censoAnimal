@@ -26,7 +26,7 @@ if($ci&&$nombre&&$apellido&&$telefono&&$direccion&&$cantanimales){
    $update = $conexion->query("UPDATE persona SET ci ='$ci', nombre='$nombre', apellido='$apellido', telefono='$telefono', direccion='$direccion', cantanimales='$cantanimales', sesion='$sesion' 
    WHERE id='$id'");
 	
-   $resultado = mysqli_query($conexion,$update);
+  //  $resultado = mysqli_query($conexion,$update);
 
 }
 
