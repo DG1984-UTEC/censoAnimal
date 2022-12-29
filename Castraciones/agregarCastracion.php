@@ -4,8 +4,8 @@
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="css/sweetalert2.min.css">
-  <script type="text/javascript" src="js/sweetalert2@10.js"></script>
+     <link rel="stylesheet" href="../css/sweetalert2.min.css">
+  <script type="text/javascript" src="../js/sweetalert2@10.js"></script>
      <title>Document</title>
 </head>
 <body>
@@ -13,7 +13,7 @@
 </body>
 </html>
 <?php
-include_once('database.php');
+include_once('../database.php');
 session_start();
 
 
@@ -47,7 +47,7 @@ $_POST["fecastracion"] !="" and $_POST["cidueno"] !="" and $_POST["nombre"] !=""
           Swal.fire({
                title: 'Castración registrada con éxito'
              })
-             setTimeout(() => {  window.location.href= 'obtenerCastraciones.php'; }, 2000);
+             setTimeout(() => {  window.location.href= '../Castraciones/obtenerCastraciones.php'; }, 2000);
   </script>"; 
         
         
@@ -62,7 +62,7 @@ $_POST["fecastracion"] !="" and $_POST["cidueno"] !="" and $_POST["nombre"] !=""
 
 
 }else{
-     echo '<p>Por favor, complete el <a href="formulariocastracion">formulario</a></p>';
+     echo '<p>Por favor, complete el <a href="../Castraciones/formularioCastracion.php">formulario</a></p>';
 }
 }else{
     echo header("location: login.php");

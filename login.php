@@ -30,7 +30,7 @@ if (isset(
 
 
         if ($tipo['tipo'] == "ad") {
-            header("location: admin.php");
+            header("location: ./Usuarios/admin.php");
         } else if ($tipo['tipo'] == "us") {
             header("location: index.php");
         } else {
@@ -54,12 +54,21 @@ if (isset(
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/w3.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/popper.min.js"></script>
+        <script type="text/javascript" src="js/jquery-3.6.1.js"></script>
+        <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
+        <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script> -->
+
+        <!-- <link rel="stylesheet" href="css/bootstrap.min(old).css"> -->
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-utilities.css">
+        <link rel="stylesheet" href="css/principal.css">
     <title>Ingreso al sistema</title>
 </head>
 
-<body>
+<body id="bod">
 
     <!-- <form method="post" action="login.php">
         <div style="background-color:lightgrey;width:430px;height:350px;margin-left:auto;margin-right:auto">
@@ -75,10 +84,18 @@ if (isset(
                 <button type="submit" class="btn btn-default">Ingresar</button>
             </div>
     </form> -->
+
+    <div class="container-fluid" style="width:650px">
+                <h1><strong></strong></h1>
+                <br>
     <div class="container" style="width:500px">
         <form method="post" action="login.php">
-            <div style="width:180px;margin:auto;margin-top: 12px;">
-                <img src="\censoanimal\imagenes\logo grande.jpg" alt="logo" style="width:180px;margin-left:auto;margin-right:auto;margin-top: 12px;">
+        <div id="borde" class="border border" style="padding: 20px;">
+            <div style="width:380px;margin:auto;margin-top: 12px;">
+                <img src="\censoanimal\imagenes\membrete-01.png" alt="logo" style="width:380px;margin-left:auto;margin-right:auto;margin-top: 12px;">
+            </div>
+            <div class="container-fluid">
+            <h3><strong><center>Sistema de Censo Animal</center></strong></h3>
             </div>
             <br>
             <!-- Email input -->
@@ -115,6 +132,8 @@ if (isset(
             </button>
         </div> -->
     </form>
+    </div>
+    </div>
 </body>
 
 </html>

@@ -50,6 +50,17 @@ $columns = array(
         }
     ),
     array('db' => 'sesion',     'dt' => 8),
+
+    array( 
+        'db'        => 'id', 
+        'dt'        => 9, 
+        'formatter' => function( $d, $row ) { 
+            return ' 
+                <a href="editarPersona.php?id='.$d.'">Editar</a>&nbsp; 
+                <a href="borrarPersona.php?id='.$d.'">Borrar</a> 
+            '; 
+        } 
+    ) 
 );
 
 // SQL server connection information
