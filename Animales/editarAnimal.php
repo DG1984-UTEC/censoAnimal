@@ -103,7 +103,7 @@ if($id){
                             <?php echo  $_SESSION["usuario"]; ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="cerrar.php">Salir</a></li>
+                            <li><a class="dropdown-item" href="../cerrar.php">Salir</a></li>
 
                         </ul>
             </div>

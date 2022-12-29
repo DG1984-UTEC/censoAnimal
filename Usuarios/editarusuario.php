@@ -70,7 +70,7 @@ if (isset($_SESSION['usuario'])) {
                                 Administración de Usuarios
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="../Usuarios/agregarusuario.php">Nuevo Usuario</a>
+                                <li><a class="dropdown-item" href="../Usuarios/formularioUsuario.php">Nuevo Usuario</a>
                                 </li>
                                 <li><a class="dropdown-item" href="../Usuarios/obtenerusuarios.php">Listar Usuarios</a>
                                 </li>
@@ -116,7 +116,7 @@ if (isset($_SESSION['usuario'])) {
                             <?php echo  $_SESSION["usuario"]; ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="cerrar.php">Salir</a></li>
+                            <li><a class="dropdown-item" href="../cerrar.php">Salir</a></li>
 
                         </ul>
             </div>
