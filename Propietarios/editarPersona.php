@@ -206,22 +206,17 @@ if (isset($_SESSION['usuario'])) {
 
 </html>
 <script>
-        
-
         function hide() {
             var zone = document.getElementById('zone');
             zone.style.visibility = 'hidden';
         }
-
         function show() {
             var zone = document.getElementById('zone');
             zone.style.visibility = 'visible';
         }
         function clear(){
-            document.getElementById('zone').value="";
-           
+            document.getElementById('zone').value="";  
         }
-
         function locationSelectHandler(select) {
             var zone = document.getElementById('zone');
             if (select.value == 'Paysandu ciudad') {
