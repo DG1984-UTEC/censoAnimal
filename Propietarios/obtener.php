@@ -141,6 +141,8 @@ if (isset($_SESSION['usuario'])) {
                             <th>Telefono</th>
                             <th>Direccion</th>
                             <th>Cantidad Animales</th>
+                            <th>Localidad</th>
+                            <th>Zona</th>
                             <th>Creado</th>
                             <th>Actualizado</th>
                             <th>Por</th>

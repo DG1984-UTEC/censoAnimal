@@ -34,16 +34,28 @@ if (isset($_SESSION['usuario'])) {
   $telefono = $_POST['c4'];
   $direccion = $_POST['c5'];
   $cantanimales = $_POST['c6'];
-
+  $location = $_POST['c7'];
+  $zone = $_POST['c8'];
   $id = $_POST['id'];
   $sesion = $_SESSION['usuario'];
-  if ($ci&&$nombre&&$apellido&&$telefono&&$direccion&&$cantanimales) {
+
+
+          // if ($location=="Paysandu ciudad"){
+          //      $zone = NULL;
+          // }else{
+          //      $zone = $_POST['c8'];
+          // }
+
+
+
+
+  // if ($ci&&$nombre&&$apellido&&$telefono&&$direccion&&$cantanimales&&$location&&$zone) {
     include('../database.php');
     //$registro = "UPDATE persona set ci ='$ci', nombre='$nombre', apellido='$apellido', telefono='$telefono', direccion='$direccion', cantanimales='$cantanimales' 
     //WHERE id='$id'";
     // $resultado = mysqli_query($conexion,$registro);
 
-    $update = $conexion->query("UPDATE persona SET ci ='$ci', nombre='$nombre', apellido='$apellido', telefono='$telefono', direccion='$direccion', cantanimales='$cantanimales', sesion='$sesion' 
+    $update = $conexion->query("UPDATE persona SET ci ='$ci', nombre='$nombre', apellido='$apellido', telefono='$telefono', direccion='$direccion', cantanimales='$cantanimales', location='$location', zone='$zone', sesion='$sesion' 
    WHERE id='$id'");
 
     //  $resultado = mysqli_query($conexion,$update);
@@ -62,9 +74,9 @@ if (isset($_SESSION['usuario'])) {
                   setTimeout(() => {  window.location.href= '../Propietarios/editarPersona.php'; }, 2000);
        </script>";
     }
-  } else {
-    echo "<h1>ERROR!</H1>";
-  }
+  // } else {
+  //   echo "<h1>ERROR!</H1>";
+  // }
 }else{
   echo "<h1>no se recibió nada</h1>";
 }

@@ -149,43 +149,55 @@ if (isset($_SESSION['usuario'])) {
                         <input type="text" placeholder="Cantidad Animales" class="form-control" name="c6"
                             value="<?php echo $linea['cantanimales']; ?>" required="true" />
                     </div>
-                    <br>
+                    
                     <div class="form-outline mb-4">
                         <input type="hidden" placeholder="Dirección" class="form-control" name="id"
                             value="<?php echo $id; ?>" required="true" />
                     </div>
+                    <br>
+                        <select class="form-select form-select-lg mb-3" aria-label="Default select example" id="location" name="c7"  onchange="locationSelectHandler(this)">
+                            <option hidden selected>-- Seleccionar Localidad --</option>
+                            <option value="Paysandu ciudad"<?php if($linea['location']=="Paysandu ciudad"){echo"selected";}?>>Paysandu ciudad</option>
+                            <option value="Quebracho" <?php if($linea['location']=="Quebracho"){echo"selected";}?>>Quebracho</option>
+                            <option value="Guichon" <?php if($linea['location']=="Guichon"){echo"selected";}?>>Guichon</option>
+                            <option value="Chapicuy" <?php if($linea['location']=="Chapicuy"){echo"selected";}?>>Chapicuy</option>
+                            <option value="La Tentacion" <?php if($linea['location']=="La Tentacion"){echo"selected";}?>>La Tentacion</option>
+                            <option value="Porvenir" <?php if($linea['location']=="Porvenir"){echo"selected";}?>>Porvenir</option>
+                            <option value="Esperanza" <?php if($linea['location']=="Esperanza"){echo"selected";}?>>Esperanza</option>
+                            <option value="Constancia" <?php if($linea['location']=="Constancia"){echo"selected";}?>>Constancia</option>
+                            <option value="Tambores" <?php if($linea['location']=="Tambores"){echo"selected";}?>>Tambores</option>
+                            <option value="Piñera" <?php if($linea['location']=="Piñera"){echo"selected";}?>>Piñera</option>
+                            <option value="Beisso" <?php if($linea['location']=="Beisso"){echo"selected";}?>>Beisso</option>
+                            <option value="Piedra Sola" <?php if($linea['location']=="Piedra Sola"){echo"selected";}?>>Piedra Sola</option>
+                            <option value="Tiatucura" <?php if($linea['location']=="Tiatucura"){echo"selected";}?>>Tiatucura</option>
+                            <option value="Cuchilla de Fuego" <?php if($linea['location']=="Cuchilla de Fuego"){echo"selected";}?>>Cuchilla de Fuego</option>
+                            <option value="Piedras Coloradas" <?php if($linea['location']=="Piedras Coloradas"){echo"selected";}?>>Piedras Coloradas</option>
+                            <option value="Colonia 19 de Abril" <?php if($linea['location']=="Colonia 19 de Abril"){echo"selected";}?>>Colonia 19 de Abril</option>
+                            <option value="Orgoroso" <?php if($linea['location']=="Orgoroso"){echo"selected";}?>>Orgoroso</option>
+                            <option value="Arroyo Negro" <?php if($linea['location']=="Arroyo Negro"){echo"selected";}?>>Arroyo Negro</option>
+                            <option value="Morato" <?php if($linea['location']=="Morato"){echo"selected";}?>>Morato</option>
+                            <option value="Merinos" <?php if($linea['location']=="Merinos"){echo"selected";}?>>Merinos</option>
+                            <option value="Arbolito" <?php if($linea['location']=="Arbolito"){echo"selected";}?>>Arbolito</option>
+                            <option value="El Eucalipto" <?php if($linea['location']=="El Eucalipto"){echo"selected";}?>>El Eucalipto</option>
+                            <option value="Cañada Del Pueblo" <?php if($linea['location']=="Cañada Del Pueblo"){echo"selected";}?>>Cañada Del Pueblo</option>
+                            <option value="Buricayupi" <?php if($linea['location']=="Buricayupi"){echo"selected";}?>>Buricayupi</option>
+                            <option value="Soto" <?php if($linea['location']=="Soto"){echo"selected";}?>>Soto</option>
+                            <option value="Lorenzo Geyres" <?php if($linea['location']=="Lorenzo Geyres"){echo"selected";}?>>Lorenzo Geyres</option>
+                            <option value="Estacion Porvenir" <?php if($linea['location']=="Estacion Porvenir"){echo"selected";}?>>Estacion Porvenir</option>
+                        </select>
+                        <br>
+                        <select class="form-select form-select-lg mb-3" aria-label="Default select example" id="zone" name="c8">
+                            <option value="" hidden selected>-- Seleccionar Zona --</option>
+                            <option value="Norte" <?php if($linea['zone']=="Norte"){echo"selected";}?>>Norte</option>
+                            <option value="Sur" <?php if($linea['zone']=="Sur"){echo"selected";}?>>Sur</option>
+                            <option value="Centro" <?php if($linea['zone']=="Centro"){echo"selected";}?>>Centro</option>
+                            <option value="Este" <?php if($linea['zone']=="Este"){echo"selected";}?>>Este</option>
+                            <option value="Oeste" <?php if($linea['zone']=="Oeste"){echo"selected";}?>>Oeste</option>
+                        </select>
+                        <br>
                     <!-- Submit button -->
                     <button type="submit" name="submit" class="btn btn-primary btn-block mb-4">Actualizar</button>
                 </div>
-
-
-                <!-- <div class="row" style="width: 900px;margin-left:300px;margin-right:300px;margin-top:3%">
-            <div class="w3-sidebar w3-card" style="width:50%;height:50%">
-                <div class="col-sm-4" style="margin-left:100px;margin-top:20px">
-                    <label for="ci">CI:</label>
-                    <input type="text" id="i1" class="form-control" name="c1" value="<?php echo $linea['ci']; ?>">
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" id="i2" class="form-control" name="c2" value="<?php echo $linea['nombre']; ?>">
-                    <label for="apellido">Apellido:</label>
-                    <input type="text" id="i3" class="form-control" name="c3" value="<?php echo $linea['apellido']; ?>">
-
-                </div>
-
-                <div class="col-sm-4" style="margin-right:80px;margin-top:20px">
-                    <label for="telefono">Telefono:</label>
-                    <input type="text" id="i4" class="form-control" name="c4" value="<?php echo $linea['telefono']; ?>">
-                    <label for="direccion">Dirección:</label>
-                    <input type="text" id="i5" class="form-control" name="c5" value="<?php echo $linea['direccion']; ?>">
-                    <label for="cantanimales">Cantidad Animales:</label>
-                    <input type="text" id="i6" class="form-control" name="c6"
-                        value="<?php echo $linea['cantanimales']; ?>">
-                    <br>
-                    <input type="hidden" class="form-control" name="id" value="<?php echo $id; ?>">
-
-                    <button type="submit" value="actualizar" name="actualizar"
-                        class="btn btn-default">Actualizar</button>
-                </div>
-            </div> -->
         </div>
     </div>
     </form>
@@ -193,3 +205,31 @@ if (isset($_SESSION['usuario'])) {
 </body>
 
 </html>
+<script>
+        
+
+        function hide() {
+            var zone = document.getElementById('zone');
+            zone.style.visibility = 'hidden';
+        }
+
+        function show() {
+            var zone = document.getElementById('zone');
+            zone.style.visibility = 'visible';
+        }
+        function clear(){
+            document.getElementById('zone').value="";
+           
+        }
+
+        function locationSelectHandler(select) {
+            var zone = document.getElementById('zone');
+            if (select.value == 'Paysandu ciudad') {
+                show();
+                // clear();
+            } else {
+                hide();
+                clear();
+            }
+        }
+    </script>

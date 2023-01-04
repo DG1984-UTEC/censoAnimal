@@ -35,25 +35,27 @@ $columns = array(
     array('db' => 'telefono',     'dt' => 3),
     array('db' => 'direccion',     'dt' => 4),
     array('db' => 'cantanimales',     'dt' => 5),
+    array('db' => 'location',     'dt' => 6),
+    array('db' => 'zone',     'dt' => 7),
     array(
         'db'        => 'CREATED_AT',
-        'dt'        => 6,
+        'dt'        => 8,
         'formatter' => function ($d, $row) {
             return date('jS M y', strtotime($d));
         }
     ),
     array(
         'db'        => 'UPDATED_AT',
-        'dt'        => 7,
+        'dt'        => 9,
         'formatter' => function ($d, $row) {
             return date('jS M y', strtotime($d));
         }
     ),
-    array('db' => 'sesion',     'dt' => 8),
+    array('db' => 'sesion',     'dt' => 10),
 
     array( 
         'db'        => 'id', 
-        'dt'        => 9, 
+        'dt'        => 11, 
         'formatter' => function( $d, $row ) { 
             return ' 
                 <a href="editarPersona.php?id='.$d.'">Editar</a>&nbsp; 

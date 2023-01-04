@@ -26,7 +26,7 @@ if (isset($_SESSION['usuario'])){
 
 
      //valido haber recibido los campos desde el html y que no esten vacios
-     if (isset($_POST["ci"],$_POST["nombre"],$_POST["apellido"],$_POST["telefono"],$_POST["direccion"],$_POST["cantanimales"])){
+     if (isset($_POST["ci"],$_POST["nombre"],$_POST["apellido"],$_POST["telefono"],$_POST["direccion"],$_POST["cantanimales"],$_POST["location"],$_POST["zone"])){
           //asigno el contenido de cada campo recogido en el html a variables locales
           $ci = mysqli_real_escape_string ($conexion, $_POST['ci']);
           $nombre = mysqli_real_escape_string ($conexion, $_POST['nombre']);
@@ -34,7 +34,15 @@ if (isset($_SESSION['usuario'])){
           $telefono = mysqli_real_escape_string ($conexion, $_POST['telefono']);
           $direccion = mysqli_real_escape_string ($conexion, $_POST['direccion']);
           $cantanimales = mysqli_real_escape_string ($conexion, $_POST['cantanimales']);
+          $location = mysqli_real_escape_string ($conexion, $_POST['location']);
+          $zone = mysqli_real_escape_string ($conexion, $_POST['zone']);
           $sesion= $_SESSION['usuario'];
+
+          // if ($_POST['location']=="Paysandu ciudad"){
+          //      $zone = NULL;
+          // }else{
+          //      $zone = mysqli_real_escape_string ($conexion, $_POST['zone']);
+          // }
 
           $check =$conexion->query("SELECT ci FROM persona WHERE ci='$ci'");
           
@@ -48,7 +56,7 @@ if (isset($_SESSION['usuario'])){
                </script>";
                
           }else{*/
-               $insercion = $conexion->query("INSERT INTO persona (ci, nombre, apellido, telefono, direccion, cantanimales, sesion) VALUES ('$ci','$nombre','$apellido','$telefono','$direccion','$cantanimales','$sesion')");
+               $insercion = $conexion->query("INSERT INTO persona (ci, nombre, apellido, telefono, direccion, cantanimales, location, zone, sesion) VALUES ('$ci','$nombre','$apellido','$telefono','$direccion','$cantanimales','$location','$zone','$sesion')");
          // }    
                if ($insercion){
                     echo "<script>

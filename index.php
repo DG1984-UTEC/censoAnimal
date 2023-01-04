@@ -106,6 +106,7 @@ if (isset($_SESSION['usuario'])) {
                                 <li><a class="dropdown-item" href="Castraciones/obtenerCastraciones.php">Listar Castraciones</a></li>
                             </ul>
                         </li>
+                        
                         <!-- <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <?php echo  $_SESSION["usuario"]; ?>
