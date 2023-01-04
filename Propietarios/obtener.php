@@ -140,7 +140,7 @@ if (isset($_SESSION['usuario'])) {
                             <th>Apellido</th>
                             <th>Telefono</th>
                             <th>Direccion</th>
-                            <th>Cantidad Animales</th>
+                            <th>Cant. Animales</th>
                             <th>Localidad</th>
                             <th>Zona</th>
                             <th>Creado</th>
