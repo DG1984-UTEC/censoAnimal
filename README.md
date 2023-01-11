@@ -1,5 +1,5 @@
 # censoAnimal
 App de censo Animal
 
-Versión 1.0
-Autor: Técnico en TI Darío Gonzalez
+Versión 2.0
+Autor: Lic. en TI Darío Gonz{alez
