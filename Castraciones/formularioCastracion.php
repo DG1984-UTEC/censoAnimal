@@ -146,7 +146,7 @@ if (isset($_SESSION['usuario'])) {
                     </div>
                     <br>
                     <div class="form-outline mb-4">
-                        <input type="number" placeholder="Id chip" class="form-control" name="idchip" required="true" />
+                        <input type="text" placeholder="Id chip" class="form-control" name="idchip" required="true" />
                     </div>
                     <br>
                     <table class="table table-responsive">

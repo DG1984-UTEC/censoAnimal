@@ -142,7 +142,7 @@ if (isset($_SESSION['usuario'])) {
                 <div id="borde" class="border border" style="padding: 20px;">
                     <h1 id="tituloForm"><strong> Datos del animal</strong></h1>
                     <br>
-                    <form id="ciP" action="formularioAnimal.php" method="post">
+                    <!-- <form id="ciP" action="formularioAnimal.php" method="post">
                         <div class="form-outline mb-4">
                             <input type="number" placeholder="Cédula dueño" id="cidueno" value="" class="form-control" name="cidueno" required="true" />
                         </div>
@@ -156,8 +156,11 @@ if (isset($_SESSION['usuario'])) {
                         </div>
                     </form>
                    
-                    <br>
+                    <br> -->
                     <form id="agregarAnimal" method="post" action="agregarAnimal.php">
+                    <div class="form-outline mb-4">
+                            <input type="number" placeholder="Cédula dueño" id="cidueno" value="" class="form-control" name="cidueno" required="true" />
+                        </div>
                         <div class="form-outline mb-4">
                             <input type="text" placeholder="Nombre del animal" class="form-control" name="nombre" />
                         </div>
@@ -243,20 +246,20 @@ if (isset($_SESSION['usuario'])) {
 
     </html>
 <?php
-    if (isset($POST['ciP'])) {
-        $ciBus = $GET['cidueno'];
-        $consulta = $conexion->query("SELECT * FROM persona WHERE ci = '$ciBus'");
-        if ($linea = mysqli_fetch_array($consulta)) {
-            $ci = $linea["ci"];
-            $nombre = $linea["nombre"];
-            $apellido = $linea["apellido"];
-             echo $ci;
-                echo $nombre;
-             echo $apellido; 
-        };
-    }else{
-        echo "No existen registros";
-    }
+    // if (isset($POST['ciP'])) {
+    //     $ciBus = $GET['cidueno'];
+    //     $consulta = $conexion->query("SELECT * FROM persona WHERE ci = '$ciBus'");
+    //     if ($linea = mysqli_fetch_array($consulta)) {
+    //         $ci = $linea["ci"];
+    //         $nombre = $linea["nombre"];
+    //         $apellido = $linea["apellido"];
+    //          echo $ci;
+    //             echo $nombre;
+    //          echo $apellido; 
+    //     };
+    // }else{
+    //     echo "No existen registros";
+    // }
 } else {
     echo header("location: login.php");
 }
