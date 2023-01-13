@@ -1,5 +1,6 @@
 <?php
-
+setlocale(LC_ALL, 'es_UY');
+date_default_timezone_set('America/Montevideo');
 /*
  * DataTables example server-side processing script.
  *
@@ -28,6 +29,7 @@ $primaryKey = 'id';
 // The `db` parameter represents the column name in the database, while the `dt`
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
+
 $columns = array(
     array('db' => 'ci', 'dt' => 0),
     array('db' => 'nombre',  'dt' => 1),
@@ -41,14 +43,14 @@ $columns = array(
         'db'        => 'CREATED_AT',
         'dt'        => 8,
         'formatter' => function ($d, $row) {
-            return date('jS M y', strtotime($d));
+            return date('d/m/Y g:i a', strtotime($d));
         }
     ),
     array(
         'db'        => 'UPDATED_AT',
         'dt'        => 9,
         'formatter' => function ($d, $row) {
-            return date('jS M y', strtotime($d));
+            return date('d/m/Y g:i a', strtotime($d));
         }
     ),
     array('db' => 'sesion',     'dt' => 10),
@@ -59,10 +61,22 @@ $columns = array(
         'formatter' => function( $d, $row ) { 
             return ' 
                 <a href="editarPersona.php?id='.$d.'">Editar</a>&nbsp; 
-                <a href="borrarPersona.php?id='.$d.'">Borrar</a> 
+                <a href="borrarPersona.php?id='.$d.'">Borrar</a> &nbsp; 
+                <a href="../Reportes/Propietarios/reporteBuspersona.php?id='.$d.'">Reporte</a>
             '; 
         } 
     ) 
+    // array( 
+    //     'db'        => 'id', 
+    //     'dt'        => 11, 
+    //     'formatter' => function( $d, $row ) { 
+    //         return ' 
+    //             <a href="editarPersona.php?id='.$d.'">Editar</a>&nbsp; 
+    //             <a href="borrarPersona.php?id='.$d.'">Borrar</a> &nbsp; 
+    //             <a href="borrarPersona.php?id='.$d.'">Reporte</a>
+    //         '; 
+    //     } 
+    // ) 
 );
 
 // SQL server connection information

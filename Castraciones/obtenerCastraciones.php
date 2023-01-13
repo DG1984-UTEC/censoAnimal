@@ -130,7 +130,7 @@ if (isset($_SESSION['usuario'])) {
         </nav>
         <!-- NavBar -->
 
-
+<br>
         <div id="borde" class="border border" style="padding: 20px;">
         <table id= "tCas" class="table table-striped">
             <thead>
