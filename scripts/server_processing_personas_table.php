@@ -23,7 +23,7 @@ date_default_timezone_set('America/Montevideo');
 $table = 'persona';
 
 // Table's primary key
-$primaryKey = 'id';
+$primaryKey = 'idP';
 
 // Array of database columns which should be read and sent back to DataTables.
 // The `db` parameter represents the column name in the database, while the `dt`
@@ -31,38 +31,38 @@ $primaryKey = 'id';
 // indexes
 
 $columns = array(
-    array('db' => 'ci', 'dt' => 0),
-    array('db' => 'nombre',  'dt' => 1),
-    array('db' => 'apellido',   'dt' => 2),
-    array('db' => 'telefono',     'dt' => 3),
-    array('db' => 'direccion',     'dt' => 4),
+    array('db' => 'ciP', 'dt' => 0),
+    array('db' => 'nombreP',  'dt' => 1),
+    array('db' => 'apellidoP',   'dt' => 2),
+    array('db' => 'telefonoP',     'dt' => 3),
+    array('db' => 'direccionP',     'dt' => 4),
     array('db' => 'cantanimales',     'dt' => 5),
     array('db' => 'location',     'dt' => 6),
     array('db' => 'zone',     'dt' => 7),
     array(
-        'db'        => 'CREATED_AT',
+        'db'        => 'CREATED_AT_P',
         'dt'        => 8,
         'formatter' => function ($d, $row) {
             return date('d/m/Y g:i a', strtotime($d));
         }
     ),
     array(
-        'db'        => 'UPDATED_AT',
+        'db'        => 'UPDATED_AT_P',
         'dt'        => 9,
         'formatter' => function ($d, $row) {
             return date('d/m/Y g:i a', strtotime($d));
         }
     ),
-    array('db' => 'sesion',     'dt' => 10),
+    array('db' => 'sesionP',     'dt' => 10),
 
     array( 
-        'db'        => 'id', 
+        'db'        => 'idP', 
         'dt'        => 11, 
         'formatter' => function( $d, $row ) { 
             return ' 
-                <a href="editarPersona.php?id='.$d.'">Editar</a>&nbsp; 
-                <a href="borrarPersona.php?id='.$d.'">Borrar</a> &nbsp; 
-                <a href="../Reportes/Propietarios/reporteBuspersona.php?id='.$d.'">Reporte</a>
+            <a class="btn btn-primary btn-block mb-0" href="editarPersona.php?idP=' . $d . '">Editar</a>
+            <a class="btn btn-danger btn-block mb-0" href="confBorrarPropietario.php?idP=' . $d . '">Borrar</a>
+                <a href="../Reportes/Propietarios/reporteBuspersona.php?idP='.$d.'">Reporte</a>
             '; 
         } 
     ) 

@@ -6,11 +6,11 @@ session_start();
 //if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true){
 if (isset($_SESSION['usuario'])){
     
-$id = !empty($_GET['id']) ? $_GET['id'] : 0;
+$idC = !empty($_GET['idC']) ? $_GET['idC'] : 0;
 $linea='';
-if($id){
+if($idC){
     include('../database.php');
-	$registro = "SELECT * FROM castracion WHERE id = $id;";
+	$registro = "SELECT * FROM castracion WHERE idC = $idC;";
 	$resultado = mysqli_query($conexion,$registro);
 	$linea = mysqli_fetch_array($resultado);
 }
@@ -116,7 +116,7 @@ if($id){
                 <div class="border border" style="padding: 20px;">
                 <h1><strong> Editar datos de castración</strong></h1>
                 <div class="form-outline mb-4">
-                            <input type="hidden" placeholder="Cédula dueño" class="form-control" name="id" value=<?php echo $_GET['id'];?> required="true" />
+                            <input type="hidden" placeholder="Cédula dueño" class="form-control" name="idC" value=<?php echo $_GET['idC'];?> required="true" />
                         </div>
                     <br>
                     <div class="form-outline mb-4">
@@ -125,16 +125,16 @@ if($id){
                     </div>
                     <br>
                     <div class="form-outline mb-4">
-                        <input type="text" placeholder="CI del dueño" class="form-control" name="cidueno" value=<?php echo $linea['cidueno'];?>
+                        <input type="text" placeholder="CI del dueño" class="form-control" name="ciduenoC" value=<?php echo $linea['ciduenoC'];?>
                             required="true" />
                     </div>
                     <br>
                     <div class="form-outline mb-4">
-                        <input type="text" placeholder="Nombre" class="form-control" name="nombre" value=<?php echo $linea['nombre'];?> required="true" />
+                        <input type="text" placeholder="Nombre" class="form-control" name="nombreC" value=<?php echo $linea['nombreC'];?> required="true" />
                     </div>
                     <br>
                     <div class="form-outline mb-4">
-                        <input type="text" placeholder="Apellido" class="form-control" name="apellido" value=<?php echo $linea['apellido'];?>
+                        <input type="text" placeholder="Apellido" class="form-control" name="apellidoC" value=<?php echo $linea['apellidoC'];?>
                             required="true" />
                     </div>
                     <br>
@@ -152,14 +152,14 @@ if($id){
                             <label for="especie">Especie:</label>
                             <br>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="Perro" name="especie" value="Perro" <?php if($linea['especie']=='Perro') print "checked=true"?>
+                                <input class="form-check-input" type="radio" value="Perro" name="especieC" value="Perro" <?php if($linea['especieC']=='Perro') print "checked=true"?>
                                     id="flexRadioDefault1">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     Perro
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="Gato" name="especie" value="Gato" <?php if($linea['especie']=='Gato') print "checked=true"?>
+                                <input class="form-check-input" type="radio" value="Gato" name="especieC" value="Gato" <?php if($linea['especieC']=='Gato') print "checked=true"?>
                                     id="flexRadioDefault1">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     Gato
@@ -171,14 +171,14 @@ if($id){
                             <label for="especie">Sexo:</label>
                             <br>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="Macho" name="sexo" value="Macho" <?php if($linea['sexo']=='Macho') print "checked=true"?>
+                                <input class="form-check-input" type="radio" value="Macho" name="sexoC" value="Macho" <?php if($linea['sexoC']=='Macho') print "checked=true"?>
                                     id="flexRadioDefault1">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     Macho
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="Hembra" name="sexo" value="Hembra" <?php if($linea['sexo']=='Hembra') print "checked=true"?>
+                                <input class="form-check-input" type="radio" value="Hembra" name="sexoC" value="Hembra" <?php if($linea['sexoC']=='Hembra') print "checked=true"?>
                                     id="flexRadioDefault1">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     Hembra

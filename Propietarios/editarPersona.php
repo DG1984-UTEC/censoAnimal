@@ -4,12 +4,12 @@ session_start();
 
 if (isset($_SESSION['usuario'])) {
 
-    $id = !empty($_GET['id']) ? $_GET['id'] : 0;
+    $idP = !empty($_GET['idP']) ? $_GET['idP'] : 0;
     $linea = '';
 
-    if ($id) {
+    if ($idP) {
         include('../database.php');
-        $registro = "SELECT * FROM persona WHERE id = $id;";
+        $registro = "SELECT * FROM persona WHERE idP = $idP;";
         $resultado = mysqli_query($conexion, $registro);
         $linea = mysqli_fetch_array($resultado);
     }
@@ -121,28 +121,28 @@ if (isset($_SESSION['usuario'])) {
                     <!-- Email input -->
                     <div class="form-outline mb-4">
                         <input type="text" placeholder="Cédula" class="form-control" name="c1"
-                            value="<?php echo $linea['ci']; ?>" required="true" />
+                            value="<?php echo $linea['ciP']; ?>" required="true" />
                     </div>
                     <br>
                     <!-- Password input -->
                     <div class="form-outline mb-4">
                         <input type="text" placeholder="Nombre" class="form-control" name="c2"
-                            value="<?php echo $linea['nombre']; ?>" required="true" />
+                            value="<?php echo $linea['nombreP']; ?>" required="true" />
                     </div>
                     <br>
                     <div class="form-outline mb-4">
                         <input type="text" placeholder="Apellido" class="form-control" name="c3"
-                            value="<?php echo $linea['apellido']; ?>" required="true" />
+                            value="<?php echo $linea['apellidoP']; ?>" required="true" />
                     </div>
                     <br>
                     <div class="form-outline mb-4">
                         <input type="text" placeholder="Teléfono" class="form-control" name="c4"
-                            value="<?php echo $linea['telefono']; ?>" required="true" />
+                            value="<?php echo $linea['telefonoP']; ?>" required="true" />
                     </div>
                     <br>
                     <div class="form-outline mb-4">
                         <input type="text" placeholder="Dirección" class="form-control" name="c5"
-                            value="<?php echo $linea['direccion']; ?>" required="true" />
+                            value="<?php echo $linea['direccionP']; ?>" required="true" />
                     </div>
                     <br>
                     <div class="form-outline mb-4">
@@ -151,8 +151,8 @@ if (isset($_SESSION['usuario'])) {
                     </div>
                     
                     <div class="form-outline mb-4">
-                        <input type="hidden" placeholder="Dirección" class="form-control" name="id"
-                            value="<?php echo $id; ?>" required="true" />
+                        <input type="hidden" placeholder="Dirección" class="form-control" name="idP"
+                            value="<?php echo $idP; ?>" required="true" />
                     </div>
                     <br>
                         <select class="form-select form-select-lg mb-3" aria-label="Default select example" id="location" name="c7"  onchange="locationSelectHandler(this)">

@@ -1,62 +1,78 @@
 <?php
 include_once('database.php');
 session_start();
-
+$_SESSION['id'] = "";
+$_SESSION['ci'] = null;
+$_SESSION['cidueno'] = null;
+$_SESSION['errmsg'] = null;
+$_SESSION['ciduenoA'] = null;
+$_SESSION['ciduenoC'] = null;
 
 if (isset($_SESSION['usuario'])) {
 
+    $idP = null;
+    $consultaci =null;
+    $consultaAnimal = null;
+    $consultaCastracion = null;
+    // $ciP = "";
+    // $nombreP = "";
+    // $apellidoP = "";
+    // $telefonoP = "";
+    // $direccionP = "";
+    // $cantanimalesP = "";
+    // $created_atP = "";
+    // $updated_atP = "";
+    // $sesionP = "";
+    // $consultaci = "";
+    // $consultaAnimal = "";
+    // $consultaCastracion = "";
+    $idP && $ciP && $nombreP && $apellidoP && $telefonoP && $direccionP && $cantanimalesP && $created_atP && $updated_atP && $sesionP && $idA 
+    && $ciduenoA && $nombreA && $especieA && $sexoA && $castradoA && $reqcastracionA && $created_atA && $updated_atA && $sesionA && $idC 
+    && $fecastracionC && $ciduenoC && $nombreC && $apellidoC && $nmascotaC && $idchipC && $especieC && $sexoC && $created_atC && $updated_atC && $sesionC = null;
+    
+    // $idA = "";
+    // $ciduenoA = "";
+    // $nombreA = "";
+    // $especieA = "";
+    // $sexoA = "";
+    // $castradoA = "";
+    // $reqcastracionA = "";
+    // $created_atA = "";
+    // $updated_atA = "";
+    // $sesionA = "";
+
+    // $idC = "";
+    // $fecastracionC = "";
+    // $ciduenoC = "";
+    // $nombreC = "";
+    // $apellidoC = "";
+    // $nmascotaC = "";
+    // $idchipC = "";
+    // $especieC = "";
+    // $sexoC = "";
+    // $created_atC = "";
+    // $updated_atC = "";
+    // $sesionC = "";
+
     if (isset($_POST["buscar"])) {
-
-             
-
-                $idP = "";
-                $ciP ="";
-                $nombreP = "";
-                $apellidoP = "";
-                $telefonoP = "";
-                $direccionP = "";
-                $cantanimalesP = "";
-                $created_atP = "";
-                $updated_atP = "";
-                $sesionP = "";
-                if (  $idP&&$ciP&&$nombreP&&$apellidoP&&$telefonoP&&$direccionP&&$cantanimalesP&&$created_atP&&$updated_atP&&$sesionP = ""){
-                    echo "no hay registros";
-                                    }
-                $idA = "";
-                $ciduenoA = "";
-                $nombreA ="";
-                $especieA = "";
-                $sexoA = "";
-                $castradoA = "";
-                $reqcastracionA = "";
-                $created_atA = "";
-                $updated_atA = "";
-                $sesionA = "";
-
-                $idC = "";
-                $fecastracionC = "";
-                $ciduenoC = "";
-                $nombreC = ""; 
-                $apellidoC = "";
-                $nmascotaC = "";
-                $idchipC = "";
-                $especieC = "";
-                $sexoC = "";
-                $created_atC = "";
-                $updated_atC = "";
-                $sesionC = "";
-
 
 
         $buscar = $_POST['buscar'];
         $comboSel = $_POST['comboSel'];
-   //////////////BUSQUEDA POR CI/////////////////////////
+        //////////////BUSQUEDA POR CI/////////////////////////
+       
         if ($comboSel == 'ci') {
             $consultaci = $conexion->query("SELECT * FROM persona WHERE ci = '$buscar'");
+            // $consultaci = $conexion->query("SELECT * FROM persona INNER JOIN animal ON persona.ci = animal.cidueno INNER JOIN castracion ON persona.ci = castracion.cidueno WHERE ci = '$buscar'");
             $consultaAnimal = $conexion->query("SELECT * FROM animal WHERE cidueno = '$buscar'");
             $consultaCastracion = $conexion->query("SELECT * FROM castracion WHERE cidueno = '$buscar'");
 
-            while ($fila1 = mysqli_fetch_array($consultaci)) {
+            // SELECT column_name(s)
+            // FROM table1
+            // INNER JOIN table2
+            // ON table1.column_name = table2.column_name;
+
+            if ($fila1 = mysqli_fetch_array($consultaci)) {
                 $_SESSION['id'] = $fila1["id"];
                 $_SESSION['ci'] = $fila1["ci"];
                 $idP = $fila1["id"];
@@ -69,10 +85,16 @@ if (isset($_SESSION['usuario'])) {
                 $created_atP = $fila1["CREATED_AT"];
                 $updated_atP = $fila1["UPDATED_AT"];
                 $_SESSION['sesionP'] = $fila1['sesion'];
-            }
-                $sesionP=$_SESSION['sesionP'];
+            
 
-            while ($fila2 = mysqli_fetch_array($consultaAnimal)) {
+             }else{
+                $_SESSION['ci'] = "99";
+                $_SESSION['errmsg'] = "no se encontraron datos";
+
+            }
+            $sesionP = $_SESSION['sesionP'];
+
+            if ($fila2 = mysqli_fetch_array($consultaAnimal)) {
 
                 $idA = $fila2["id"];
                 $ciduenoA = $fila2["cidueno"];
@@ -85,8 +107,12 @@ if (isset($_SESSION['usuario'])) {
                 $updated_atA = $fila2["UPDATED_AT"];
                 // $sesion = $fila["sesion"];
             }
+            else{
+                $_SESSION['errmsg'] = "no se encontraron datos";
+
+            }
             $sesionA = $_SESSION['sesionP'];
-            while ($fila3 = mysqli_fetch_array($consultaCastracion)) {
+            if ($fila3 = mysqli_fetch_array($consultaCastracion)) {
 
                 $idC = $fila3["id"];
                 $fecastracionC = $fila3["fecastracion"];
@@ -101,9 +127,14 @@ if (isset($_SESSION['usuario'])) {
                 $updated_atC = $fila3["UPDATED_AT"];
                 $sesionC = $fila3['sesion'];
             }
-               //////////////BUSQUEDA POR CI/////////////////////////
+            else{
+                $_SESSION['errmsg'] = "no se encontraron datos";
+
+            }
+            //////////////BUSQUEDA POR CI/////////////////////////
 
             //////////////BUSQUEDA POR IDCHIP/////////////////////////
+            
         } else if ($comboSel == 'idchip') {
             $consultaCastracion = $conexion->query("SELECT * FROM castracion WHERE idchip = '$buscar'");
 
@@ -121,14 +152,15 @@ if (isset($_SESSION['usuario'])) {
                 $created_atC = $fila3["CREATED_AT"];
                 $updated_atC = $fila3["UPDATED_AT"];
                 $sesionC = $fila3['sesion'];
-            }else{
-                echo "No se encontraron registros";
+            }
+            else{
+                $_SESSION['errmsg'] = "no se encontraron datos";
 
             }
             $buscarciC =  $_SESSION['ciduenoC'];
             $consultaci = $conexion->query("SELECT * FROM persona WHERE ci = '$buscarciC'");
-            
-           if ($fila1 = mysqli_fetch_array($consultaci)) {
+
+            if ($fila1 = mysqli_fetch_array($consultaci)) {
                 $_SESSION['id'] = $fila1["id"];
                 $_SESSION['ci'] = $fila1["ci"];
                 $idP = $fila1["id"];
@@ -141,14 +173,15 @@ if (isset($_SESSION['usuario'])) {
                 $created_atP = $fila1["CREATED_AT"];
                 $updated_atP = $fila1["UPDATED_AT"];
                 $_SESSION['sesionA'] = $fila1['sesion'];
-            }else{
-                echo "No se encontraron registros";
+            }
+            else{
+                $_SESSION['errmsg'] = "no se encontraron datos";
 
             }
             $buscarciA =  $_SESSION['ciduenoC'];
-            $consultaCastracion = $conexion->query("SELECT * FROM animal WHERE cidueno = '$buscarciA'");
-            if ($fila2 = mysqli_fetch_array($consultaCastracion)) {
-
+            $consultaAnimal = $conexion->query("SELECT * FROM animal WHERE cidueno = '$buscarciA'");
+            if ($fila2 = mysqli_fetch_array($consultaAnimal)) {
+                $_SESSION['ciduenoA'] = $fila2["cidueno"];
                 $idA = $fila2["id"];
                 $ciduenoA = $fila2["cidueno"];
                 $nombreA = $fila2["nombre"];
@@ -158,18 +191,20 @@ if (isset($_SESSION['usuario'])) {
                 $reqcastracionA = $fila2["reqcastracion"];
                 $created_atA = $fila2["CREATED_AT"];
                 $updated_atA = $fila2["UPDATED_AT"];
-            }else{
-                echo "No se encontraron registros";
+            }
+            else{
+                $_SESSION['errmsg'] = "no se encontraron datos";
 
             }
-             //////////////BUSQUEDA POR IDCHIP/////////////////////////
+            //////////////BUSQUEDA POR IDCHIP/////////////////////////
         } else {
-            echo "no se encontraron datos";
+            $_SESSION['errmsg'] = "no se encontraron datos";
         }
+    }else {
+        $_SESSION['errmsg'] = "no se encontraron datos";
     }
 
-    $_SESSION['id'] = 0;
-    $_SESSION['ci'] = 0;
+
 
 ?>
     <!DOCTYPE html>
@@ -190,7 +225,9 @@ if (isset($_SESSION['usuario'])) {
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap-utilities.css">
-
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/jquery.dataTables.min.css">
+    
         <link rel="stylesheet" href="bootstrap/booticons/icons/font/bootstrap-icons.css">
         <link rel="stylesheet" href="css/principal.css">
         <!-- <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -207,7 +244,7 @@ if (isset($_SESSION['usuario'])) {
         <div class="dropdown">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-                    <a title="Volver al inicio" class="navbar-brand" href="index.php">Censo Animal</a>
+                    <a class="navbar-brand" href="index.php">Censo Animal</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -218,9 +255,9 @@ if (isset($_SESSION['usuario'])) {
                                     Propietarios
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="formularioPersona.php">Nuevo Propietario</a></li>
-                                    <li><a class="dropdown-item" href="obtener.php">Listar propietarios</a></li>
-                                    <li><a class="dropdown-item" href="buscar.php">Buscar propietarios</a></li>
+                                    <li><a class="dropdown-item" href="Propietarios/formularioPersona.php">Nuevo Propietario</a></li>
+                                    <li><a class="dropdown-item" href="Propietarios/obtener.php">Listar propietarios</a></li>
+                                    <li><a class="dropdown-item" href="buscarAvanzado.php">Búsqueda avanzada</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
@@ -228,9 +265,9 @@ if (isset($_SESSION['usuario'])) {
                                     Animales
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="formularioAnimal.php">Nuevo Animal</a></li>
-                                    <li><a class="dropdown-item" href="obtenerAnimales.php">Listar Animales</a></li>
-                                    <li><a class="dropdown-item" href="buscar.php">Buscar animales</a></li>
+                                    <li><a class="dropdown-item" href="Animales/formularioAnimal.php">Nuevo Animal</a></li>
+                                    <li><a class="dropdown-item" href="Animales/obtenerAnimales.php">Listar Animales</a></li>
+                                    <li><a class="dropdown-item" href="buscarAvanzado.php">Búsqueda avanzada</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
@@ -238,15 +275,24 @@ if (isset($_SESSION['usuario'])) {
                                     Castraciones
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="formularioCastracion.php">Nueva castración</a></li>
-                                    <li><a class="dropdown-item" href="obtenerCastraciones.php">Listar Castraciones</a></li>
-                                    <li><a class="dropdown-item" href="buscar.php">Buscar Por Id chip</a></li>
+                                    <li><a class="dropdown-item" href="Castraciones/formularioCastracion.php">Nueva castración</a></li>
+                                    <li><a class="dropdown-item" href="Castraciones/obtenerCastraciones.php">Listar Castraciones</a></li>
+                                    <li><a class="dropdown-item" href="buscarAvanzado.php">Búsqueda avanzada</a></li>
                                 </ul>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class="position-relative">
+                <div class="dropdown" style="margin-right:20px">
+                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <?php echo $_SESSION["usuario"];?>
+                    </button>
+                    <ul class="dropdown-menu" style="margin-right: 200px" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item"  href="cerrar.php">Cerrar Sesión</a></li>
+                    </ul> 
+                </div>
+                <!-- <div class="position-relative">
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -254,16 +300,18 @@ if (isset($_SESSION['usuario'])) {
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark">
                                 <li><a class="dropdown-item" href="cerrar.php">Salir</a></li>
+
                             </ul>
-                </div>
+                </div> -->
             </nav>
             <!-- NavBar -->
             <br>
+            <div class="container">
             <div id="borde" class="border border" style="padding: 5px;">
                 <div class="container-fluid">
                     <nav class="navbar navbar-expand-lg bg-body-tertiary">
                         <div class="container-fluid">
-                            <form class="d-flex" method="post" action="buscarPersonalizado.php">
+                            <form class="d-flex" method="post" action="buscarAvanzado.php">
                                 <div class="container-fluid">
                                     <div class="form-floating">
                                         <select class="form-select" id="comboSel" aria-label="Floating label select example" name="comboSel">
@@ -281,7 +329,9 @@ if (isset($_SESSION['usuario'])) {
                     </nav>
                 </div>
             </div>
+            </div>
             <br>
+            <div class="container">
             <div id="borde" class="border border" style="padding: 20px;">
                 <div class="container">
                     <h2>Propietario</h2>
@@ -299,25 +349,13 @@ if (isset($_SESSION['usuario'])) {
                             <th>Acciones</th>
                         </tr>
                         <tbody>
-                        <?php
-                       while ($row = mysqli_fetch_array($consultaci)) {
-                        ?>
-                            <tr>
-                                <th><?php echo $row['ci'] ?></th>
-                                <th><?php echo $row['nombre'] ?></th>
-                                <th><?php echo $row['apellido'] ?></th>
-                                <th><?php echo $row['telefono'] ?></th>
-                                <th><?php echo $row['direccion'] ?></th>
-                                <th><?php echo $row['cantanimales'] ?></th>
-                                <th><?php echo $row['CREATED_AT'] ?></th>
-                                <th><?php echo $row['UPDATED_AT'] ?></th>
-                                <th><?php echo $_SESSION['sesionA'] ?></th>
-                            </tr>
-                        <?php
-                        }
-                        ?>
+
                         </tbody>
-                        
+                        <?php
+                        if ($consultaci){
+                        if (mysqli_num_rows($consultaci) !== 0){
+                        //  if($consultaci){
+                        ?>
                         <tr align="center">
                             <td align="center"><?php echo $ciP; ?></td>
                             <td align="center"><?php echo $nombreP; ?></td>
@@ -333,12 +371,27 @@ if (isset($_SESSION['usuario'])) {
                                 <!-- <a href="borrarpersona.php?id=<?php echo $id; ?>" class="delete" title="Eliminar">Borrar</a> -->
                                 <button title="Editar" onclick="location.href='../censoanimal/Propietarios/editarPersona.php?id=<?php echo $_SESSION['id']; ?>'" type="submit" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
                                 <button title="Borrar" onclick="location.href='../censoanimal/Propietarios/borrarpersona.php?id=<?php echo $_SESSION['id']; ?>'" type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                <button title="Generar reporte" onclick="location.href='../censoanimal/Reportes/Propietarios/reportePersPersona.php?id=<?php echo $_SESSION['id']; ?>&ci=<?php echo $_SESSION['ci']; ?>'" type="submit" class="btn btn-success"><i class="bi bi-file-earmark-pdf"></i></button>
+                                <!-- <button title="Generar reporte" onclick="location.href='../censoanimal/Reportes/Propietarios/reportePersPersona.php?id=<?php echo $_SESSION['id']; ?>&ci=<?php echo $_SESSION['ci']; ?>'" type="submit" class="btn btn-success"><i class="bi bi-file-earmark-pdf"></i></button> -->
 
                             </td>
                         </tr>
-
+                        <?php
+                        }else{
+                            ?>
+                            <td align="center"><?php echo $_SESSION['errmsg'] ?></td>
+                            <?php
+                            }
+                            ?>
+                            <?php
+                        }else{
+                            ?>
+                            <td align="center"><?php echo $_SESSION['errmsg'] ?></td>
+                            <?php
+                            }
+                            ?>
+                           
                     </table>
+                   
                 </div>
                 <br>
                 <div class="container">
@@ -358,7 +411,11 @@ if (isset($_SESSION['usuario'])) {
                         </tr>
 
                         <tr>
-
+                            <?php 
+                            if($consultaAnimal){
+                             if (mysqli_num_rows($consultaAnimal) !== 0){
+                            // if($consultaAnimal){
+                            ?>
                             <td align="center"><?php echo $ciduenoA; ?></td>
                             <td align="center"><?php echo $nombreA; ?></td>
                             <td align="center"><?php echo $especieA; ?></td>
@@ -368,14 +425,32 @@ if (isset($_SESSION['usuario'])) {
                             <td align="center"><?php echo $created_atA; ?></td>
                             <td align="center"><?php echo $updated_atA; ?></td>
                             <td align="center"><?php echo $sesionA; ?></td>
-
                             <td align="right">
                                 <!-- <a href="editaranimal.php?id=<?php echo $id; ?>" class="edit" title="Editar">Editar</a>
                                             <a href="borraranimal.php?id=<?php echo $id; ?>" class="delete" title="Eliminar">Borrar</a> -->
                                 <button title="Editar" onclick="location.href='../censoanimal/Propietarios/editarPersona.php?id=<?php echo $_SESSION['id']; ?>'" type="submit" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
                                 <button title="Borrar" onclick="location.href='../censoanimal/Propietarios/borrarpersona.php?id=<?php echo $_SESSION['id']; ?>'" type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                <button title="Generar reporte" onclick="location.href='../censoanimal/Reportes/Propietarios/reportePersPersona.php?id=<?php echo $_SESSION['id']; ?>&ci=<?php echo $_SESSION['ci']; ?>'" type="submit" class="btn btn-success"><i class="bi bi-file-earmark-pdf"></i></button>
+                                <!-- <button title="Generar reporte" onclick="location.href='../censoanimal/Reportes/Propietarios/reportePersPersona.php?id=<?php echo $_SESSION['id']; ?>&ci=<?php echo $_SESSION['ci']; ?>'" type="submit" class="btn btn-success"><i class="bi bi-file-earmark-pdf"></i></button> -->
                             </td>
+                            <?php
+                            }else{
+                            ?>
+                            <td align="center"><?php echo $_SESSION['errmsg'] ?></td>
+                            <?php
+                            }
+                            ?>
+                             <?php
+                            }else{
+                            ?>
+                            <td align="center"><?php echo $_SESSION['errmsg'] ?></td>
+                            <?php
+                            }
+                            ?>
+
+                           
+                            
+
+                            
 
                     </table>
                 </div>
@@ -398,10 +473,14 @@ if (isset($_SESSION['usuario'])) {
                             <th>Por</th>
                             <th>Acciones</th>
                         </tr>
-
+                        <?php
+                        if($consultaCastracion){
+                         if (mysqli_num_rows($consultaCastracion) !== 0){
+                        //  if($consultaCastracion){
+                        ?>
                         <tr>
                             <td align="center"><?php echo $fecastracionC; ?></td>
-                            <td align="center"><?php echo $_SESSION['ciduenoC']; ?></td>
+                            <td align="center"><?php echo $_SESSION['ciduenoC'] ?></td>
                             <td align="center"><?php echo $nombreC; ?></td>
                             <td align="center"><?php echo $apellidoC; ?></td>
                             <td align="center"><?php echo $nmascotaC; ?></td>
@@ -416,17 +495,32 @@ if (isset($_SESSION['usuario'])) {
                                         <a href="borraranimal.php?id=<?php echo $id; ?>" class="delete" title="Eliminar">Borrar</a> -->
                                 <button title="Editar" onclick="location.href='../censoanimal/Propietarios/editarPersona.php?id=<?php echo $_SESSION['id']; ?>'" type="submit" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
                                 <button title="Borrar" onclick="location.href='../censoanimal/Propietarios/borrarpersona.php?id=<?php echo $_SESSION['id']; ?>'" type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                <button title="Generar reporte" onclick="location.href='../censoanimal/Reportes/Propietarios/reportePersPersona.php?id=<?php echo $_SESSION['id']; ?>&ci=<?php echo $_SESSION['ci']; ?>'" type="submit" class="btn btn-success"><i class="bi bi-file-earmark-pdf"></i></button>
+                                <!-- <button title="Generar reporte" onclick="location.href='../censoanimal/Reportes/Propietarios/reportePersPersona.php?id=<?php echo $_SESSION['id']; ?>&ci=<?php echo $_SESSION['ci']; ?>'" type="submit" class="btn btn-success"><i class="bi bi-file-earmark-pdf"></i></button> -->
                             </td>
 
 
                 </div>
-
+                <?php
+                            }else{
+                            ?>
+                            <td align="center"><?php echo $_SESSION['errmsg'] ?></td>
+                            <?php
+                            }
+                            ?>
+                             <?php
+                            }else{
+                            ?>
+                            <td align="center"><?php echo $_SESSION['errmsg'] ?></td>
+                            <?php
+                            }
+                            ?>
                 </table>
                 <div class="d-grid gap-2">
-                    <button title="Imprimir reporte" class="btn btn-primary btn-block mb-4" onclick="location.href='../censoAnimal/Reportes/Propietarios/reportePersPersona.php?id=<?php echo $_SESSION['id']; ?>&ci=<?php echo $_SESSION['ci']; ?>'">Imprimir</button>
+                    <!-- <button title="Imprimir reporte" target="_blank" class="btn btn-primary btn-block mb-4" onclick="location.href='../censoAnimal/Reportes/Propietarios/reportePersPersona.php?id=<?php echo $_SESSION['id']; ?>&ci=<?php echo $_SESSION['ci']; ?>'">Imprimir</button> -->
+                    <a class="btn btn-primary btn-block mb-4" href="./Reportes/Propietarios/reportePersPersona.php?id=<?php echo $_SESSION['id']; ?>&ci=<?php echo $_SESSION['ci']; ?>&ciduenoC=<?php echo $_SESSION['ciduenoC']; ?>" onclick="" target="blank_">Generar reporte</a>
                     <!-- <button type="submit" class="btn btn-primary btn-block mb-4">Enviar</button> -->
                 </div>
+            </div>
             </div>
 
 
@@ -435,7 +529,7 @@ if (isset($_SESSION['usuario'])) {
     </html>
     <?php
 
-   
+
 
     ?>
 

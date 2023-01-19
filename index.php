@@ -87,6 +87,7 @@ if (isset($_SESSION['usuario'])) {
                                 <ul class="dropdown-menu dropdown-menu-dark">
                                     <li><a class="dropdown-item" href="Propietarios/formularioPersona.php">Nuevo Propietario</a></li>
                                     <li><a class="dropdown-item" href="Propietarios/obtener.php">Listar propietarios</a></li>
+                                    <li><a class="dropdown-item" href="buscarAvanzado.php">Búsqueda avanzada</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
@@ -96,6 +97,7 @@ if (isset($_SESSION['usuario'])) {
                                 <ul class="dropdown-menu dropdown-menu-dark">
                                     <li><a class="dropdown-item" href="Animales/formularioAnimal.php">Nuevo Animal</a></li>
                                     <li><a class="dropdown-item" href="Animales/obtenerAnimales.php">Listar Animales</a></li>
+                                    <li><a class="dropdown-item" href="buscarAvanzado.php">Búsqueda avanzada</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
@@ -105,7 +107,7 @@ if (isset($_SESSION['usuario'])) {
                                 <ul class="dropdown-menu dropdown-menu-dark">
                                     <li><a class="dropdown-item" href="Castraciones/formularioCastracion.php">Nueva castración</a></li>
                                     <li><a class="dropdown-item" href="Castraciones/obtenerCastraciones.php">Listar Castraciones</a></li>
-                                    <li><a class="dropdown-item" href="buscarPersonalizado.php">Búsqueda avanzada</a></li>
+                                    <li><a class="dropdown-item" href="buscarAvanzado.php">Búsqueda avanzada</a></li>
                                 </ul>
                             </li>
                         </ul>

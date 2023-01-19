@@ -28,10 +28,44 @@ if (isset($_SESSION['usuario'])){
 
 
     
-if (isset($_GET['id'])){
-    $id = intval($_GET['id']);
+if (isset($_GET['idA'])){
+    $idA = intval($_GET['idA']);
 
-    $consulta = $conexion->query("DELETE FROM animal WHERE id='$id'");
+    echo "<script>
+        Swal.fire({
+            icon: 'warning',
+            title: '¿Estás seguro/a de eliminar a este animal?',
+            showConfirmButton: true,
+            confirmButtonText: 'ELIMINAR',
+            confirmButtonColor: '#3085d6',
+            showCancelButton: true,
+            cancelButtonText: 'CANCELAR',
+            cancelButtonColor: '#d33',
+            buttonsStyling: true,
+        
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Animales/borrarAnimal.php',
+                    data: {
+                        idA: idA
+                    },
+                    success: function(data) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Animal eliminado correctamente',
+                            showConfirmButton: false,
+                            timer: 1500,
+                        })
+                    }
+                });
+            }
+    
+        })
+        </script>"; 
+
+    $consulta = $conexion->query("DELETE FROM animal WHERE idA='$idA'");
     
 if ($consulta){
     echo "<script>

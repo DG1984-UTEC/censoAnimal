@@ -21,24 +21,24 @@ if (isset($_SESSION['usuario'])){
 
 
 
-if (isset($_POST["fecastracion"], $_POST["cidueno"], $_POST["nombre"], $_POST["apellido"], $_POST["nmascota"], $_POST["idchip"], $_POST["especie"], $_POST["sexo"]) and 
-$_POST["fecastracion"] !="" and $_POST["cidueno"] !="" and $_POST["nombre"] !="" and $_POST["apellido"] !="" and $_POST["nmascota"] !="" and $_POST["idchip"] !="" and $_POST["especie"] !="" and $_POST["sexo"] !=""){
+if (isset($_POST["fecastracion"], $_POST["ciduenoC"], $_POST["nombreC"], $_POST["apellidoC"], $_POST["nmascota"], $_POST["idchip"], $_POST["especieC"], $_POST["sexoC"]) and 
+$_POST["fecastracion"] !="" and $_POST["ciduenoC"] !="" and $_POST["nombreC"] !="" and $_POST["apellidoC"] !="" and $_POST["nmascota"] !="" and $_POST["idchip"] !="" and $_POST["especieC"] !="" and $_POST["sexoC"] !=""){
      
      $fecastracion = mysqli_real_escape_string ($conexion, $_POST['fecastracion']);
-     $cidueno = mysqli_real_escape_string ($conexion, $_POST['cidueno']);
-     $nombre = mysqli_real_escape_string ($conexion,$_POST['nombre']);
-     $apellido = mysqli_real_escape_string ($conexion, $_POST['apellido']);
+     $ciduenoC = mysqli_real_escape_string ($conexion, $_POST['ciduenoC']);
+     $nombreC = mysqli_real_escape_string ($conexion,$_POST['nombreC']);
+     $apellidoC = mysqli_real_escape_string ($conexion, $_POST['apellidoC']);
      $nmascota = mysqli_real_escape_string ($conexion, $_POST['nmascota']);
      $idchip = mysqli_real_escape_string ($conexion, $_POST['idchip']);
-     $especie = mysqli_real_escape_string ($conexion,$_POST['especie']);
-     $sexo = mysqli_real_escape_string ($conexion,$_POST['sexo']);
-     $sesion = $_SESSION['usuario'];
+     $especieC = mysqli_real_escape_string ($conexion,$_POST['especieC']);
+     $sexoC = mysqli_real_escape_string ($conexion,$_POST['sexoC']);
+     $sesionC = $_SESSION['usuario'];
      
 
 
 
 
-     $insercion = $conexion->query("INSERT INTO castracion (fecastracion, cidueno, nombre, apellido, nmascota, idchip, especie, sexo, sesion) VALUES ('$fecastracion','$cidueno','$nombre','$apellido','$nmascota','$idchip','$especie','$sexo','$sesion')");
+     $insercion = $conexion->query("INSERT INTO castracion (fecastracion, ciduenoC, nombreC, apellidoC, nmascota, idchip, especieC, sexoC, sesionC) VALUES ('$fecastracion','$ciduenoC','$nombreC','$apellidoC','$nmascota','$idchip','$especieC','$sexoC','$sesionC')");
 
 
 

@@ -21,23 +21,23 @@ if (isset($_SESSION['usuario'])){
 
 
 
-if (isset($_POST["cidueno"], $_POST["nombre"], $_POST["especie"], $_POST["sexo"], $_POST["castrado"], $_POST["reqcastracion"])){
+if (isset($_POST["ciduenoA"], $_POST["nombreA"], $_POST["especieA"], $_POST["sexoA"], $_POST["castrado"], $_POST["reqcastracion"])){
    
-     $cidueno = mysqli_real_escape_string ($conexion, $_POST['cidueno']);
-     $nombre = mysqli_real_escape_string ($conexion,$_POST['nombre']);
-     $especie = mysqli_real_escape_string ($conexion,$_POST['especie']);
-     $sexo = mysqli_real_escape_string ($conexion,$_POST['sexo']);
+     $ciduenoA = mysqli_real_escape_string ($conexion, $_POST['ciduenoA']);
+     $nombreA = mysqli_real_escape_string ($conexion,$_POST['nombreA']);
+     $especieA = mysqli_real_escape_string ($conexion,$_POST['especieA']);
+     $sexoA = mysqli_real_escape_string ($conexion,$_POST['sexoA']);
      $castrado = mysqli_real_escape_string ($conexion,$_POST['castrado']);
      $reqcastracion = mysqli_real_escape_string ($conexion,$_POST['reqcastracion']);
      
-if($cidueno ==""){
-     $cidueno = Null;
-}else if($nombre ==""){
-     $nombre =Null;
-}else if($especie ==""){
-     $especie = Null;
-}else if($sexo==""){
-     $sexo = Null;
+if($ciduenoA ==""){
+     $ciduenoA = Null;
+}else if($nombreA ==""){
+     $nombreA =Null;
+}else if($especieA ==""){
+     $especieA = Null;
+}else if($sexoA==""){
+     $sexoA = Null;
 }else if($castrado ==""){
      $castrado =Null;
 }else if($reqcastracion ==""){
@@ -48,7 +48,7 @@ if($cidueno ==""){
 
 
 
-     $insercion = $conexion->query("INSERT INTO animal (cidueno, nombre, especie, sexo, castrado, reqcastracion) VALUES ('$cidueno','$nombre','$especie','$sexo','$castrado','$reqcastracion')");
+     $insercion = $conexion->query("INSERT INTO animal (ciduenoA, nombreA, especieA, sexoA, castrado, reqcastracion) VALUES ('$ciduenoA','$nombreA','$especieA','$sexoA','$castrado','$reqcastracion')");
 
 
 

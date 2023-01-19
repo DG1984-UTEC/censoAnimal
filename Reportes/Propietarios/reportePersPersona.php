@@ -4,12 +4,27 @@
     
     $id= $_GET["id"];
     $ci= $_GET["ci"];
+	$ciduenoC= $_GET["ciduenoC"];
+	// $ciduenoA= $_GET["ciduenoA"];
+
+	// if($ciduenoA == 0){
+	// 	$ciduenoA == "aa";
+	// }
     require 'D:\Desarrollo\laragon\www\censoAnimal\database.php';
 	
 	// $query = "SELECT e.estado, m.id_municipio, m.municipio FROM t_municipio AS m INNER JOIN t_estado AS e ON m.id_estado=e.id_estado";
     $queryPersona = "SELECT * FROM persona WHERE id = '$id'";
+	// $queryPersona = "SELECT * FROM persona INNER JOIN animal On persona.ci = animal.cidueno WHERE persona.ci = '$ci'";
 	$resultadoPersona = $conexion->query($queryPersona);
 	
+	// SELECT column_name(s)
+	// FROM table1
+	// INNER JOIN table2
+	// ON table1.column_name = table2.column_name;
+
+
+
+
     $queryAnimal = "SELECT * FROM animal WHERE cidueno = '$ci'";
     $resultadoAnimal = $conexion->query($queryAnimal);
 
@@ -19,6 +34,10 @@
 	$pdf = new PDF();
 	$pdf->AliasNbPages();
 	$pdf->AddPage();
+	
+	// if ($resultadoPersona == null){
+	if ($row = $resultadoPersona->fetch_assoc())
+	{
 	$pdf->SetFont('Arial', 'B', 16);
 	$pdf->Write(5,'Reporte de Censo Animal');
 	$pdf->Ln();
@@ -39,18 +58,25 @@
 	
 	$pdf->SetFont('Arial','',10);
 	$pdf->Ln();
-
-	while($row = $resultadoPersona->fetch_assoc())
-	{
 		$pdf->Cell(22,6,utf8_decode($row['ci']),1,0,'C');
 		$pdf->Cell(30,6,utf8_decode($row['nombre']),1,0,'C');
 		$pdf->Cell(30,6,utf8_decode($row['apellido']),1,0,'C');
         $pdf->Cell(25,6,utf8_decode($row['telefono']),1,0,'C');
         $pdf->Cell(60,6,utf8_decode($row['direccion']),1,0,'C');
         $pdf->Cell(22,6,utf8_decode($row['cantanimales']),1,1,'C');
+	
+	}else{
+		$pdf->Ln();
+		$pdf->SetFont('Arial', 'B', 16);
+		$pdf->Write(5,'No hay resultados');
+		$pdf->Ln();
 	}
 
-    $pdf->Ln();
+    
+
+    if($row2 = $resultadoAnimal->fetch_assoc())
+	{ 
+		$pdf->Ln();
 	$pdf->SetFont('Arial', 'B', 14);
 	$pdf->Write(5,'Animales asociados');
     $pdf->Ln();
@@ -66,17 +92,24 @@
 	
 	$pdf->SetFont('Arial','',10);
 	$pdf->Ln();
-
-    while($row2 = $resultadoAnimal->fetch_assoc())
-	{ 
 		$pdf->Cell(22,6,utf8_decode($row2['nombre']),1,0,'C');
 		$pdf->Cell(30,6,utf8_decode($row2['especie']),1,0,'C');
 		$pdf->Cell(30,6,utf8_decode($row2['sexo']),1,0,'C');
         $pdf->Cell(25,6,utf8_decode($row2['castrado']),1,0,'C');
         $pdf->Cell(60,6,utf8_decode($row2['reqcastracion']),1,1,'C');
+	
+	}else{
+		$pdf->Ln();
+		$pdf->SetFont('Arial', 'B', 16);
+		$pdf->Write(5,'No hay resultados');
+		$pdf->Ln();
 	}
     
-    $pdf->Ln();
+    
+
+    if($row3 = $resultadoCastracion->fetch_assoc())
+	{
+		$pdf->Ln();
 	$pdf->SetFont('Arial', 'B', 14);
 	$pdf->Write(5,'Castrados');
     $pdf->Ln();
@@ -91,14 +124,17 @@
 
     $pdf->SetFont('Arial','',10);
 	$pdf->Ln();
-
-    while($row3 = $resultadoCastracion->fetch_assoc())
-	{
 		$pdf->Cell(22,6,utf8_decode($row3['fecastracion']),1,0,'C');
 		$pdf->Cell(30,6,utf8_decode($row3['nmascota']),1,0,'C');
 		$pdf->Cell(30,6,utf8_decode($row3['idchip']),1,0,'C');
         $pdf->Cell(25,6,utf8_decode($row3['especie']),1,0,'C');
         $pdf->Cell(60,6,utf8_decode($row3['sexo']),1,1,'C');
+
+	}else{
+		$pdf->Ln();
+		$pdf->SetFont('Arial', 'B', 16);
+		$pdf->Write(5,'No hay resultados');
+		$pdf->Ln();
 	}
 
 	$pdf->Output();

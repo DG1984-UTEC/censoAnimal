@@ -24,23 +24,23 @@ session_start();
 if (isset($_SESSION['usuario'])){
 
 
-$cidueno =$_POST['cidueno'];
-$nombre =$_POST['nombre'];
-$apellido =$_POST['apellido'];
+$ciduenoC =$_POST['ciduenoC'];
+$nombreC =$_POST['nombreC'];
+$apellidoC =$_POST['apellidoC'];
 $nmascota =$_POST['nmascota'];
 $idchip =$_POST['idchip'];
-$especie=$_POST['especie'];
-$sexo =$_POST['sexo'];
+$especieC=$_POST['especieC'];
+$sexoC =$_POST['sexoC'];
 
-  $sesion = $_SESSION['usuario'];
-$id = $_POST['id'];
-if($cidueno&&$nombre&&$apellido&&$nmascota&&$idchip&&$especie&&$sexo){
+  $sesionC = $_SESSION['usuario'];
+$idC = $_POST['idC'];
+if($ciduenoC&&$nombreC&&$apellidoC&&$nmascota&&$idchip&&$especieC&&$sexoC){
 	include('../database.php');
 	//$registro = "UPDATE persona set ci ='$ci', nombre='$nombre', apellido='$apellido', telefono='$telefono', direccion='$direccion', cantanimales='$cantanimales' 
 	//WHERE id='$id'";
   // $resultado = mysqli_query($conexion,$registro);
 
-   $update = $conexion->query("UPDATE castracion SET cidueno ='$cidueno', nombre='$nombre', apellido='$apellido', nmascota='$nmascota', idchip='$idchip', especie='$especie', sexo='$sexo', sesion='$sesion' WHERE id='$id'");
+   $update = $conexion->query("UPDATE castracion SET ciduenoC ='$ciduenoC', nombreC='$nombreC', apellidoC='$apellidoC', nmascota='$nmascota', idchip='$idchip', especieC='$especieC', sexoC='$sexoC', sesionC='$sesionC' WHERE idC='$idC'");
 	
   //  $resultado = mysqli_query($conexion,$update);
   if ($update) {

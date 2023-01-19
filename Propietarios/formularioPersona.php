@@ -111,24 +111,24 @@ if (isset($_SESSION['usuario'])) {
                         <br>
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                            <input type="number" placeholder="Cédula" class="form-control" name="ci" required="true" />
+                            <input type="number" placeholder="Cédula" class="form-control" name="ciP" required="true" />
                         </div>
                         <br>
                         <!-- Password input -->
                         <div class="form-outline mb-4">
-                            <input type="text" placeholder="Nombre" class="form-control" name="nombre" required="true" />
+                            <input type="text" placeholder="Nombre" class="form-control" name="nombreP" required="true" />
                         </div>
                         <br>
                         <div class="form-outline mb-4">
-                            <input type="text" placeholder="Apellido" class="form-control" name="apellido" required="true" />
+                            <input type="text" placeholder="Apellido" class="form-control" name="apellidoP" required="true" />
                         </div>
                         <br>
                         <div class="form-outline mb-4">
-                            <input type="number" placeholder="Teléfono" class="form-control" name="telefono" required="true" />
+                            <input type="number" placeholder="Teléfono" class="form-control" name="telefonoP" required="true" />
                         </div>
                         <br>
                         <div class="form-outline mb-4">
-                            <input type="text" placeholder="Dirección" class="form-control" name="direccion" required="true" />
+                            <input type="text" placeholder="Dirección" class="form-control" name="direccionP" required="true" />
                         </div>
                         <br>
                         <div class="form-outline mb-4">
