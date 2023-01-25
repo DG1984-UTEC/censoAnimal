@@ -76,22 +76,8 @@ if (isset($_SESSION['usuario'])) {
                 <div id="borde" class="border border" style="padding: 20px;">
                     <h1 id="tituloForm"><strong> Datos del animal</strong></h1>
                     <br>
-                    <!-- <form id="ciP" action="formularioAnimal.php" method="post">
-                       
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <button type="ciBtn" id="ciBtn" class="btn btn-primary btn-block mb-4">Buscar</button>
-                            </div>
-                            <div class="col-sm-6">
-                                <button type="submit" id="newBtn" class="btn btn-primary btn-block mb-4">Agregar</button>
-                            </div>
-                        </div>
-                    </form> -->
-                   
-                    <br>
                     <form id="agregarAnimal" method="post" action="agregarAnimal.php">
                     <div class="form-outline mb-4">
-                            <input type="number" placeholder="Cédula dueño" id="ciduenoA" value="" class="form-control" name="ciduenoA" required="true" />
                         </div>
                         <div class="form-outline mb-4">
                             <input type="text" placeholder="Nombre del animal" class="form-control" name="nombreA" />
