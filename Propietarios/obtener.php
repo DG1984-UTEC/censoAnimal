@@ -4,7 +4,7 @@ session_start();
 
 
 if (isset($_SESSION['usuario'])) {
-
+    include ('../header.php');
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -13,8 +13,6 @@ if (isset($_SESSION['usuario'])) {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/w3.css">
-        <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
         <script type="text/javascript" src="../js/popper.min.js"></script>
         <script type="text/javascript" src="../js/jquery-3.6.1.js"></script>
         <script type="text/javascript" src="../js/bootstrap.bundle.js"></script>
@@ -55,15 +53,17 @@ if (isset($_SESSION['usuario'])) {
         <link rel="stylesheet" href="../css/bootstrap.css">
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/bootstrap-utilities.css">
-        <link rel="stylesheet" href="../css/style.css">
+        <!-- <link rel="stylesheet" href="../css/style.css"> -->
         <link rel="stylesheet" href="../css/jquery.dataTables.min.css">
         <link rel="stylesheet" href="../css/principal.css">
+        <link rel="stylesheet" href="../css/header.css">
         <title>Obtener Personas</title>
     </head>
 
     <body id="bod">
+
         <!-- NavBar -->
-    <div class="dropdown">
+    <!-- <div class="dropdown">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="../index.php">Censo Animal</a>
@@ -113,7 +113,7 @@ if (isset($_SESSION['usuario'])) {
 
                                 </ul>
                             </li> -->
-                    </ul>
+                    <!-- </ul>
                 </div>
             </div>
             <div class="position-relative">
@@ -128,8 +128,9 @@ if (isset($_SESSION['usuario'])) {
 
                         </ul>
             </div>
-        </nav>
+        </nav> -->
         <!-- NavBar -->
+        <br>
             <div id="borde" class="border border" style="padding: 20px;">
                 <table id="tUsers" class="table table-striped">
 

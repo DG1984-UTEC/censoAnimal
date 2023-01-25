@@ -28,16 +28,16 @@ if (isset($_SESSION['usuario'])) {
     
   
 
-  $ci = $_POST['c1'];
-  $nombre = $_POST['c2'];
-  $apellido = $_POST['c3'];
-  $telefono = $_POST['c4'];
-  $direccion = $_POST['c5'];
+  $ciP = $_POST['c1'];
+  $nombreP = $_POST['c2'];
+  $apellidoP = $_POST['c3'];
+  $telefonoP = $_POST['c4'];
+  $direccionP = $_POST['c5'];
   $cantanimales = $_POST['c6'];
   $location = $_POST['c7'];
   $zone = $_POST['c8'];
-  $id = $_POST['id'];
-  $sesion = $_SESSION['usuario'];
+  $idP = $_POST['idP'];
+  $sesionP = $_SESSION['usuario'];
 
 
           // if ($location=="Paysandu ciudad"){
@@ -55,8 +55,8 @@ if (isset($_SESSION['usuario'])) {
     //WHERE id='$id'";
     // $resultado = mysqli_query($conexion,$registro);
 
-    $update = $conexion->query("UPDATE persona SET ci ='$ci', nombre='$nombre', apellido='$apellido', telefono='$telefono', direccion='$direccion', cantanimales='$cantanimales', location='$location', zone='$zone', sesion='$sesion' 
-   WHERE id='$id'");
+    $update = $conexion->query("UPDATE persona SET ciP ='$ciP', nombreP='$nombreP', apellidoP='$apellidoP', telefonoP='$telefonoP', direccionP='$direccionP', cantanimales='$cantanimales', location='$location', zone='$zone', sesionP='$sesionP' 
+   WHERE idP='$idP'");
 
     //  $resultado = mysqli_query($conexion,$update);
     if ($update) {
