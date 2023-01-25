@@ -1,5 +1,6 @@
 <?php
- 
+ setlocale(LC_ALL, 'es_UY');
+ date_default_timezone_set('America/Montevideo');
 /*
  * DataTables example server-side processing script.
  *
@@ -49,14 +50,14 @@ $columns = array(
         'db'        => 'CREATED_AT_C',
         'dt'        => 8,
         'formatter' => function( $d, $row ) {
-            return date( 'jS M y', strtotime($d));
+            return date( 'd/m/Y g:i a', strtotime($d));
         }
     ),
     array(
         'db'        => 'UPDATED_AT_C',
         'dt'        => 9,
         'formatter' => function( $d, $row ) {
-            return date( 'jS M y', strtotime($d));
+            return date( 'd/m/Y g:i a', strtotime($d));
         }
     ),
     array( 'db' => 'sesionC',     'dt' => 10 ),

@@ -4,7 +4,7 @@ session_start();
 
 
 if (isset($_SESSION['usuario'])) {
-
+    include ('../header.php');
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -53,16 +53,17 @@ if (isset($_SESSION['usuario'])) {
         <link rel="stylesheet" href="../css/bootstrap.css">
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/bootstrap-utilities.css">
-        <link rel="stylesheet" href="../css/style.css">
+        <!-- <link rel="stylesheet" href="../css/style.css"> -->
         <link rel="stylesheet" href="../css/jquery.dataTables.min.css">
         <link rel="stylesheet" href="../css/principal.css">
+        <link rel="stylesheet" href="../css/header.css">
         <title>Obtener Personas</title>
     </head>
 
     <body id="bod">
 
         <!-- NavBar -->
-    <div class="dropdown">
+    <!-- <div class="dropdown">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="../index.php">Censo Animal</a>
@@ -112,7 +113,7 @@ if (isset($_SESSION['usuario'])) {
 
                                 </ul>
                             </li> -->
-                    </ul>
+                    <!-- </ul>
                 </div>
             </div>
             <div class="position-relative">
@@ -127,7 +128,7 @@ if (isset($_SESSION['usuario'])) {
 
                         </ul>
             </div>
-        </nav>
+        </nav> -->
         <!-- NavBar -->
         <br>
             <div id="borde" class="border border" style="padding: 20px;">

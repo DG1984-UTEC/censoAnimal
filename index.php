@@ -8,6 +8,8 @@ session_start();
 include_once('database.php');
 
 if (isset($_SESSION['usuario'])) {
+    include ('header.php');
+    
 
     $totalP = $conexion->query("SELECT * FROM persona");
     $totalA = $conexion->query("SELECT * FROM animal");
@@ -57,6 +59,7 @@ if (isset($_SESSION['usuario'])) {
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/jquery.dataTables.min.css">
         <link rel="stylesheet" href="css/principal.css">
+        <link rel="stylesheet" href="css/header.css">
         
 
 
@@ -67,11 +70,13 @@ if (isset($_SESSION['usuario'])) {
 
         <title>Menú Principal</title>
     </head>
+<?php
 
+?>
     <body id="bod">
         
         <!-- NavBar -->
-        <div class="dropdown">
+        <!-- <div class="dropdown">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="index.php">Censo Animal</a>
