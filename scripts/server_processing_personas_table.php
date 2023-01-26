@@ -62,7 +62,7 @@ $columns = array(
             return ' 
             <a class="btn btn-primary btn-block mb-0" href="editarPersona.php?idP=' . $d . '">Editar</a>
             <a class="btn btn-danger btn-block mb-0" href="confBorrarPropietario.php?idP=' . $d . '">Borrar</a>
-                <a href="../Reportes/Propietarios/reporteBuspersona.php?idP='.$d.'">Reporte</a>
+                <a class="btn btn-warning btn-block mb-0" href="../Reportes/Propietarios/reporteBuspersona.php?idP='.$d.' onclick="" target="blank_"">Reporte</a>
             '; 
         } 
     ) 

@@ -2,12 +2,12 @@
 	require '../plantilla.php';
 	// require '../censoAnimal/database.php';
     
-    $id= $_GET["id"];
+    $id= $_GET["idP"];
     // $ci= $_GET["ci"];
     require 'D:\Desarrollo\laragon\www\censoAnimal\database.php';
 	
 	// $query = "SELECT e.estado, m.id_municipio, m.municipio FROM t_municipio AS m INNER JOIN t_estado AS e ON m.id_estado=e.id_estado";
-    $queryPersona = "SELECT * FROM persona WHERE id = '$id'";
+    $queryPersona = "SELECT * FROM persona WHERE idP = '$id'";
 	$resultadoPersona = $conexion->query($queryPersona);
 
 	
@@ -50,13 +50,13 @@
 
 	while($row = $resultadoPersona->fetch_assoc())
 	{
-		$_SESSION['ci'] = $row['ci'];
-		$ci = $_SESSION['ci'];
-		$pdf->Cell(22,6,utf8_decode($row['ci']),1,0,'C');
-		$pdf->Cell(30,6,utf8_decode($row['nombre']),1,0,'C');
-		$pdf->Cell(30,6,utf8_decode($row['apellido']),1,0,'C');
-        $pdf->Cell(25,6,utf8_decode($row['telefono']),1,0,'C');
-        $pdf->Cell(60,6,utf8_decode($row['direccion']),1,0,'C');
+		$_SESSION['ciP'] = $row['ciP'];
+		$ci = $_SESSION['ciP'];
+		$pdf->Cell(22,6,utf8_decode($row['ciP']),1,0,'C');
+		$pdf->Cell(30,6,utf8_decode($row['nombreP']),1,0,'C');
+		$pdf->Cell(30,6,utf8_decode($row['apellidoP']),1,0,'C');
+        $pdf->Cell(25,6,utf8_decode($row['telefonoP']),1,0,'C');
+        $pdf->Cell(60,6,utf8_decode($row['direccionP']),1,0,'C');
         $pdf->Cell(22,6,utf8_decode($row['cantanimales']),1,1,'C');
 	}
 
@@ -77,14 +77,14 @@
 	$pdf->SetFont('Arial','',10);
 	$pdf->Ln();
 
-	$queryAnimal = "SELECT * FROM animal WHERE cidueno = '$ci'";
+	$queryAnimal = "SELECT * FROM animal WHERE ciduenoA = '$ci'";
     $resultadoAnimal = $conexion->query($queryAnimal);
 
     while($row2 = $resultadoAnimal->fetch_assoc())
 	{ 
-		$pdf->Cell(22,6,utf8_decode($row2['nombre']),1,0,'C');
-		$pdf->Cell(30,6,utf8_decode($row2['especie']),1,0,'C');
-		$pdf->Cell(30,6,utf8_decode($row2['sexo']),1,0,'C');
+		$pdf->Cell(22,6,utf8_decode($row2['nombreA']),1,0,'C');
+		$pdf->Cell(30,6,utf8_decode($row2['especieA']),1,0,'C');
+		$pdf->Cell(30,6,utf8_decode($row2['sexoA']),1,0,'C');
         $pdf->Cell(25,6,utf8_decode($row2['castrado']),1,0,'C');
         $pdf->Cell(60,6,utf8_decode($row2['reqcastracion']),1,1,'C');
 	}
@@ -105,7 +105,7 @@
     $pdf->SetFont('Arial','',10);
 	$pdf->Ln();
 
-	$queryCastracion = "SELECT * FROM castracion WHERE cidueno = '$ci'";
+	$queryCastracion = "SELECT * FROM castracion WHERE ciduenoC = '$ci'";
     $resultadoCastracion = $conexion->query($queryCastracion);
 
     while($row3 = $resultadoCastracion->fetch_assoc())
@@ -113,8 +113,8 @@
 		$pdf->Cell(22,6,utf8_decode($row3['fecastracion']),1,0,'C');
 		$pdf->Cell(30,6,utf8_decode($row3['nmascota']),1,0,'C');
 		$pdf->Cell(30,6,utf8_decode($row3['idchip']),1,0,'C');
-        $pdf->Cell(25,6,utf8_decode($row3['especie']),1,0,'C');
-        $pdf->Cell(60,6,utf8_decode($row3['sexo']),1,1,'C');
+        $pdf->Cell(25,6,utf8_decode($row3['especieC']),1,0,'C');
+        $pdf->Cell(60,6,utf8_decode($row3['sexoC']),1,1,'C');
 	}
 
 	$pdf->Output();
