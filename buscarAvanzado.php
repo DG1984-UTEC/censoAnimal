@@ -418,7 +418,7 @@ include('header.php');
                         ?>
                         <tr>
                             <td align="center"><?php echo $fecastracionC; ?></td>
-                            <td align="center"><?php echo $_SESSION['ciduenoC'] ?></td>
+                            <td align="center"><?php echo $ciduenoC; ?></td>
                             <td align="center"><?php echo $nombreC; ?></td>
                             <td align="center"><?php echo $apellidoC; ?></td>
                             <td align="center"><?php echo $nmascotaC; ?></td>
