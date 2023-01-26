@@ -1,5 +1,7 @@
-<?php
 
+<?php
+setlocale(LC_ALL, 'es_UY');
+date_default_timezone_set('America/Montevideo');
 /*
  * DataTables example server-side processing script.
  *
@@ -22,46 +24,48 @@
 $table = 'animal';
 
 // Table's primary key
-$primaryKey = 'id';
+$primaryKey = 'idA';
 
 // Array of database columns which should be read and sent back to DataTables.
 // The `db` parameter represents the column name in the database, while the `dt`
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(
-    array('db' => 'cidueno', 'dt' => 0),
-    array('db' => 'nombre',  'dt' => 1),
-    array('db' => 'especie',   'dt' => 2),
-    array('db' => 'sexo',     'dt' => 3),
+    array('db' => 'ciduenoA', 'dt' => 0),
+    array('db' => 'nombreA',  'dt' => 1),
+    array('db' => 'especieA',   'dt' => 2),
+    array('db' => 'sexoA',     'dt' => 3),
     array('db' => 'castrado',     'dt' => 4),
     array('db' => 'reqcastracion',     'dt' => 5),
     array(
-        'db'        => 'CREATED_AT',
+        'db'        => 'CREATED_AT_A',
         'dt'        => 6,
         'formatter' => function ($d, $row) {
-            return date('jS M y', strtotime($d));
+            return date('d/m/Y g:i a', strtotime($d));
         }
     ),
     array(
-        'db'        => 'UPDATED_AT',
+        'db'        => 'UPDATED_AT_A',
         'dt'        => 7,
         'formatter' => function ($d, $row) {
-            return date('jS M y', strtotime($d));
+            return date('d/m/Y g:i a', strtotime($d));
         }
     ),
     // array('db' => 'sesion',     'dt' => 8),
 
-    array( 
-        'db'        => 'id', 
-        'dt'        => 8, 
-        'formatter' => function( $d, $row ) { 
+    array(
+        'db'        => 'idA',
+        'dt'        => 8,
+        'formatter' => function ($d, $row) {
             return ' 
-                <a href="editarAnimal.php?id='.$d.'">Editar</a>&nbsp; 
-                <a href="borrarAnimal.php?id='.$d.'">Borrar</a> 
-            '; 
-        } 
-    ) 
+                <a class="btn btn-primary btn-block mb-0" href="editarAnimal.php?idA=' . $d . '">Editar</a>
+                <a class="btn btn-danger btn-block mb-0" href="confBorrarAnimal.php?idA=' . $d . '">Borrar</a>
+            ';
+        }
+    )
 );
+// <a href="editarAnimal.php?idA=' . $d . '">Editar</a>&nbsp; 
+//                 <a href="BorrarAnimal.php?idA=' . $d . '">Borrar</a> 
 
 // SQL server connection information
 $sql_details = array(

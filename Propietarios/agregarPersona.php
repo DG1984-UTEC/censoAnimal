@@ -26,17 +26,17 @@ if (isset($_SESSION['usuario'])){
 
 
      //valido haber recibido los campos desde el html y que no esten vacios
-     if (isset($_POST["ci"],$_POST["nombre"],$_POST["apellido"],$_POST["telefono"],$_POST["direccion"],$_POST["cantanimales"],$_POST["location"],$_POST["zone"])){
+     if (isset($_POST["ciP"],$_POST["nombreP"],$_POST["apellidoP"],$_POST["telefonoP"],$_POST["direccionP"],$_POST["cantanimales"],$_POST["location"],$_POST["zone"])){
           //asigno el contenido de cada campo recogido en el html a variables locales
-          $ci = mysqli_real_escape_string ($conexion, $_POST['ci']);
-          $nombre = mysqli_real_escape_string ($conexion, $_POST['nombre']);
-          $apellido = mysqli_real_escape_string ($conexion, $_POST['apellido']);
-          $telefono = mysqli_real_escape_string ($conexion, $_POST['telefono']);
-          $direccion = mysqli_real_escape_string ($conexion, $_POST['direccion']);
+          $ciP = mysqli_real_escape_string ($conexion, $_POST['ciP']);
+          $nombreP = mysqli_real_escape_string ($conexion, $_POST['nombreP']);
+          $apellidoP = mysqli_real_escape_string ($conexion, $_POST['apellidoP']);
+          $telefonoP = mysqli_real_escape_string ($conexion, $_POST['telefonoP']);
+          $direccionP = mysqli_real_escape_string ($conexion, $_POST['direccionP']);
           $cantanimales = mysqli_real_escape_string ($conexion, $_POST['cantanimales']);
           $location = mysqli_real_escape_string ($conexion, $_POST['location']);
           $zone = mysqli_real_escape_string ($conexion, $_POST['zone']);
-          $sesion= $_SESSION['usuario'];
+          $sesionP= $_SESSION['usuario'];
 
           // if ($_POST['location']=="Paysandu ciudad"){
           //      $zone = NULL;
@@ -44,7 +44,7 @@ if (isset($_SESSION['usuario'])){
           //      $zone = mysqli_real_escape_string ($conexion, $_POST['zone']);
           // }
 
-          $check =$conexion->query("SELECT ci FROM persona WHERE ci='$ci'");
+          $check =$conexion->query("SELECT ciP FROM persona WHERE ciP='$ciP'");
           
           $res = mysqli_fetch_array($check);
 
@@ -56,7 +56,7 @@ if (isset($_SESSION['usuario'])){
                </script>";
                
           }else{*/
-               $insercion = $conexion->query("INSERT INTO persona (ci, nombre, apellido, telefono, direccion, cantanimales, location, zone, sesion) VALUES ('$ci','$nombre','$apellido','$telefono','$direccion','$cantanimales','$location','$zone','$sesion')");
+               $insercion = $conexion->query("INSERT INTO persona (ciP, nombreP, apellidoP, telefonoP, direccionP, cantanimales, location, zone, sesionP) VALUES ('$ciP','$nombreP','$apellidoP','$telefonoP','$direccionP','$cantanimales','$location','$zone','$sesionP')");
          // }    
                if ($insercion){
                     echo "<script>

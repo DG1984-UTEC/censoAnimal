@@ -3,7 +3,7 @@ session_start();
 include('../database.php');
 
 if (isset($_SESSION['usuario'])) {
-
+    include ("../header.php");
 
 ?>
     <!DOCTYPE html>
@@ -25,6 +25,7 @@ if (isset($_SESSION['usuario'])) {
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/bootstrap-utilities.css">
         <link rel="stylesheet" href="../css/principal.css">
+        <link rel="stylesheet" href="../css/header.css">
         <title>Ingresar animal</title>
         <script>
             function valueChanged() {
@@ -60,73 +61,6 @@ if (isset($_SESSION['usuario'])) {
     </script> -->
 
     </head>
-
-    <!-- NavBar -->
-    <div class="dropdown">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="../index.php">Censo Animal</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Propietarios
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="../Propietarios/formularioPersona.php">Nuevo
-                                        Propietario</a></li>
-                                <li><a class="dropdown-item" href="../Propietarios/obtener.php">Listar propietarios</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Animales
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="../Animales/formularioAnimal.php">Nuevo Animal</a></li>
-                                <li><a class="dropdown-item" href="../Animales/obtenerAnimales.php">Listar Animales</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Castraciones
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="../Castraciones/formularioCastracion.php">Nueva
-                                        castración</a></li>
-                                <li><a class="dropdown-item" href="../Castraciones/obtenerCastraciones.php">Listar
-                                        Castraciones</a></li>
-                            </ul>
-                        </li>
-                        <!-- <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <?php echo  $_SESSION["usuario"]; ?>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="cerrar.php">Cerrar sesión</a></li>
-
-                                </ul>
-                            </li> -->
-                    </ul>
-                </div>
-            </div>
-            <div class="position-relative">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <?php echo  $_SESSION["usuario"]; ?>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="../cerrar.php">Salir</a></li>
-
-                        </ul>
-            </div>
-        </nav>
-        <!-- NavBar -->
-
         <body id="bod">
 
             <!-- <div class="input-group mb-3">
@@ -136,33 +70,17 @@ if (isset($_SESSION['usuario'])) {
         </div>
 </div> -->
             <div class="salida"></div>
-
+<br>
             <div class="container-fluid" style="width:650px">
 
                 <div id="borde" class="border border" style="padding: 20px;">
                     <h1 id="tituloForm"><strong> Datos del animal</strong></h1>
                     <br>
-                    <!-- <form id="ciP" action="formularioAnimal.php" method="post">
-                        <div class="form-outline mb-4">
-                            <input type="number" placeholder="Cédula dueño" id="cidueno" value="" class="form-control" name="cidueno" required="true" />
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <button type="ciBtn" id="ciBtn" class="btn btn-primary btn-block mb-4">Buscar</button>
-                            </div>
-                            <div class="col-sm-6">
-                                <button type="submit" id="newBtn" class="btn btn-primary btn-block mb-4">Agregar</button>
-                            </div>
-                        </div>
-                    </form>
-                   
-                    <br> -->
                     <form id="agregarAnimal" method="post" action="agregarAnimal.php">
                     <div class="form-outline mb-4">
-                            <input type="number" placeholder="Cédula dueño" id="cidueno" value="" class="form-control" name="cidueno" required="true" />
                         </div>
                         <div class="form-outline mb-4">
-                            <input type="text" placeholder="Nombre del animal" class="form-control" name="nombre" />
+                            <input type="text" placeholder="Nombre del animal" class="form-control" name="nombreA" />
                         </div>
                         <br>
 
@@ -172,13 +90,13 @@ if (isset($_SESSION['usuario'])) {
                                 <br>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" value="Perro" name="especie" id="flexRadioDefault1">
+                                    <input class="form-check-input" type="radio" value="Perro" name="especieA" id="flexRadioDefault1">
                                     <label class="form-check-label" for="flexRadioDefault1">
                                         Perro
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" value="Gato" name="especie" id="flexRadioDefault1">
+                                    <input class="form-check-input" type="radio" value="Gato" name="especieA" id="flexRadioDefault1">
                                     <label class="form-check-label" for="flexRadioDefault1">
                                         Gato
                                     </label>
@@ -187,13 +105,13 @@ if (isset($_SESSION['usuario'])) {
                                 <label for="especie">Sexo:</label>
                                 <br>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" value="Macho" name="sexo" id="flexRadioDefault1">
+                                    <input class="form-check-input" type="radio" value="Macho" name="sexoA" id="flexRadioDefault1">
                                     <label class="form-check-label" for="flexRadioDefault1">
                                         Macho
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" value="Hembra" name="sexo" id="flexRadioDefault1">
+                                    <input class="form-check-input" type="radio" value="Hembra" name="sexoA" id="flexRadioDefault1">
                                     <label class="form-check-label" for="flexRadioDefault1">
                                         Hembra
                                     </label>
@@ -238,7 +156,9 @@ if (isset($_SESSION['usuario'])) {
                                 </div>
                             </th>
                         </table>
-                        <button type="submit" class="btn btn-primary btn-block mb-4">Enviar</button>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-block mb-4">Enviar</button>
+                        </div>
                 </div>
                 </form>
             </div>

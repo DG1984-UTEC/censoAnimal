@@ -3,7 +3,7 @@ session_start();
 
 
 if (isset($_SESSION['usuario'])) {
-
+    include ('../header.php');
 ?>
 
     <!DOCTYPE html>
@@ -26,81 +26,16 @@ if (isset($_SESSION['usuario'])) {
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/bootstrap-utilities.css">
         <link rel="stylesheet" href="../css/principal.css">
-
+        <link rel="stylesheet" href="../css/header.css">
         <title>Ingresar Persona</title>
     </head>
 
     <body id="bod">
         <!-- NavBar -->
-        <div class="dropdown">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="../index.php">Censo Animal</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-                        <ul class="navbar-nav">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Propietarios
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="../Propietarios/formularioPersona.php">Nuevo
-                                            Propietario</a></li>
-                                    <li><a class="dropdown-item" href="../Propietarios/obtener.php">Listar propietarios</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Animales
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="../Animales/formularioAnimal.php">Nuevo Animal</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="../Animales/obtenerAnimales.php">Listar Animales</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Castraciones
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="../Castraciones/formularioCastracion.php">Nueva
-                                            castración</a></li>
-                                    <li><a class="dropdown-item" href="../Castraciones/obtenerCastraciones.php">Listar
-                                            Castraciones</a></li>
-                                </ul>
-                            </li>
-                            <!-- <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <?php echo  $_SESSION["usuario"]; ?>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="cerrar.php">Cerrar sesión</a></li>
-
-                                </ul>
-                            </li> -->
-                        </ul>
-                    </div>
-                </div>
-                <div class="position-relative">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <?php echo  $_SESSION["usuario"]; ?>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="../cerrar.php">Salir</a></li>
-
-                            </ul>
-                </div>
-            </nav>
+        
             <!-- NavBar -->
 
-
+<br>
             <div class="container-fluid" style="width:650px">
 
 
@@ -111,31 +46,31 @@ if (isset($_SESSION['usuario'])) {
                         <br>
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                            <input type="number" placeholder="Cédula" class="form-control" name="ci" required="true" />
+                            <input type="number" placeholder="Cédula" class="form-control" name="ciP" required="true" />
                         </div>
                         <br>
                         <!-- Password input -->
                         <div class="form-outline mb-4">
-                            <input type="text" placeholder="Nombre" class="form-control" name="nombre" required="true" />
+                            <input type="text" placeholder="Nombre" class="form-control" name="nombreP" required="true" />
                         </div>
                         <br>
                         <div class="form-outline mb-4">
-                            <input type="text" placeholder="Apellido" class="form-control" name="apellido" required="true" />
+                            <input type="text" placeholder="Apellido" class="form-control" name="apellidoP" required="true" />
                         </div>
                         <br>
                         <div class="form-outline mb-4">
-                            <input type="number" placeholder="Teléfono" class="form-control" name="telefono" required="true" />
+                            <input type="number" placeholder="Teléfono" class="form-control" name="telefonoP" required="true" />
                         </div>
                         <br>
                         <div class="form-outline mb-4">
-                            <input type="text" placeholder="Dirección" class="form-control" name="direccion" required="true" />
+                            <input type="text" placeholder="Dirección" class="form-control" name="direccionP" required="true" />
                         </div>
                         <br>
                         <div class="form-outline mb-4">
                             <input type="number" placeholder="Cantidad Animales" class="form-control" name="cantanimales" required="true" />
                         </div>
                         <br>
-                        <select class="form-select form-select-lg mb-3" aria-label="Default select example" id="location" name="location" onchange="locationSelectHandler(this)">
+                        <select class="form-select form-select-sm mb-1" aria-label="Default select example" id="location" name="location" onchange="locationSelectHandler(this)">
                             <option hidden selected>-- Seleccionar Localidad --</option>
                             <option value="Paysandu ciudad">Paysandu ciudad</option>
                             <option value="Quebracho">Quebracho</option>
@@ -166,7 +101,7 @@ if (isset($_SESSION['usuario'])) {
                             <option value="Estacion Porvenir">Estacion Porvenir</option>
                         </select>
                         <br>
-                        <select class="form-select form-select-lg mb-3" aria-label="Default select example" id="zone" name="zone">
+                        <select class="form-select form-select-sm mb-3" aria-label="Default select example" id="zone" name="zone">
                             <option value="" hidden selected>-- Seleccionar Zona --</option>
                             <option value="Norte">Norte</option>
                             <option value="Sur">Sur</option>
@@ -175,10 +110,10 @@ if (isset($_SESSION['usuario'])) {
                             <option value="Oeste">Oeste</option>
                         </select>
                         <br>
-                       
-                        <br>
                         <!-- Submit button -->
-                        <button type="submit" class="btn btn-primary btn-block mb-4">Enviar</button>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-block mb-4">Enviar</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -186,8 +121,6 @@ if (isset($_SESSION['usuario'])) {
 
     </html>
     <script>
-        
-
         function hide() {
             var zone = document.getElementById('zone');
             zone.style.visibility = 'hidden';
