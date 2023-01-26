@@ -27,45 +27,48 @@ if (isset($_SESSION['usuario'])) {
         <div class="navbarC">
             <a href="/censoanimal/index.php">Censo Animal</a>
             <nav>
-            <div class="dropdownC">
-                <button class="dropbtnC">Propietarios
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-contentC">
-                    <a href="/censoanimal/Propietarios/formularioPersona.php">Nuevo</a>
-                    <a href="/censoanimal/Propietarios/obtener.php">Listar</a>
-                    <a href="/censoanimal/buscarAvanzado.php">Búsqueda avanzada</a>
+                <div class="dropdownC">
+                    <button class="dropbtnC">Propietarios
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-contentC">
+                        <a href="/censoanimal/Propietarios/formularioPersona.php">Nuevo</a>
+                        <a href="/censoanimal/Propietarios/obtener.php">Listar</a>
+                        <a href="/censoanimal/buscarAvanzado.php">Búsqueda avanzada</a>
+                    </div>
                 </div>
-            </div>
-            <div class="dropdownC">
-                <button class="dropbtnC">Animales
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-contentC">
-                    <a href="/censoanimal/Animales/formularioAnimal.php">Nuevo</a>
-                    <a href="/censoanimal/Animales/obtenerAnimales.php">Listar</a>
-                    <a href="/censoanimal/buscarAvanzado.php">Búsqueda avanzada</a>
+                <div class="dropdownC">
+                    <button class="dropbtnC">Animales
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-contentC">
+                        <a href="/censoanimal/Animales/formularioAnimal.php">Nuevo</a>
+                        <a href="/censoanimal/Animales/obtenerAnimales.php">Listar</a>
+                        <a href="/censoanimal/buscarAvanzado.php">Búsqueda avanzada</a>
+                    </div>
                 </div>
-            </div>
-            <div class="dropdownC">
-                <button class="dropbtnC">Castraciones
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-contentC">
-                    <a href="/censoanimal/Castraciones/formularioCastracion.php">Nuevo</a>
-                    <a href="/censoanimal/Castraciones/obtenerCastraciones.php">Listar</a>
-                    <a href="/censoanimal/buscarAvanzado.php">Búsqueda avanzada</a>
+                <div class="dropdownC">
+                    <button class="dropbtnC">Castraciones
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-contentC">
+                        <a href="/censoanimal/Castraciones/formularioCastracion.php">Nuevo</a>
+                        <a href="/censoanimal/Castraciones/obtenerCastraciones.php">Listar</a>
+                        <a href="/censoanimal/buscarAvanzado.php">Búsqueda avanzada</a>
+                    </div>
                 </div>
-            </div>
-            <div class="dropdownD">
-                <button class="dropbtnD"> <?php echo $_SESSION["usuario"];?>
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-contentD">
-                    <a href="/censoanimal/cerrar.php">Cerrar Sesión</a>
+                <div class="dropdownD">
+                    <button class="dropbtnD"> <?php echo $_SESSION["usuario"]; ?>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-contentD">
+                        <a href="/censoanimal/cerrar.php">Cerrar Sesión</a>
+                    </div>
                 </div>
-            </div>
             </nav>
+        </div>
+        <div class="footerD">
+            <p>Versión 2 - 2023</p>
         </div>
     </body>
 

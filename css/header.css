@@ -1,3 +1,13 @@
+.footerD {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
 /* Navbar container */
 .navbarC {
   overflow: hidden;
@@ -35,7 +45,7 @@
 
 /* Add a red background color to navbar links on hover */
 .navbarC a:hover, .dropdownC:hover .dropbtnC {
-  background-color: red;
+  background-color: darkcyan;
 }
 
 /* Dropdown content (hidden by default) */
@@ -87,7 +97,7 @@
 
 /* Add a red background color to navbar links on hover */
 .navbarC a:hover, .dropdownD:hover .dropbtnD {
-  background-color: red;
+  background-color: skyblue;
 }
 
 /* Dropdown content (hidden by default) */
@@ -95,7 +105,7 @@
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 160px;
+  min-width: 143px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -119,3 +129,4 @@
 .dropdownD:hover .dropdown-contentD {
   display: block;
 }
+
