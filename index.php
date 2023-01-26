@@ -9,7 +9,6 @@ include_once('database.php');
 
 if (isset($_SESSION['usuario'])) {
     include ('header.php');
-    
 
     $totalP = $conexion->query("SELECT * FROM persona");
     $totalA = $conexion->query("SELECT * FROM animal");
