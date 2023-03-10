@@ -80,6 +80,10 @@ if (isset($_SESSION['usuario'])) {
                     <div class="form-outline mb-4">
                         </div>
                         <div class="form-outline mb-4">
+                            <input type="text" placeholder="Cédula del propietario" class="form-control" name="ciduenoA" />
+                        </div>
+                        <br>
+                        <div class="form-outline mb-4">
                             <input type="text" placeholder="Nombre del animal" class="form-control" name="nombreA" />
                         </div>
                         <br>

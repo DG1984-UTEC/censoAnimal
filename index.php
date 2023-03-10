@@ -145,9 +145,7 @@ if (isset($_SESSION['usuario'])) {
                     <h1><strong>
                             <center>Sistema de Registro de Censo Animal</center>
                         </strong></h1>
-                    <h3>
-                        <center>Versión 2.0</center>
-                    </h3>
+                    
                 </div>
             </div>
             <br>
