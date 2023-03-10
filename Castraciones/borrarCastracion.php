@@ -24,10 +24,10 @@ include_once ('../database.php');
 if (isset($_SESSION['usuario'])){
 
 
-if (isset($_GET['id'])){
-    $id = intval($_GET['id']);
+if (isset($_GET['idC'])){
+    $idC = intval($_GET['idC']);
 
-    $consulta = $conexion->query("DELETE FROM castracion WHERE id='$id'");
+    $consulta = $conexion->query("DELETE FROM castracion WHERE idC='$idC'");
     
 if ($consulta){
     echo "<script>
