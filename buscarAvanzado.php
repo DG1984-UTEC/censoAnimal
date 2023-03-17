@@ -74,7 +74,12 @@ include('header.php');
 
             if ($fila1 = mysqli_fetch_array($consultaci)) {
                 $_SESSION['id'] = $fila1["idP"];
-                $_SESSION['ci'] = $fila1["ciP"];
+                if($fila1["ciP"] ==NULL){
+                    $_SESSION['ci'] = "99";
+    
+                }else{
+                    $_SESSION['ci'] = $fila1["ciP"];
+                }
                 $idP = $fila1["idP"];
                 $ciP = $fila1["ciP"];
                 $nombreP = $fila1["nombreP"];
@@ -86,51 +91,52 @@ include('header.php');
                 $updated_atP = $fila1["UPDATED_AT_P"];
                 $_SESSION['sesionP'] = $fila1['sesionP'];
             
+           
 
              }else{
-                $_SESSION['ci'] = "99";
+               
                 $_SESSION['errmsg'] = "no se encontraron datos";
 
             }
-            $sesionP = $_SESSION['sesionP'];
+            // $sesionP = $_SESSION['sesionP'];
 
-            if ($fila2 = mysqli_fetch_array($consultaAnimal)) {
+            // while ($fila2 = mysqli_fetch_array($consultaAnimal)) {
 
-                $idA = $fila2["idA"];
-                $ciduenoA = $fila2["ciduenoA"];
-                $nombreA = $fila2["nombreA"];
-                $especieA = $fila2["especieA"];
-                $sexoA = $fila2["sexoA"];
-                $castradoA = $fila2["castrado"];
-                $reqcastracionA = $fila2["reqcastracion"];
-                $created_atA = $fila2["CREATED_AT_A"];
-                $updated_atA = $fila2["UPDATED_AT_A"];
-                // $sesion = $fila["sesion"];
-            }
-            else{
-                $_SESSION['errmsg'] = "no se encontraron datos";
+            //     $idA = $fila2["idA"];
+            //     $ciduenoA = $fila2["ciduenoA"];
+            //     $nombreA = $fila2["nombreA"];
+            //     $especieA = $fila2["especieA"];
+            //     $sexoA = $fila2["sexoA"];
+            //     $castradoA = $fila2["castrado"];
+            //     $reqcastracionA = $fila2["reqcastracion"];
+            //     $created_atA = $fila2["CREATED_AT_A"];
+            //     $updated_atA = $fila2["UPDATED_AT_A"];
+            //     // $sesion = $fila["sesion"];
+            // }
+            // else{
+            //     $_SESSION['errmsg'] = "no se encontraron datos";
 
-            }
-            $sesionA = $_SESSION['sesionP'];
-            if ($fila3 = mysqli_fetch_array($consultaCastracion)) {
+            // }
+            // $sesionA = $_SESSION['sesionP'];
+            // while ($fila3 = mysqli_fetch_assoc($consultaCastracion)) {
 
-                $idC = $fila3["idC"];
-                $fecastracionC = $fila3["fecastracion"];
-                $ciduenoC = $fila3["ciduenoC"];
-                $nombreC = $fila3["nombreC"];
-                $apellidoC = $fila3["apellidoC"];
-                $nmascotaC = $fila3["nmascota"];
-                $idchipC = $fila3["idchip"];
-                $especieC = $fila3["especieC"];
-                $sexoC = $fila3["sexoC"];
-                $created_atC = $fila3["CREATED_AT_C"];
-                $updated_atC = $fila3["UPDATED_AT_C"];
-                $sesionC = $fila3['sesionC'];
-            }
-            else{
-                $_SESSION['errmsg'] = "no se encontraron datos";
+            //     $idC = $fila3["idC"];
+            //     $fecastracionC = $fila3["fecastracion"];
+            //     $ciduenoC = $fila3["ciduenoC"];
+            //     $nombreC = $fila3["nombreC"];
+            //     $apellidoC = $fila3["apellidoC"];
+            //     $nmascotaC = $fila3["nmascota"];
+            //     $idchipC = $fila3["idchip"];
+            //     $especieC = $fila3["especieC"];
+            //     $sexoC = $fila3["sexoC"];
+            //     $created_atC = $fila3["CREATED_AT_C"];
+            //     $updated_atC = $fila3["UPDATED_AT_C"];
+            //     $sesionC = $fila3['sesionC'];
+            // }
+            // else{
+            //     $_SESSION['errmsg'] = "no se encontraron datos";
 
-            }
+            // }
             //////////////BUSQUEDA POR CI/////////////////////////
 
             //////////////BUSQUEDA POR IDCHIP/////////////////////////
@@ -263,6 +269,11 @@ include('header.php');
                                 <input class="form-control me-2" type="buscar" placeholder="Buscar" aria-label="Search" name="buscar">
                                 <button title="Buscar" class="btn btn-success" type="submit">Buscar</button>
                             </form>
+                            <div class="d-grid gap-2">
+                    <!-- <button title="Imprimir reporte" target="_blank" class="btn btn-primary btn-block mb-4" onclick="location.href='../censoAnimal/Reportes/Propietarios/reportePersPersona.php?id=<?php echo $_SESSION['id']; ?>&ci=<?php echo $_SESSION['ci']; ?>'">Imprimir</button> -->
+                    <a class="btn btn-primary btn-block mb-4" href="./Reportes/Propietarios/reportePersPersona.php?id=<?php echo $_SESSION['id']; ?>&ci=<?php echo $_SESSION['ci']; ?>&ciduenoC=<?php echo $_SESSION['ciduenoC']; ?>" onclick="" target="blank_">Generar reporte</a>
+                    <!-- <button type="submit" class="btn btn-primary btn-block mb-4">Enviar</button> -->
+                </div>
                         </div>
                     </nav>
                 </div>
@@ -353,7 +364,24 @@ include('header.php');
                             if($consultaAnimal){
                              if (mysqli_num_rows($consultaAnimal) !== 0){
                             // if($consultaAnimal){
+                                
+                                $sesionP = $_SESSION['sesionP'];
+
+                                while ($fila2 = mysqli_fetch_assoc($consultaAnimal)) {
+                    
+                                    $idA = $fila2["idA"];
+                                    $ciduenoA = $fila2["ciduenoA"];
+                                    $nombreA = $fila2["nombreA"];
+                                    $especieA = $fila2["especieA"];
+                                    $sexoA = $fila2["sexoA"];
+                                    $castradoA = $fila2["castrado"];
+                                    $reqcastracionA = $fila2["reqcastracion"];
+                                    $created_atA = $fila2["CREATED_AT_A"];
+                                    $updated_atA = $fila2["UPDATED_AT_A"];
+                                    // $sesion = $fila["sesion"];
+                               
                             ?>
+                            <tr>
                             <td align="center"><?php echo $ciduenoA; ?></td>
                             <td align="center"><?php echo $nombreA; ?></td>
                             <td align="center"><?php echo $especieA; ?></td>
@@ -371,6 +399,7 @@ include('header.php');
                                 <!-- <button title="Generar reporte" onclick="location.href='../censoanimal/Reportes/Propietarios/reportePersPersona.php?id=<?php echo $_SESSION['id']; ?>&ci=<?php echo $_SESSION['ci']; ?>'" type="submit" class="btn btn-success"><i class="bi bi-file-earmark-pdf"></i></button> -->
                             </td>
                             <?php
+                             }
                             }else{
                             ?>
                             <td align="center"><?php echo $_SESSION['errmsg'] ?></td>
@@ -415,6 +444,23 @@ include('header.php');
                         if($consultaCastracion){
                          if (mysqli_num_rows($consultaCastracion) !== 0){
                         //  if($consultaCastracion){
+                            $sesionA = $_SESSION['sesionP'];
+                            while ($fila3 = mysqli_fetch_assoc($consultaCastracion)) {
+                
+                                $idC = $fila3["idC"];
+                                $fecastracionC = $fila3["fecastracion"];
+                                $ciduenoC = $fila3["ciduenoC"];
+                                $nombreC = $fila3["nombreC"];
+                                $apellidoC = $fila3["apellidoC"];
+                                $nmascotaC = $fila3["nmascota"];
+                                $idchipC = $fila3["idchip"];
+                                $especieC = $fila3["especieC"];
+                                $sexoC = $fila3["sexoC"];
+                                $created_atC = $fila3["CREATED_AT_C"];
+                                $updated_atC = $fila3["UPDATED_AT_C"];
+                                $sesionC = $fila3['sesionC'];
+                            
+
                         ?>
                         <tr>
                             <td align="center"><?php echo $fecastracionC; ?></td>
@@ -439,6 +485,7 @@ include('header.php');
 
                 </div>
                 <?php
+                }
                             }else{
                             ?>
                             <td align="center"><?php echo $_SESSION['errmsg'] ?></td>
