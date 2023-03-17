@@ -25,10 +25,10 @@
 
 
 
-    $queryAnimal = "SELECT * FROM animal WHERE ciduenoA = '$ci'";
+    $queryAnimal = "SELECT * FROM animal WHERE ciduenoA = '$ciduenoC'";
     $resultadoAnimal = $conexion->query($queryAnimal);
 
-    $queryCastracion = "SELECT * FROM castracion WHERE ciduenoC = '$ci'";
+    $queryCastracion = "SELECT * FROM castracion WHERE ciduenoC = '$ciduenoC'";
     $resultadoCastracion = $conexion->query($queryCastracion);
 
 	$pdf = new PDF();
