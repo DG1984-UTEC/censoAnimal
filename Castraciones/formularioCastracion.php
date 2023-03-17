@@ -76,7 +76,7 @@ include('../header.php');
                         </div>
                         <br>
                         <div class="form-outline mb-4">
-                            <input type="number" placeholder="Id chip" class="form-control" name="idchip" required="true" />
+                            <input type="text" placeholder="Id chip" size="23" maxlength="23" minlength="23" class="form-control" name="idchip" required="true" />
                         </div>
                      
                         <table class="table table-responsive">

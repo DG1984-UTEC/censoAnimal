@@ -67,9 +67,9 @@ if (isset($_SESSION['usuario'])) {
                 </div>
             </nav>
         </div>
-        <div class="footerD">
+        <!-- <div class="footerD">
             <p>Versión 2 - 2023</p>
-        </div>
+        </div> -->
     </body>
 
     </html>
