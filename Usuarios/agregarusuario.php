@@ -19,7 +19,7 @@ session_start();
 
 if (isset($_SESSION['usuario'])) {
 
-if (isset($_SESSION['submit'])){
+// if (isset($_SESSION['submit'])){
 
 
     if (isset($_POST['ci'], $_POST['nombre'], $_POST['apellido'], $_POST["usuario"], $_POST["password"], $_POST['tipo'])) {
@@ -56,7 +56,7 @@ if (isset($_SESSION['submit'])){
     } else {
         echo '<p>Por favor, complete el <a href="formulario.php">formulario</a></p>';
     }
-}
+// }
 
 } else {
     echo header("location: ../login.php");
