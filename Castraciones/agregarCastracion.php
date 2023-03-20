@@ -35,8 +35,16 @@ $_POST["fecastracion"] !="" and $_POST["ciduenoC"] !="" and $_POST["nombreC"] !=
      $sesionC = $_SESSION['usuario'];
      
 
+$comprobarchip = $conexion->query("SELECT idchip FROM castracion WHERE idchip ='$idchip'");
 
-
+if ($comprobarchip){
+     echo "<script>
+          Swal.fire({
+               title: 'El chip ya está registrado en la base de datos'
+             })
+             setTimeout(() => {  window.location.href= '../Castraciones/formularioCastracion.php'; }, 2000);
+  </script>"; 
+}else{
 
      $insercion = $conexion->query("INSERT INTO castracion (fecastracion, ciduenoC, nombreC, apellidoC, nmascota, idchip, especieC, sexoC, sesionC) VALUES ('$fecastracion','$ciduenoC','$nombreC','$apellidoC','$nmascota','$idchip','$especieC','$sexoC','$sesionC')");
 
@@ -60,7 +68,7 @@ $_POST["fecastracion"] !="" and $_POST["ciduenoC"] !="" and $_POST["nombreC"] !=
        </script>"; 
           }
 
-
+     }
 }else{
      echo '<p>Por favor, complete el <a href="../Castraciones/formularioCastracion.php">formulario</a></p>';
 }
