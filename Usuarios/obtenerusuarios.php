@@ -12,7 +12,7 @@ Autor: Técnico en TI Darío Gonzalez
 
 
 if (isset($_SESSION['usuario'])) {
-
+    include ('../headerAdmin.php');
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -66,76 +66,12 @@ if (isset($_SESSION['usuario'])) {
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/jquery.dataTables.min.css">
         <link rel="stylesheet" href="../css/principal.css">
+        <link rel="stylesheet" href="../css/header.css">
         <title>Obtener Usuarios</title>
     </head>
 
     <body id="bod">
-        <!-- NavBar -->
-        <div class="dropdown">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="./admin.php">Censo Animal</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-                        <ul class="navbar-nav">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Administración de Usuarios
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="../Usuarios/formularioUsuario.php">Nuevo Usuario</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="../Usuarios/obtenerusuarios.php">Listar Usuarios</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Animales
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="../Animales/formularioAnimal.php">Nuevo Animal</a></li>
-                                <li><a class="dropdown-item" href="../Animales/obtenerAnimales.php">Listar Animales</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Castraciones
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="../Castraciones/formularioCastracion.php">Nueva castración</a></li>
-                                <li><a class="dropdown-item" href="../Castraciones/obtenerCastraciones.php">Listar Castraciones</a></li>
-                            </ul>
-                        </li> -->
-                            <!-- <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <?php echo  $_SESSION["usuario"]; ?>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="cerrar.php">Cerrar sesión</a></li>
-
-                                </ul>
-                            </li> -->
-                        </ul>
-                    </div>
-                </div>
-                <div class="position-relative">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <?php echo  $_SESSION["usuario"]; ?>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="../cerrar.php">Salir</a></li>
-
-                            </ul>
-                </div>
-            </nav>
-            <!-- NavBar -->
+        
             <div id="borde" class="border border" style="padding: 20px;">
                 <table id="tAdmin" class="table table-striped">
                     <thead>
