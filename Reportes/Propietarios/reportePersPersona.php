@@ -56,7 +56,7 @@
 	$pdf->Cell(30,6,'Nombre',1,0,'C',1);
 	$pdf->Cell(30,6,'Apellido',1,0,'C',1);
     $pdf->Cell(25,6,'Telefono',1,0,'C',1);
-    $pdf->Cell(60,6,'Direccion',1,0,'C',1);
+    $pdf->Cell(70,6,'Direccion',1,0,'C',1);
     $pdf->Cell(22,6,'Cantidad',1,0,'C',1);
 	
 	$pdf->SetFont('Arial','',10);
@@ -65,7 +65,7 @@
 		$pdf->Cell(30,6,utf8_decode($row['nombreP']),1,0,'C');
 		$pdf->Cell(30,6,utf8_decode($row['apellidoP']),1,0,'C');
         $pdf->Cell(25,6,utf8_decode($row['telefonoP']),1,0,'C');
-        $pdf->Cell(60,6,utf8_decode($row['direccionP']),1,0,'C');
+        $pdf->Cell(70,6,utf8_decode($row['direccionP']),1,0,'C');
         $pdf->Cell(22,6,utf8_decode($row['cantanimales']),1,1,'C');
 	
 	}else{
