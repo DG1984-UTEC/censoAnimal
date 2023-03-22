@@ -33,17 +33,19 @@ $_POST["fecastracion"] !="" and $_POST["ciduenoC"] !="" and $_POST["nombreC"] !=
      $especieC = mysqli_real_escape_string ($conexion,$_POST['especieC']);
      $sexoC = mysqli_real_escape_string ($conexion,$_POST['sexoC']);
      $sesionC = $_SESSION['usuario'];
-     
+     $_SESSION['idchip'] = $idchip;
 
-$comprobarchip = $conexion->query("SELECT idchip FROM castracion WHERE idchip ='$idchip'");
-
-if ($comprobarchip){
+$consultaChip = $conexion->query("SELECT * FROM castracion WHERE idchip ='$idchip'");
+$checking = mysqli_fetch_array($consultaChip);
+if($checking){
+if ($checking['idchip'] == $_SESSION['idchip']){
      echo "<script>
           Swal.fire({
                title: 'El chip ya está registrado en la base de datos'
              })
              setTimeout(() => {  window.location.href= '../Castraciones/formularioCastracion.php'; }, 2000);
   </script>"; 
+}
 }else{
 
      $insercion = $conexion->query("INSERT INTO castracion (fecastracion, ciduenoC, nombreC, apellidoC, nmascota, idchip, especieC, sexoC, sesionC) VALUES ('$fecastracion','$ciduenoC','$nombreC','$apellidoC','$nmascota','$idchip','$especieC','$sexoC','$sesionC')");
