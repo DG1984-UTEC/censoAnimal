@@ -78,7 +78,7 @@ if($idC){
                     </div>
                     <br>
                     <div class="form-outline mb-4">
-                        <input type="number" placeholder="Id chip" class="form-control" name="idchip" value=<?php echo $linea['idchip'];?> required="true" />
+                        <input type="text" placeholder="Id chip"  size="23" maxlength="23" minlength="23" class="form-control" name="idchip" value=<?php echo $linea['idchip'];?> required="true" />
                     </div>
                     <br>
                     <table class="table table-responsive">
