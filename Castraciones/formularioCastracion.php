@@ -56,7 +56,7 @@ include('../header.php');
                         <h1><strong> Datos de castración</strong></h1>
                         <br>
                         <div class="form-outline mb-4">
-                            <input type="date" placeholder="Cédula dueño" class="form-control" name="fecastracion" required="true" />
+                            <input type="date" placeholder="" class="form-control" name="fecastracion" required="true" />
                         </div>
                         <br>
                         <div class="form-outline mb-4">

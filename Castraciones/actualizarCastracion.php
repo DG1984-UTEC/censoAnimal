@@ -23,7 +23,7 @@ session_start();
 //if (isset($_SESSION['usuario']) && $_SESSION['usuario'] == true){
 if (isset($_SESSION['usuario'])){
 
-
+$fecastracion = $_POST['fecastracion'];
 $ciduenoC =$_POST['ciduenoC'];
 $nombreC =$_POST['nombreC'];
 $apellidoC =$_POST['apellidoC'];
@@ -40,7 +40,7 @@ if($ciduenoC&&$nombreC&&$apellidoC&&$nmascota&&$idchip&&$especieC&&$sexoC){
 	//WHERE id='$id'";
   // $resultado = mysqli_query($conexion,$registro);
 
-   $update = $conexion->query("UPDATE castracion SET ciduenoC ='$ciduenoC', nombreC='$nombreC', apellidoC='$apellidoC', nmascota='$nmascota', idchip='$idchip', especieC='$especieC', sexoC='$sexoC', sesionC='$sesionC' WHERE idC='$idC'");
+   $update = $conexion->query("UPDATE castracion SET fecastracion ='$fecastracion', ciduenoC ='$ciduenoC', nombreC='$nombreC', apellidoC='$apellidoC', nmascota='$nmascota', idchip='$idchip', especieC='$especieC', sexoC='$sexoC', sesionC='$sesionC' WHERE idC='$idC'");
 	
   //  $resultado = mysqli_query($conexion,$update);
   if ($update) {

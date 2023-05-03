@@ -54,7 +54,7 @@ if($idC){
                         </div>
                     <br>
                     <div class="form-outline mb-4">
-                        <input type="date" placeholder="Cédula dueño" class="form-control" name="fecastracion" value=<?php echo $linea['fecastracion'];?>
+                        <input type="date" placeholder="" class="form-control" name="fecastracion" value=<?php echo $linea['fecastracion'];?>
                             required="true" />
                     </div>
                     <br>
